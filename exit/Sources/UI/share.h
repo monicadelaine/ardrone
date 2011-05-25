@@ -1,0 +1,2 @@
+
+int share = 0;
