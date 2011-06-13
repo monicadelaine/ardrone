@@ -6,18 +6,19 @@ enum
 {
     kAnnotationIndex = 0
 };
- 
+
 @implementation RoiViewController
 
-@synthesize mapView, testCoord, socket, uavImage;
+@synthesize mapView, testCoord, socket;
 
-int width=128, height=128;
-NSString * host = @"130.160.221.212"; /*@"130.160.47.154"; */
+int width=64, height=64;
+NSString * host = @"130.160.250.5";
 UInt16 port = 1501;
+
 
 - (void) displayImage:(unsigned char *)data
 {
-	NSLog(@"in displayImage");
+	//NSLog(@"in displayImage");
 	
 	unsigned char *rawData1 = malloc(width*height*4);
 	unsigned char *rawData2 = malloc(width*height*4);
@@ -35,9 +36,6 @@ UInt16 port = 1501;
 		rawData2[4*i+2] = data[3*i+2];
 		rawData2[4*i+3] = 255; //alpha
 	}
-	/*for (int i=0; i<10; i++) {
-		NSLog(@"%i", rawData1);
-	}	*/
 	
 	//convert rawData into a UIImage
 	CGDataProviderRef provider1 = CGDataProviderCreateWithData(NULL,rawData1,width*height*4,NULL);
@@ -65,7 +63,7 @@ UInt16 port = 1501;
 	UIImage *newImage2 = [UIImage imageWithCGImage:imageRef2];	
 	
 	//display image2
-	CGRect myImageRect2 = CGRectMake(162.0f, 328.0f, 163.0f, 88.0f); 
+	CGRect myImageRect2 = CGRectMake(162.0f, 328.0f, 162.0f, 88.0f); 
 	UIImageView *myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 	[myImage2 setImage:newImage2]; 
 	myImage2.opaque = YES;  
@@ -74,9 +72,9 @@ UInt16 port = 1501;
 }
 
 //connect to server
--(void)openUDPToSever
+-(void)connectToSever
 {
-	NSLog(@"in openUDPToServer");
+	NSLog(@"in connectToServer");
 	NSError *error = nil;
 	if ([socket connectToHost:host onPort:port error:&error]) { // connect
 		NSLog(@"Connected to Server");
@@ -112,13 +110,9 @@ UInt16 port = 1501;
 //Called when state is received
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
 {
-    NSLog(@"in didReceiveData");
+    //NSLog(@"in didReceiveData");
 	unsigned char *byteData = (unsigned char *)[data bytes];
 	
-	/*for (int i=0; i<10; i++) {
-		NSLog(@"%i", byteData);
-	}*/
-		
 	[self displayImage:byteData]; 
 	[socket receiveWithTimeout:-1 tag:1]; 
 	return YES;
@@ -184,7 +178,7 @@ UInt16 port = 1501;
 	myAnn1.latitude=[NSNumber numberWithDouble:33.21371];
 	myAnn1.longitude=[NSNumber numberWithDouble:-87.5422];		
 	[mapView addAnnotation:myAnn1];	
-
+	
 	MyAnnotation *myAnn2 = [[MyAnnotation alloc] init];
 	myAnn2.latitude=[NSNumber numberWithDouble:33.2137];
 	myAnn2.longitude=[NSNumber numberWithDouble:-87.5425];	
@@ -207,10 +201,10 @@ UInt16 port = 1501;
 - (void)mapController:(MapViewController *)mapController didSendArray:(NSMutableArray *)array
 {
 	/*NSLog(@"count=%i", [array count]);
-	int count=[array count];
-	for (int i=0; i<count; i++) {
-		NSLog(@"element %i = %@", i, [array objectAtIndex:i]);
-	}*/
+	 int count=[array count];
+	 for (int i=0; i<count; i++) {
+	 NSLog(@"element %i = %@", i, [array objectAtIndex:i]);
+	 }*/
 }
 
 -(void) viewDidLoad {
@@ -221,7 +215,7 @@ UInt16 port = 1501;
 	socket = [[AsyncUdpSocket alloc] initWithDelegate:self];
 	
 	//connect to server
-	[self openUDPToSever];
+	[self connectToSever];
 	
 	mapView.mapType = MKMapTypeSatellite;
 	mapAnn = [[MapViewController alloc] init];
@@ -229,17 +223,17 @@ UInt16 port = 1501;
 	//self.testCoord = [[NSMutableArray alloc] init];
 	//hardcoded coordinates of ROI
 	/*[testCoord addObject:[NSNumber numberWithFloat:33.21389012591766f]];
-	[testCoord addObject:[NSNumber numberWithFloat:-87.54267275333404f]];
-	[testCoord addObject:[NSNumber numberWithFloat:33.213887881896944f]];
-	[testCoord addObject:[NSNumber numberWithFloat:-87.54221946001053f]];
-	[testCoord addObject:[NSNumber numberWithFloat:33.21351312963314f]];
-	[testCoord addObject:[NSNumber numberWithFloat:-87.54263252019882f]];	
-	[testCoord addObject:[NSNumber numberWithFloat:33.23152659381413f]];
-	[testCoord addObject:[NSNumber numberWithFloat:-87.54215240478515f]];	
-	int count=[testCoord count];	
-	for (int i=0; i<count; i++) {
-		//NSLog(@"element %d = %@", i, [testCoord objectAtIndex:i]);
-	}*/
+	 [testCoord addObject:[NSNumber numberWithFloat:-87.54267275333404f]];
+	 [testCoord addObject:[NSNumber numberWithFloat:33.213887881896944f]];
+	 [testCoord addObject:[NSNumber numberWithFloat:-87.54221946001053f]];
+	 [testCoord addObject:[NSNumber numberWithFloat:33.21351312963314f]];
+	 [testCoord addObject:[NSNumber numberWithFloat:-87.54263252019882f]];	
+	 [testCoord addObject:[NSNumber numberWithFloat:33.23152659381413f]];
+	 [testCoord addObject:[NSNumber numberWithFloat:-87.54215240478515f]];	
+	 int count=[testCoord count];	
+	 for (int i=0; i<count; i++) {
+	 //NSLog(@"element %d = %@", i, [testCoord objectAtIndex:i]);
+	 }*/
 	
 	//float a = [testCoord objectAtIndex:0];
 	//NSLog(@"element = %@", [testCoord objectAtIndex:1]);
@@ -284,7 +278,7 @@ UInt16 port = 1501;
 	[mapAnn release];
 	[testCoord release];
 	[socket release];
- 
+	
 	[super dealloc];
 }
 

@@ -17,19 +17,22 @@
     MKMapView *mapView;
 	MapViewController *mapAnn;
 	NSMutableArray *testCoord;
-	AsyncUdpSocket *socket;
-	UIImage *uavImage;
+	AsyncUdpSocket *socket1;
+	//AsyncUdpSocket *socket2;
+	//AsyncUdpSocket *socket3;
 }
 
-@property (nonatomic, retain) IBOutlet UIImage *uavImage;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic,retain) NSMutableArray *testCoord;
 @property (nonatomic, retain) AsyncUdpSocket *socket;
+//@property (nonatomic, retain) AsyncUdpSocket *socket2;
+//@property (nonatomic, retain) AsyncUdpSocket *socket3;
 
 - (IBAction)options:(id)sender;
 
-- (void)openUDPToSever;
+- (void)startThread;
+- (void)connectToSever;
 - (void)sendDataToServer:(NSString *)data;
-- (void)receiveDataFromServer;
+-(void)receiveDataFromServer;
 
 @end
