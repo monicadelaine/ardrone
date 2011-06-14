@@ -9,37 +9,30 @@ enum
 
 @implementation RoiViewController
 
-@synthesize mapView, testCoord, socket;
+@synthesize mapView, testCoord, waypoint, socket, socket2;
 
+int enlargeFlag1 = 0;
 int width=64, height=64;
-NSString * host = @"130.160.250.5";
-UInt16 port = 1501;
+NSString * host = @"130.160.221.212";
+UInt16 iport = 1501;
+UInt16 iport2 = 1503;
 
-
-- (void) displayImage:(unsigned char *)data
+- (void) displayImage1:(unsigned char *)data
 {
-	//NSLog(@"in displayImage");
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	unsigned char *rawData1 = malloc(width*height*4);
-	unsigned char *rawData2 = malloc(width*height*4);
 	
 	//adding alpha value to rgb data
 	for (int i=0; i<width*height; ++i) {
-		rawData1[4*i] = 255;
-		rawData1[4*i+1] = 255;
-		rawData1[4*i+2] = 255;
+		rawData1[4*i] = data[3*i];
+		rawData1[4*i+1] = data[3*i+1];
+		rawData1[4*i+2] = data[3*i+2];
 		rawData1[4*i+3] = 255; //alpha
-	}
-	for (int i=0; i<width*height; ++i) {
-		rawData2[4*i] = data[3*i];
-		rawData2[4*i+1] = data[3*i+1];
-		rawData2[4*i+2] = data[3*i+2];
-		rawData2[4*i+3] = 255; //alpha
 	}
 	
 	//convert rawData into a UIImage
 	CGDataProviderRef provider1 = CGDataProviderCreateWithData(NULL,rawData1,width*height*4,NULL);
-	CGDataProviderRef provider2 = CGDataProviderCreateWithData(NULL,rawData2,width*height*4,NULL);
 	
 	int bitsPerComponent = 8;
 	int bitsPerPixel = 32;
@@ -52,23 +45,60 @@ UInt16 port = 1501;
 	UIImage *newImage1 = [UIImage imageWithCGImage:imageRef1];	
 	
 	//display image1
-	CGRect myImageRect1 = CGRectMake(0.0f, 328.0f, 162.0f, 88.0f); 
+	CGRect myImageRect1;
+	if (enlargeFlag1 == 0) {
+		myImageRect1 = CGRectMake(0.0f, 328.0f, 162.0f, 88.0f); 
+	} else if (enlargeFlag1 == 1) {
+		myImageRect1 = CGRectMake(0.0f, 0.0f, 320.0f, 418.0f); 
+	}
 	UIImageView *myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
+	//myImage1.backgroundColor = [UIColor blackColor];
 	[myImage1 setImage:newImage1]; 
 	myImage1.opaque = YES;  
+	//int borderWidth = 10;
+	//myImage1.frame = CGRectMake(borderWidth, borderWidth, 162.0, 88.0);
 	[self.view addSubview:myImage1]; 
 	[myImage1 release];	
+	
+	//[pool release];
+}
+
+- (void) displayImage2:(unsigned char *)data
+{
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	unsigned char *rawData2 = malloc(width*height*4);
+	
+	//adding alpha value to rgb data
+	for (int i=0; i<width*height; ++i) {
+		rawData2[4*i] = data[3*i];
+		rawData2[4*i+1] = data[3*i+1];
+		rawData2[4*i+2] = data[3*i+2];
+		rawData2[4*i+3] = 255; //alpha
+	}
+	
+	//convert rawData into a UIImage
+	CGDataProviderRef provider2 = CGDataProviderCreateWithData(NULL,rawData2,width*height*4,NULL);
+	
+	int bitsPerComponent = 8;
+	int bitsPerPixel = 32;
+	int bytesPerRow = 4*width;
+	CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+	CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+	CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
 	
 	CGImageRef imageRef2 = CGImageCreate(width,height,bitsPerComponent,bitsPerPixel,bytesPerRow,colorSpaceRef,bitmapInfo,provider2,NULL,NO,renderingIntent);	
 	UIImage *newImage2 = [UIImage imageWithCGImage:imageRef2];	
 	
 	//display image2
-	CGRect myImageRect2 = CGRectMake(162.0f, 328.0f, 162.0f, 88.0f); 
+	CGRect myImageRect2 = CGRectMake(162.0f, 328.0f, 163.0f, 88.0f); 
 	UIImageView *myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 	[myImage2 setImage:newImage2]; 
 	myImage2.opaque = YES;  
 	[self.view addSubview:myImage2]; 
 	[myImage2 release];	
+	
+	//[pool release];
 }
 
 //connect to server
@@ -76,12 +106,19 @@ UInt16 port = 1501;
 {
 	NSLog(@"in connectToServer");
 	NSError *error = nil;
-	if ([socket connectToHost:host onPort:port error:&error]) { // connect
-		NSLog(@"Connected to Server");
-		[self sendDataToServer:@"UAV Testing"]; //send data
+	if ([socket connectToHost:host onPort:iport error:&error]) { // connect
+		NSLog(@"Connected on port %i", iport);
 	} else {
-		NSLog(@"Error connecting to Server: %@", error);
+		NSLog(@"Error connecting to server at %i: %@", iport, error);
 	}
+	
+	if ([socket2 connectToHost:host onPort:iport2 error:&error]) { // connect
+		NSLog(@"Connected on port %i", iport2);
+	} else {
+		NSLog(@"Error connecting to server at %i: %@", iport2, error);
+	}
+	
+	[self sendDataToServer:@"UAV Testing"]; //send data
 	[self receiveDataFromServer]; //receive data
 }
 
@@ -90,6 +127,7 @@ UInt16 port = 1501;
 {
 	NSLog(@"in sendDataToServer");
 	[socket sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
+	[socket2 sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
 	NSLog (@"Sending: %@",data);
 }
 
@@ -98,6 +136,7 @@ UInt16 port = 1501;
 {
 	NSLog(@"in receiveDataFromServer");
 	[socket receiveWithTimeout:-1 tag:0];
+	[socket2 receiveWithTimeout:-1 tag:0];
 	NSLog (@"Receiving");
 }
 
@@ -110,11 +149,16 @@ UInt16 port = 1501;
 //Called when state is received
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
 {
-    //NSLog(@"in didReceiveData");
+    NSLog(@"in didReceiveData: %i", port);
 	unsigned char *byteData = (unsigned char *)[data bytes];
 	
-	[self displayImage:byteData]; 
-	[socket receiveWithTimeout:-1 tag:1]; 
+	if (port == iport) {
+		[self displayImage1:byteData]; 
+	}
+	if (port == iport2) {
+		[self displayImage2:byteData]; 
+	}
+	[sock receiveWithTimeout:-1 tag:0]; 
 	return YES;
 }
 
@@ -128,9 +172,10 @@ UInt16 port = 1501;
     {
         case 0:
         {
-            //action for Enlarge
-			NSLog(@"Enlarge button");
-            break;
+			//action for ROI
+			NSLog(@"ROI button");
+			enlargeFlag1 = 0;
+			break;
         } 
 		case 1:
         {
@@ -139,35 +184,38 @@ UInt16 port = 1501;
 			UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
 			[self.mapView addGestureRecognizer:longPressGesture];
 			[longPressGesture release];  	
+			
+			//send waypoint to server
+			/*NSString *waypointStr = [waypoint description];
+			[socket sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];*/
 			break;
         } 
         default:
         {	
-			//action for ROI
-			NSLog(@"ROI button");
-			break;
+			//action for Enlarge
+			NSLog(@"Enlarge button");	
+			enlargeFlag1 = 1;
+            break;
         } 
     }			
 }
 
-- (void)handleLongPressGesture:(UIGestureRecognizer*)sender {
-	// get the CGPoint for the touch and convert it to latitude and longitude coordinates 
-	CGPoint point = [sender locationInView:self.mapView];
-	CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
-	CLLocationCoordinate2D touchCoord;
-	touchCoord.latitude=locCoord.latitude;
-	NSLog(@"lat=%i", touchCoord.latitude);
-	//locCoord.latitude =[NSNumber numberWithDouble:locCoord.latitude];
-	//locCoord.longitude = [NSNumber numberWithDouble:locCoord.longitude];
-	//save the coordinates for the selected ROI
-	//[self.testCoord insertObject:locCoord.latitude atIndex:kAnnotationIndex];
-	//[self.testCoord insertObject:locCoord.longitude atIndex:kAnnotationIndex];				
-	
-	/*NSLog(@"count=%i", [testCoord count]);
-	 int count=[testCoord count];
-	 for (int i=0; i<count; i++) {
-	 NSLog(@"element %i = %@", i, [testCoord objectAtIndex:i]);
-	 }*/
+- (void)handleLongPressGesture:(UIGestureRecognizer*)sender 
+{
+	if (sender.state==UIGestureRecognizerStateBegan) {
+		// get the CGPoint for the touch and convert it to latitude and longitude coordinates
+		CGPoint point = [sender locationInView:self.mapView];
+		CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+		//save the coordinates for the selected waypoint
+		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.latitude] atIndex:kAnnotationIndex];
+		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.longitude]atIndex:kAnnotationIndex];	
+		
+		NSLog(@"count=%i", [waypoint count]);
+		int count=[waypoint count];
+		for (int i=0; i<count; i++) {
+			NSLog(@"element %i = %@", i, [waypoint objectAtIndex:i]);
+		}
+	}				
 } 
 
 - (void)moveUAVs
@@ -185,71 +233,50 @@ UInt16 port = 1501;
 	[mapView addAnnotation:myAnn2];
 }
 
--(MKAnnotationView *) mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>) annotation
+- (MKAnnotationView *) mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>) annotation
 {
 	NSString *identifer = @"UAV";
 	MKAnnotationView *annView = [theMapView dequeueReusableAnnotationViewWithIdentifier:identifer];
 	if (annView==nil) {
 		annView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer] autorelease];
 	}
-	annView.image = [UIImage imageNamed:@"Icon-Small.png"];
-	//UIImage *uavImage = [UIImage imageNamed:@"Icon-Small.png"];
-	//[annView setImage:uavImage];
+	//annView.image = [UIImage imageNamed:@"Icon-Small.png"];
+	UIImage *uavImage = [UIImage imageNamed:@"Icon-Small.png"];
+	[annView setImage:uavImage];
 	return annView;
 }
 
-- (void)mapController:(MapViewController *)mapController didSendArray:(NSMutableArray *)array
+- (void) setCoord:(NSMutableArray *)passedArray
 {
-	/*NSLog(@"count=%i", [array count]);
-	 int count=[array count];
-	 for (int i=0; i<count; i++) {
-	 NSLog(@"element %i = %@", i, [array objectAtIndex:i]);
-	 }*/
+	testCoord = passedArray;
+	
+	int cnt=[testCoord count];
+	NSLog(@"count: %i",cnt);
+		
+	for (int i=0; i<cnt; i++) {
+		NSLog(@"element %i = %@", i, [testCoord objectAtIndex:i]);
+	}
 }
 
--(void) viewDidLoad {
-	//[self didSendArray];
-	unsigned char * test;
-	[self displayImage:test];
-	
-	socket = [[AsyncUdpSocket alloc] initWithDelegate:self];
+- (void) viewDidLoad {
+	self.waypoint = [[NSMutableArray alloc] init];
 	
 	//connect to server
+	socket = [[AsyncUdpSocket alloc] initWithDelegate:self];
+	socket2 = [[AsyncUdpSocket alloc] initWithDelegate:self];	
 	[self connectToSever];
 	
-	mapView.mapType = MKMapTypeSatellite;
-	mapAnn = [[MapViewController alloc] init];
-	//try visibleMapRect
-	//self.testCoord = [[NSMutableArray alloc] init];
-	//hardcoded coordinates of ROI
-	/*[testCoord addObject:[NSNumber numberWithFloat:33.21389012591766f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:-87.54267275333404f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:33.213887881896944f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:-87.54221946001053f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:33.21351312963314f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:-87.54263252019882f]];	
-	 [testCoord addObject:[NSNumber numberWithFloat:33.23152659381413f]];
-	 [testCoord addObject:[NSNumber numberWithFloat:-87.54215240478515f]];	
-	 int count=[testCoord count];	
-	 for (int i=0; i<count; i++) {
-	 //NSLog(@"element %d = %@", i, [testCoord objectAtIndex:i]);
-	 }*/
+	//[self startThread]; //start threads
 	
-	//float a = [testCoord objectAtIndex:0];
+	mapView.mapType = MKMapTypeSatellite;
+	
+	//get coordinates for the ROI 
 	//NSLog(@"element = %@", [testCoord objectAtIndex:1]);
 	
-	//get coordinates for the ROI - problem: array is returning null
-	/*mapAnn = [[MapViewController alloc] init];
-	 NSLog(@"count = %@", mapAnn.mapAnnotations.count);	
-	 int count=[mapAnn.mapAnnotations count];	
-	 for (int i=0; i<count; i++) {
-	 NSLog(@"element %i = %@", i, [mapAnn.mapAnnotations objectAtIndex:i]);
-	 }*/
-	
+	//try visibleMapRect or
 	//use convertRect:toRegionFromView to convert a rectangle to a map region
 	//create function to get center of chosen ROI
 	
-	//float t = [testCoord objectAtIndex:0];
 	CLLocationCoordinate2D coord;
 	coord.latitude=33.2137;
 	coord.longitude=-87.5425;
@@ -270,16 +297,22 @@ UInt16 port = 1501;
 {
 	self.mapView = nil;
 	self.testCoord = nil;
-	mapAnn = nil;
+	self.waypoint = nil;
 }
 
 - (void)dealloc {
 	[mapView release];
-	[mapAnn release];
 	[testCoord release];
+	[waypoint release];
 	[socket release];
+	[socket2 release];
 	
 	[super dealloc];
 }
+
+/*- (void)startThread 
+{
+	[NSThread detachNewThreadSelector:@selector(displayImage1:) toTarget:self withObject:nil];
+}*/
 
 @end

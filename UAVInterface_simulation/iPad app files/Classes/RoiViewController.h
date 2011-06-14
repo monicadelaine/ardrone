@@ -12,20 +12,21 @@
 #import "AsyncUdpSocket.h"
 #import "MapViewController.h"
 
-@interface RoiViewController : UIViewController <MKMapViewDelegate, MapControllerDelegate>
+@interface RoiViewController : UIViewController <MKMapViewDelegate>
 {
     MKMapView *mapView;
-	MapViewController *mapAnn;
 	NSMutableArray *testCoord;
-	AsyncUdpSocket *socket1;
-	//AsyncUdpSocket *socket2;
+	NSMutableArray *waypoint;
+	AsyncUdpSocket *socket;
+	AsyncUdpSocket *socket2;
 	//AsyncUdpSocket *socket3;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic,retain) NSMutableArray *testCoord;
+@property (nonatomic, retain) NSMutableArray *testCoord;
+@property (nonatomic, retain) NSMutableArray *waypoint;
 @property (nonatomic, retain) AsyncUdpSocket *socket;
-//@property (nonatomic, retain) AsyncUdpSocket *socket2;
+@property (nonatomic, retain) AsyncUdpSocket *socket2;
 //@property (nonatomic, retain) AsyncUdpSocket *socket3;
 
 - (IBAction)options:(id)sender;
@@ -33,6 +34,7 @@
 - (void)startThread;
 - (void)connectToSever;
 - (void)sendDataToServer:(NSString *)data;
--(void)receiveDataFromServer;
+- (void)receiveDataFromServer;
 
 @end
+
