@@ -51,7 +51,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "WorldCitiesListController.h"
 
-@protocol MapControllerDelegate;
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, WorldCitiesListControllerDelegate>
 {
@@ -59,22 +58,13 @@
     WorldCitiesListController *worldCitiesListController;
     UINavigationController *worldCitiesListNavigationController;
 	NSMutableArray *mapAnnotations;
-	id <MapControllerDelegate> delegate;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain, readonly) WorldCitiesListController *worldCitiesListController;
 @property (nonatomic, retain, readonly) UINavigationController *worldCitiesListNavigationController;
 @property (nonatomic,retain) NSMutableArray *mapAnnotations;
-@property (nonatomic, assign) id <MapControllerDelegate> delegate;
 
 - (IBAction)setMapType:(id)sender;
-
-@end
-
-@protocol MapControllerDelegate <NSObject>
-
-- (void)mapController:(MapViewController *)mapController didSendArray:(NSMutableArray *)array;
-//- (void)didSendArray:(NSMutableArray *)array;
 
 @end

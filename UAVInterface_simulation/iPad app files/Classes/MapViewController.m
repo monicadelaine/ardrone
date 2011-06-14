@@ -57,7 +57,7 @@ enum
 
 @implementation MapViewController
 
-@synthesize mapView, mapAnnotations, delegate;
+@synthesize mapView, mapAnnotations;
 
 
 - (WorldCitiesListController *)worldCitiesListController
@@ -83,14 +83,14 @@ enum
 - (void)viewDidLoad
 {
 	mapView.mapType = MKMapTypeSatellite;
-	self.mapAnnotations = [[NSMutableArray alloc] init];//initWithCapacity:4];
+	self.mapAnnotations = [[NSMutableArray alloc] init];
 }
 
 
 - (void)viewDidUnload
 {
 	self.mapView = nil;
-	//self.mapAnnotations = nil;
+	self.mapAnnotations = nil;
 }
 
 - (void)dealloc
@@ -98,14 +98,10 @@ enum
     [mapView release];
     [worldCitiesListController release];
     [worldCitiesListNavigationController release];
-	//[mapAnnotations release];
+	[mapAnnotations release];
+	//[annView release];
 	
     [super dealloc];
-}
-
-- (void)sendArray:(NSMutableArray *)array
-{
-	[delegate mapController:self didSendArray:[self mapAnnotations]];
 }
 
 - (IBAction)setMapType:(id)sender
@@ -127,12 +123,9 @@ enum
         {
             //action for when user selects Done
 			RoiViewController *roi = [[RoiViewController alloc] initWithNibName:nil bundle:nil];
+			[roi setCoord:mapAnnotations];
 			[self presentModalViewController:roi animated:YES];
 			[roi release];			
-			
-			/*if([[self delegate] respondsToSelector:@selector(didSendArray:)]) {
-				[self.delegate mapController:self didSendArray:mapAnnotations];
-			}*/
 			break;
         } 
     }
@@ -141,7 +134,7 @@ enum
 - (void)animateToWorld:(WorldCity *)worldCity
 {    
 	MKCoordinateRegion current = mapView.region;
-    MKCoordinateRegion zoomOut = { { (current.center.latitude + worldCity.coordinate.latitude)/2.0 , (current.center.longitude + worldCity.coordinate.longitude)/2.0 }, {90, 90} };
+    MKCoordinateRegion zoomOut = {{(current.center.latitude + worldCity.coordinate.latitude)/2.0 , (current.center.longitude + worldCity.coordinate.longitude)/2.0 }, {90, 90}};
     [mapView setRegion:zoomOut animated:YES];
 }
 
@@ -165,7 +158,7 @@ enum
 		CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
 		// create the annotation and add it to the map
 		MyAnnotation *myAnnotation = [[MyAnnotation alloc] init];
-		myAnnotation.latitude =[NSNumber numberWithDouble:locCoord.latitude];
+		myAnnotation.latitude = [NSNumber numberWithDouble:locCoord.latitude];
 		myAnnotation.longitude = [NSNumber numberWithDouble:locCoord.longitude];
 		//save the coordinates for the selected ROI
 		[self.mapAnnotations insertObject:myAnnotation.latitude atIndex:kAnnotationIndex];
@@ -199,10 +192,9 @@ enum
 
 -(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
 {
-	MKPinAnnotationView *annView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentLoc"];
+	MKPinAnnotationView *annView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
 	annView.animatesDrop=TRUE;
 	return annView;
 }
 	
-
 @end
