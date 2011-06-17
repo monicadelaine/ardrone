@@ -9,6 +9,7 @@
 
 @synthesize latitude;
 @synthesize longitude;
+@synthesize image;
 @synthesize _coordinate;
 
 - (CLLocationCoordinate2D)coordinate;
@@ -22,7 +23,7 @@
 
 - (NSString *)title
 {
-    return @"Testing";
+    return @"UAV";
 }
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
@@ -34,6 +35,7 @@
 
 - (void)dealloc
 {
+	[image	release];
     [super dealloc];
 }
 

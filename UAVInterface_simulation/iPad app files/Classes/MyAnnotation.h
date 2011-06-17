@@ -12,12 +12,14 @@
     CLLocationCoordinate2D _coordinate;
     NSNumber *latitude;
     NSNumber *longitude;
+	UIImage *image;
 }
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
+@property (nonatomic, retain) UIImage *image;
 
 // the coordinate is a derived property based on the properties latitude and longitude.
 @property (nonatomic, assign, readonly) CLLocationCoordinate2D _coordinate;
