@@ -58,12 +58,14 @@
     WorldCitiesListController *worldCitiesListController;
     UINavigationController *worldCitiesListNavigationController;
 	NSMutableArray *mapAnnotations;
+	NSMutableArray *pointAnnotations;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain, readonly) WorldCitiesListController *worldCitiesListController;
 @property (nonatomic, retain, readonly) UINavigationController *worldCitiesListNavigationController;
 @property (nonatomic,retain) NSMutableArray *mapAnnotations;
+@property (nonatomic,retain) NSMutableArray *pointAnnotations;
 
 - (IBAction)setMapType:(id)sender;
 

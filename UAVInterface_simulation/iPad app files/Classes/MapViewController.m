@@ -57,7 +57,7 @@ enum
 
 @implementation MapViewController
 
-@synthesize mapView, mapAnnotations;
+@synthesize mapView, mapAnnotations, pointAnnotations;
 
 
 - (WorldCitiesListController *)worldCitiesListController
@@ -84,6 +84,7 @@ enum
 {
 	mapView.mapType = MKMapTypeSatellite;
 	self.mapAnnotations = [[NSMutableArray alloc] init];
+	self.pointAnnotations = [[NSMutableArray alloc] init];
 }
 
 
@@ -91,6 +92,7 @@ enum
 {
 	self.mapView = nil;
 	self.mapAnnotations = nil;
+	self.pointAnnotations = nil;	
 }
 
 - (void)dealloc
@@ -99,7 +101,7 @@ enum
     [worldCitiesListController release];
     [worldCitiesListNavigationController release];
 	[mapAnnotations release];
-	//[annView release];
+	[pointAnnotations release];	
 	
     [super dealloc];
 }
@@ -110,20 +112,26 @@ enum
     {
         case 0:
         {
-            //do nothing
+            //action for Reset
+			NSLog(@"Reset button");
+			[mapView removeAnnotations:mapView.annotations];
+			[mapAnnotations removeAllObjects];
             break;
         } 
         case 1:
         {
 			//action for when user selects Areas
+			NSLog(@"Areas button");
             [self.navigationController presentModalViewController:self.worldCitiesListNavigationController animated:YES];
             break;
         } 
         default:
         {
             //action for when user selects Done
+			NSLog(@"Done button");
 			RoiViewController *roi = [[RoiViewController alloc] initWithNibName:nil bundle:nil];
 			[roi setCoord:mapAnnotations];
+			[roi setPoint:pointAnnotations];
 			[self presentModalViewController:roi animated:YES];
 			[roi release];			
 			break;
@@ -151,6 +159,23 @@ enum
 	[longPressGesture release];
 }
 
+- (void) regionCoord
+{
+	//saves boundary coordinates of region displayed
+	NSMutableArray *testing = [[NSMutableArray alloc] init];
+	MKCoordinateRegion r = mapView.region;
+	//southwest coords
+	[testing insertObject:[NSNumber numberWithDouble:r.center.latitude - (r.span.latitudeDelta/2)]atIndex:kAnnotationIndex];
+	[testing insertObject:[NSNumber numberWithDouble:r.center.longitude - (r.span.longitudeDelta/2)]atIndex:kAnnotationIndex];
+	//northeast coords
+	[testing insertObject:[NSNumber numberWithDouble:r.center.latitude + (r.span.latitudeDelta/2)]atIndex:kAnnotationIndex];
+	[testing insertObject:[NSNumber numberWithDouble:r.center.longitude + (r.span.longitudeDelta/2)]atIndex:kAnnotationIndex];
+	int count=[testing count];
+	for (int i=0; i<count; i++) {
+		NSLog(@"element %i = %@", i, [testing objectAtIndex:i]);
+	}
+}
+
 - (void)handleLongPressGesture:(UIGestureRecognizer*)sender {
 	if (sender.state==UIGestureRecognizerStateBegan) {
 		// get the CGPoint for the touch and convert it to latitude and longitude coordinates to display on the map
@@ -161,16 +186,23 @@ enum
 		myAnnotation.latitude = [NSNumber numberWithDouble:locCoord.latitude];
 		myAnnotation.longitude = [NSNumber numberWithDouble:locCoord.longitude];
 		//save the coordinates for the selected ROI
-		[self.mapAnnotations insertObject:myAnnotation.latitude atIndex:kAnnotationIndex];
 		[self.mapAnnotations insertObject:myAnnotation.longitude atIndex:kAnnotationIndex];	
+		[self.mapAnnotations insertObject:myAnnotation.latitude atIndex:kAnnotationIndex];
+		[self.pointAnnotations insertObject:[NSNumber numberWithDouble:point.y] atIndex:kAnnotationIndex];	
+		[self.pointAnnotations insertObject: [NSNumber numberWithDouble:point.x] atIndex:kAnnotationIndex];		
 		[self.mapView addAnnotation:myAnnotation];
 		[myAnnotation release];				
-	
-		NSLog(@"count=%i", [mapAnnotations count]);
-		int count=[mapAnnotations count];
-		for (int i=0; i<count; i++) {
+		
+		int cnt=[mapAnnotations count];
+		NSLog(@"annotation count = %i",cnt);
+		for (int i=0; i<cnt; i++) {
 			NSLog(@"element %i = %@", i, [mapAnnotations objectAtIndex:i]);
 		}
+		int cnt1=[pointAnnotations count];
+		NSLog(@"point annotation count = %i",cnt1);
+		for (int i=0; i<cnt1; i++) {
+			NSLog(@"element %i = %@", i, [pointAnnotations objectAtIndex:i]);
+		}		
 	}
 }
 
@@ -178,6 +210,7 @@ enum
 {
     [self.navigationController dismissModalViewControllerAnimated:YES];
     self.title = aPlace.name;
+	NSLog(@"%@ chosen",aPlace.name);
     MKCoordinateRegion current = mapView.region;
     if (current.span.latitudeDelta < 10)
     {
@@ -190,7 +223,7 @@ enum
     }
 }
 
--(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
+-(MKAnnotationView *) mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>) annotation
 {
 	MKPinAnnotationView *annView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
 	annView.animatesDrop=TRUE;
