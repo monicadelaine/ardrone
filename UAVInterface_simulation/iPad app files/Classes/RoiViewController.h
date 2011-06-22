@@ -19,6 +19,7 @@
 	NSMutableArray *initPoint;	
 	NSMutableArray *waypoint;
 	NSMutableArray *pointWaypoint;
+	NSMutableArray *defaultPt;	
 	UIAlertView *alertButton;
 	AsyncUdpSocket *socket;
 	AsyncUdpSocket *socket2;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) NSMutableArray *initPoint;
 @property (nonatomic, retain) NSMutableArray *pointWaypoint;
 @property (nonatomic, retain) NSMutableArray *waypoint;
+@property (nonatomic, retain) NSMutableArray *defaultPt;
 @property (nonatomic, retain) AsyncUdpSocket *socket;
 @property (nonatomic, retain) AsyncUdpSocket *socket2;
 @property (nonatomic, retain) AsyncUdpSocket *socket3;
@@ -39,10 +41,11 @@
 - (IBAction)options:(id)sender;
 
 - (void)startThread;
-- (void)connectToSever;
+- (void)connectToServer;
 - (void)sendDataToServer:(NSString *)data;
-- (void)receiveDataFromServer1;
-- (void)receiveDataFromServer2;
+- (void)receiveDataFromServer;
+- (void)moveUAVs:(NSMutableArray *)data;
+- (void)mapToArea:(double)x1:(double)y1;
+- (void)mapToRoi:(double)x1:(double)y1:(double)x2:(double)y2;
 
 @end
-
