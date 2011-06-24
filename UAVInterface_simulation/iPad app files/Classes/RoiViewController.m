@@ -9,30 +9,99 @@
 
 #define ROI_X_MAX 318
 #define ROI_Y_MAX 285
+#define IMAGE_ARRAY 12290
 
 enum
 {
     kAnnotationIndex = 0,
 };	
 
+
 @implementation RoiViewController
 
-@synthesize mapView, initCoord, initPoint, waypoint, pointWaypoint, defaultPt;
-@synthesize socket, socket2, socket3, socket4;
+@synthesize mapView, initCoord, initPoint, waypoint, pointWaypoint;
+@synthesize socket, socket2;
 
 double latSpan, lonSpan, centerCoordLat, centerCoordLon;
 double xScale, yScale;
 
 CGPoint point, newPoint1, newPoint2;
+UIImageView *myImage1, *myImage2;
+MyAnnotation *myAnn;
+NSString *pointStr;
 
 int enlargeFlag = 0, enlargeButton = 0, waypointUAV = 0, waypointButton = 0;
 int width = 64, height = 64;
 
-NSString * host = @"130.160.47.69";
+NSString * host = @"130.160.68.24";
 UInt16 iport = 1501;
-UInt16 iport2 = 1503;
-UInt16 iport3 = 1505;
-UInt16 oport4 = 1506;
+UInt16 oport = 1506;
+
+//connect to server
+-(void)connectToServer
+{
+	NSLog(@"Connecting To Server");
+	NSError *error = nil;
+	
+	if ([socket connectToHost:host onPort:iport error:&error]) { // connect to socket
+		NSLog(@"Connected on port %i", iport);
+	} else {
+		NSLog(@"Error connecting to server at %i: %@", iport, error);
+	}
+		
+	[self sendDataToServer:pointStr]; //send data
+	[self receiveDataFromServer]; //receive data
+}
+
+//send data to server
+-(void)sendDataToServer:(NSString *)data
+{
+	[socket sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
+	NSLog (@"Sending: %@",data);
+}
+
+//receive data from server
+-(void)receiveDataFromServer
+{
+	NSLog(@"Receiving Data From Server");
+	[socket receiveWithTimeout:-1 tag:0];
+}
+
+//Called when the datagram has been sent
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag 
+{
+	NSLog(@"didSendData");
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+	NSLog(@"didNotSendData: %@", error);
+}
+
+//Called when state is received
+- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
+{
+    //NSLog(@"didReceiveData: %i", port);
+	unsigned char *byteData = (unsigned char *)[data bytes];
+	NSMutableArray *posData = [[NSMutableArray alloc] init];
+	
+	if (byteData[0] == 'A') {
+		[self displayImage1:byteData]; 
+		[posData insertObject:[NSNumber numberWithDouble:byteData[IMAGE_ARRAY+3]]atIndex:kAnnotationIndex];
+		[posData insertObject:[NSNumber numberWithDouble:byteData[IMAGE_ARRAY+2]]atIndex:kAnnotationIndex];
+		[posData insertObject:[NSNumber numberWithDouble:byteData[IMAGE_ARRAY+1]]atIndex:kAnnotationIndex];
+		[posData insertObject:[NSNumber numberWithDouble:byteData[IMAGE_ARRAY]]atIndex:kAnnotationIndex];		
+		[self moveUAVs:posData]; 		
+	} else if (byteData[0] == 'B') {
+		[self displayImage2:byteData]; 
+	} 	
+	[sock receiveWithTimeout:-1 tag:0]; 
+	return YES;
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error {
+	NSLog(@"didNotReceiveData: %@", error);
+}
 
 //TODO: clear image and return to map view after enlarging
 - (void) displayImage1:(unsigned char *)data
@@ -67,7 +136,7 @@ UInt16 oport4 = 1506;
 	} else if (enlargeFlag == 1) {
 		myImageRect1 = CGRectMake(0.0f, 0.0f, 320.0f, 418.0f); 
 	}
-	UIImageView *myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
+	/*UIImageView **/myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
 	[myImage1 setImage:newImage1]; 
 	myImage1.opaque = YES;  
 	if (enlargeFlag == 0) {
@@ -111,7 +180,7 @@ UInt16 oport4 = 1506;
 		myImageRect2 = CGRectMake(0.0f, 0.0f, 320.0f, 418.0f); 
 		
 	}	
-	UIImageView *myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
+	/*UIImageView **/myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 	myImage2.image = nil; //try to clear the image 
 	[myImage2 setImage:newImage2]; 
 	myImage2.opaque = YES;  
@@ -125,100 +194,6 @@ UInt16 oport4 = 1506;
 	[myImage2 release];		
 }
 
-//connect to server
--(void)connectToServer
-{
-	NSLog(@"Connecting To Server");
-	NSError *error = nil;
-	
-	if ([socket connectToHost:host onPort:iport error:&error]) { // connect to socket1
-		NSLog(@"Connected on port %i", iport);
-	} else {
-		NSLog(@"Error connecting to server at %i: %@", iport, error);
-	}
-	
-	if ([socket2 connectToHost:host onPort:iport2 error:&error]) { // connect to socket2
-		NSLog(@"Connected on port %i", iport2);
-	} else {
-		NSLog(@"Error connecting to server at %i: %@", iport2, error);
-	}
-	
-	/*if ([socket3 connectToHost:host onPort:iport3 error:&error]) { // connect to socket3
-		NSLog(@"Connected on port %i", iport3);
-	} else {
-		NSLog(@"Error connecting to server at %i: %@", iport3, error);
-	}
-	
-	if ([socket4 connectToHost:host onPort:oport4 error:&error]) { // connect to socket4
-		NSLog(@"Connected on port %i", oport4);
-	} else {
-		NSLog(@"Error connecting to server at %i: %@", oport4, error);
-	}
-	*/
-	
-	[self sendDataToServer:@"Initializing socket"]; //send data
-	[self receiveDataFromServer]; //receive data
-}
-
-//send data to server
--(void)sendDataToServer:(NSString *)data
-{
-	NSLog(@"Sending Data To Server");
-	[socket sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
-	[socket2 sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
-	//[socket3 sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
-	NSLog (@"Sending: %@",data);
-}
-
-//receive data from server
--(void)receiveDataFromServer
-{
-	NSLog(@"Receiving Data From Server");
-	//while (TRUE) {
-		//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		[socket receiveWithTimeout:-1 tag:0];
-		[socket2 receiveWithTimeout:-1 tag:0];
-		//[pool release];
-	//}
-}
-
-//Called when the datagram with the given tag has been sent
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag 
-{
-	NSLog(@"didSendData");
-}
-
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
-{
-	NSLog(@"didNotSendData: %@", error);
-}
-
-//Called when state is received
-- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
-{
-    NSLog(@"didReceiveData: %i", port);
-	unsigned char *byteData = (unsigned char *)[data bytes];
-	
-	if (port == iport) {
-		//unsigned char *byteData = (unsigned char *)[data bytes];
-		[self displayImage1:byteData]; 
-	}
-	if (port == iport2) {
-		//unsigned char *byteData = (unsigned char *)[data bytes];
-		[self displayImage2:byteData]; 
-	}
-	/*if (port == iport3) {
-		NSArray *byteData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		[self moveUAVs:byteData]; 
-	} */	
-	[sock receiveWithTimeout:-1 tag:0]; 
-	return YES;
-}
-
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error {
-	NSLog(@"didNotReceiveData: %@", error);
-}
-
 - (IBAction)options:(id)sender 
 {
 	switch (((UISegmentedControl *)sender).selectedSegmentIndex)
@@ -227,8 +202,11 @@ UInt16 oport4 = 1506;
         {
 			//action for ROI
 			NSLog(@"ROI button");
-			enlargeFlag = 0;
+			myImage1.image = nil; //try to clear the image  
+			myImage2.image = nil; 
 			self.mapView.hidden = NO; //try to show map again
+			[self.mapView removeAnnotations:mapView.annotations];
+			enlargeFlag = 0;
 			break;
         } 
 		case 1:
@@ -262,7 +240,7 @@ UInt16 oport4 = 1506;
     }			
 }
 
-- (void)alertView : (UIAlertView *)alertView clickedButtonAtIndex : (NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if(alertView == alertButton) {
 		if(buttonIndex == 0) {
@@ -311,37 +289,12 @@ UInt16 oport4 = 1506;
 	return nil;
 }
 
-- (void) testMoveUAVs //test the function for moveUAVs
-{
-	NSMutableArray *testing = [[NSMutableArray alloc] init];
-	NSMutableArray *testing2 = [[NSMutableArray alloc] init];
-	NSMutableArray *testing3 = [[NSMutableArray alloc] init];
-	NSMutableArray *testing4 = [[NSMutableArray alloc] init];	
-	[testing insertObject:[NSNumber numberWithDouble:114]atIndex:kAnnotationIndex];
-	[testing insertObject:[NSNumber numberWithDouble:156]atIndex:kAnnotationIndex];
-	[testing insertObject:[NSNumber numberWithDouble:100]atIndex:kAnnotationIndex];
-	[testing insertObject:[NSNumber numberWithDouble:150]atIndex:kAnnotationIndex];
-	[testing2 insertObject:[NSNumber numberWithDouble:110]atIndex:kAnnotationIndex];
-	[testing2 insertObject:[NSNumber numberWithDouble:160]atIndex:kAnnotationIndex];
-	[testing2 insertObject:[NSNumber numberWithDouble:105]atIndex:kAnnotationIndex];
-	[testing2 insertObject:[NSNumber numberWithDouble:155]atIndex:kAnnotationIndex];
-	[testing3 insertObject:[NSNumber numberWithDouble:106]atIndex:kAnnotationIndex];
-	[testing3 insertObject:[NSNumber numberWithDouble:164]atIndex:kAnnotationIndex];
-	[testing3 insertObject:[NSNumber numberWithDouble:110]atIndex:kAnnotationIndex];
-	[testing3 insertObject:[NSNumber numberWithDouble:160]atIndex:kAnnotationIndex];
-	[testing4 insertObject:[NSNumber numberWithDouble:102]atIndex:kAnnotationIndex];
-	[testing4 insertObject:[NSNumber numberWithDouble:168]atIndex:kAnnotationIndex];
-	[testing4 insertObject:[NSNumber numberWithDouble:115]atIndex:kAnnotationIndex];
-	[testing4 insertObject:[NSNumber numberWithDouble:165]atIndex:kAnnotationIndex];	
-	[self moveUAVs:testing];
-	[self moveUAVs:testing2];
-	[self moveUAVs:testing3];
-	[self moveUAVs:testing4];	
-}
-
 //TODO: clear annotation for old uav position
 - (void)moveUAVs:(NSMutableArray *)data
 {
+	for (int i=0; i<4; i++) {
+		NSLog(@"uav pos %i = %@", i, [data objectAtIndex:i]);
+	}	
 	CGPoint point1, point2;
 	point1 = CGPointMake([[data objectAtIndex:0] doubleValue],[[data objectAtIndex:1]doubleValue]);
 	point2 = CGPointMake([[data objectAtIndex:2] doubleValue],[[data objectAtIndex:3]doubleValue]);	
@@ -353,7 +306,7 @@ UInt16 oport4 = 1506;
 	
 	//[mapView removeAnnotations:mapView.annotations]; 
 	
-	MyAnnotation *myAnn1 = [[MyAnnotation alloc] init];
+	MyAnnotation1 *myAnn1 = [[MyAnnotation1 alloc] init];
 	myAnn1.latitude = [NSNumber numberWithDouble:uavCoord1.latitude];
 	myAnn1.longitude = [NSNumber numberWithDouble:uavCoord1.longitude];	
 	[self.mapView addAnnotation:myAnn1];
@@ -366,9 +319,9 @@ UInt16 oport4 = 1506;
 	[myAnn2 release];
 }
 
-//TODO: add and remove annotation to show user waypoint
 - (void)handleLongPressGesture:(UIGestureRecognizer*)sender 
 {
+	myAnn = [[MyAnnotation alloc] init];	
 	[waypoint removeAllObjects];
 	[pointWaypoint removeAllObjects];	
 	if (sender.state==UIGestureRecognizerStateBegan) {
@@ -378,7 +331,6 @@ UInt16 oport4 = 1506;
 		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.latitude] atIndex:kAnnotationIndex];
 		[self.waypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:kAnnotationIndex];
 		
-		MyAnnotation *myAnn = [[MyAnnotation alloc] init];
 		myAnn.latitude = [NSNumber numberWithDouble:locCoord.latitude];
 		myAnn.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
 		[self.mapView addAnnotation:myAnn];
@@ -398,39 +350,25 @@ UInt16 oport4 = 1506;
 		for (int i=0; i<pcnt; i++) {
 			NSLog(@"waypoint point %i = %@", i, [pointWaypoint objectAtIndex:i]);
 		}
-		/*if (sender.state==UIGestureRecognizerStateEnded) {
-			[self.mapView removeAnnotation:myAnn]; 	
-		}*/
+
+		//send waypoint to server
+		NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f",waypointUAV,point.x,point.y];
+		[socket2 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
+		NSLog (@"Sending: %@",waypointStr);
 	}	
-	
-	//send waypoint to server
-	/*NSString *waypointStr = [waypoint description];
-	[socket4 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];	*/
-	/*NSData *waypointData = [NSKeyedArchiver archivedDataWithRootObject:waypoint];
-	[socket4 sendData:[waypointData dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];	*/	
 } 
 
 - (void) mapToRoi:(double)x1:(double)y1:(double)x2:(double)y2
 {
 	if ([initPoint count]!=0) {
+		//newx=xscale*(goalx-p1x), newy=yscale*(goaly-p1y)
 		double newX1 = xScale * (x1-[[initPoint objectAtIndex:6] doubleValue]);
 		double newY1 = yScale * (y1-[[initPoint objectAtIndex:7] doubleValue]);
-		NSLog(@"converted area %f %f to roi %f %f for uav 1",x1,y1,newX1,newY1);
+		//NSLog(@"converted area %f %f to roi %f %f for uav 1",x1,y1,newX1,newY1);
 		
 		double newX2 = xScale * (x2-[[initPoint objectAtIndex:6] doubleValue]);
 		double newY2 = yScale * (y2-[[initPoint objectAtIndex:7] doubleValue]);
-		NSLog(@"converted area %f %f to roi %f %f for uav 2",x2,y2,newX2,newY2);	
-		
-		newPoint1 = CGPointMake(newX1,newY1);
-		newPoint2 = CGPointMake(newX2,newY2);	
-	} else {
-		double newX1 = xScale * (x1-[[defaultPt objectAtIndex:6] doubleValue]);
-		double newY1 = yScale * (y1-[[defaultPt objectAtIndex:7] doubleValue]);
-		NSLog(@"converted area %f %f to roi %f %f for uav 1",x1,y1,newX1,newY1);
-		
-		double newX2 = xScale * (x2-[[defaultPt objectAtIndex:6] doubleValue]);
-		double newY2 = yScale * (y2-[[defaultPt objectAtIndex:7] doubleValue]);
-		NSLog(@"converted area %f %f to roi %f %f for uav 2",x2,y2,newX2,newY2);	
+		//NSLog(@"converted area %f %f to roi %f %f for uav 2",x2,y2,newX2,newY2);	
 		
 		newPoint1 = CGPointMake(newX1,newY1);
 		newPoint2 = CGPointMake(newX2,newY2);	
@@ -440,23 +378,17 @@ UInt16 oport4 = 1506;
 - (void) mapToArea:(double)x1:(double)y1
 {
 	if ([initPoint count]!=0) {
+		//newX=(goalx/xscale)+p1x, newY=(goaly/yscale)+p1y
 		double newX1 = (x1 / xScale) + [[initPoint objectAtIndex:6] doubleValue];
 		double newY1 = (y1 / yScale) + [[initPoint objectAtIndex:7] doubleValue];
 		NSLog(@"converted roi %f %f to area %f %f",x1,y1,newX1,newY1);
 		
 		point.x = newX1;
 		point.y = newY1;
-	} else {
-		double newX1 = (x1 / xScale) + [[defaultPt objectAtIndex:6] doubleValue];
-		double newY1 = (y1 / yScale) + [[defaultPt objectAtIndex:7] doubleValue];
-		NSLog(@"converted roi %f %f to area %f %f",x1,y1,newX1,newY1);
-		
-		point.x = newX1;
-		point.y = newY1;
-	}
+	} 
 }
 
-- (void) setPoint:(NSMutableArray *)passedArray
+- (void) setPoint:(NSMutableArray *)passedArray:(NSString *)passedStr
 {
 	initPoint = passedArray;
 	
@@ -466,47 +398,16 @@ UInt16 oport4 = 1506;
 			NSLog(@"init point %i = %@", i, [initPoint objectAtIndex:i]);
 		}	
 		
+		//xScale=ROI_X_MAX/(p2x-p1x), yScale=ROI_Y_MAX/(p3y-p2y)
 		xScale = (double)ROI_X_MAX / ([[initPoint objectAtIndex:4] doubleValue] - [[initPoint objectAtIndex:6] doubleValue]);
 		yScale = (double)ROI_Y_MAX / ([[initPoint objectAtIndex:3] doubleValue] - [[initPoint objectAtIndex:5] doubleValue]);
 		NSLog(@"scale: x=%f y=%f",xScale,yScale);	
-		
-		//send initial coordinates of ROI to server
-		/*NSString *coordStr = [initPoint description];
-		[socket4 sendData:[coordStr dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];*/
-	}
-
-	if (cnt==0) { //default coordinates
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:99.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:126.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:263.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:126.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:263.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:1.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:99.0] atIndex:kAnnotationIndex];
-		[self.defaultPt insertObject:[NSNumber numberWithDouble:1.0] atIndex:kAnnotationIndex];
-		for (int i=0; i<8; i++) {
-			NSLog(@"default point %i = %@", i, [defaultPt objectAtIndex:i]);
-		}		
-		xScale = (double)ROI_X_MAX / ([[defaultPt objectAtIndex:4] doubleValue] - [[defaultPt objectAtIndex:6] doubleValue]);
-		yScale = (double)ROI_Y_MAX / ([[defaultPt objectAtIndex:3] doubleValue] - [[defaultPt objectAtIndex:5] doubleValue]);
-		NSLog(@"scale: x=%f y=%f",xScale,yScale);
-		/*NSString *coordStr = [defaultPt description];
-		[socket4 sendData:[coordStr dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];*/
 	}
 }
 
 - (void) setCoord:(NSMutableArray *)passedArray
 {
 	initCoord = passedArray;
-	
-	int cnt=[initCoord count];
-	if (cnt!=0) {
-		for (int i=0; i<cnt; i++) {
-			NSLog(@"init coord %i = %@", i, [initCoord objectAtIndex:i]);
-		}
-	} else {
-		NSLog(@"Using default ROI");
-	}
 }
 
 - (double) calcDist:(int)x1:(int)y1:(int)x2:(int)y2
@@ -567,24 +468,20 @@ UInt16 oport4 = 1506;
 	}
 	[mapView setRegion:region animated:YES];
 }
-
-- (void) viewDidLoad {
-	defaultPt = [[NSMutableArray alloc] init];
 	
-	[self regionSet]; //set ROI region
+- (void)viewDidLoad
+{
+	//set ROI region
+	[self regionSet]; 
 	
 	self.waypoint = [[NSMutableArray alloc] init];
 	self.pointWaypoint = [[NSMutableArray alloc] init];
 	
 	//set up sockets and connect to server
 	socket = [[AsyncUdpSocket alloc] initWithDelegate:self];
-	socket2 = [[AsyncUdpSocket alloc] initWithDelegate:self];	
-	/*socket3 = [[AsyncUdpSocket alloc] initWithDelegate:self];
-	socket4 = [[AsyncUdpSocket alloc] initWithDelegate:self];*/
+	socket2 = [[AsyncUdpSocket alloc] initWithDelegate:self];
 		
 	[self connectToServer];
-	
-	//[self startThread]; 
 	
 	mapView.delegate=self;
 	
@@ -606,20 +503,12 @@ UInt16 oport4 = 1506;
 	[mapView release];
 	[initCoord release];
 	[waypoint release];
+	[socket close];
+	[socket2 close];
 	[socket release];
-	[socket2 release];
-	[socket3 release];
-	[socket4 release];	
+	[socket2 release];	
 	
 	[super dealloc];
-}
-
-- (void)startThread 
-{
-	/*while (TRUE) {
-		[NSThread detachNewThreadSelector:@selector(receiveDataFromServer) toTarget:self withObject:nil];
-		[NSThread detachNewThreadSelector:@selector(receiveDataFromServer2) toTarget:self withObject:nil];
-	}*/
 }
 
 	

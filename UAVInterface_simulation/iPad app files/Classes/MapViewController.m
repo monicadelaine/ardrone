@@ -17,6 +17,9 @@ enum
 
 @synthesize mapView, mapAnnotations, pointAnnotations;
 
+NSString *pointStr;
+float p1,p2,p3,p4,p5,p6,p7,p8;
+int touchCount=0;
 
 - (WorldCitiesListController *)worldCitiesListController
 {
@@ -65,7 +68,6 @@ enum
 }
 
 //TODO: be able to reset more than once
-//		be able to choose done again after alert
 - (IBAction)setMapType:(id)sender
 {
     switch (((UISegmentedControl *)sender).selectedSegmentIndex)
@@ -76,6 +78,7 @@ enum
 			NSLog(@"Reset button");
 			[mapView removeAnnotations:mapView.annotations];
 			[mapAnnotations removeAllObjects];
+			[pointAnnotations removeAllObjects];			
             break;
         } 
         case 1:
@@ -93,10 +96,12 @@ enum
 				alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Not enough points for ROI" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 				[alertButton show];
 				[alertButton release];		
+				((UISegmentedControl*)sender).selectedSegmentIndex=0;
 			} else {
+				pointStr = [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f,%f,%f",p1,p2,p3,p4,p5,p6,p7,p8];
 				RoiViewController *roi = [[RoiViewController alloc] initWithNibName:nil bundle:nil];
 				[roi setCoord:mapAnnotations];
-				[roi setPoint:pointAnnotations];
+				[roi setPoint:pointAnnotations:pointStr];
 				[self presentModalViewController:roi animated:YES];
 				[roi release];	
 			}
@@ -105,33 +110,13 @@ enum
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex : (NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if(alertView == alertButton) {
 		if(buttonIndex == 0) {
 			NSLog(@"Not enough coordinates entered\n");
 		}
 	}
-}
-
-- (void)animateToWorld:(WorldCity *)worldCity
-{    
-	MKCoordinateRegion current = mapView.region;
-    MKCoordinateRegion zoomOut = {{(current.center.latitude + worldCity.coordinate.latitude)/2.0 , (current.center.longitude + worldCity.coordinate.longitude)/2.0 }, {90, 90}};
-    [mapView setRegion:zoomOut animated:YES];
-}
-
-- (void)animateToPlace:(WorldCity *)worldCity
-{
-    MKCoordinateRegion region;
-    region.center = worldCity.coordinate;
-    MKCoordinateSpan span = {0.001, 0.001};
-    region.span = span;
-    [mapView setRegion:region animated:YES];
-	
-	UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
-	[self.mapView addGestureRecognizer:longPressGesture];
-	[longPressGesture release];
 }
 
 - (void) regionCoord
@@ -149,6 +134,7 @@ enum
 	for (int i=0; i<count; i++) {
 		NSLog(@"element %i = %@", i, [testing objectAtIndex:i]);
 	}
+	[testing release];
 }
 
 - (void)handleLongPressGesture:(UIGestureRecognizer*)sender {
@@ -172,7 +158,38 @@ enum
 		NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);
 		int pcnt=[pointAnnotations count];
 		NSLog(@"point %i = %f, %f ", pcnt/2, point.x, point.y);		
+		
+		if (touchCount==0) {
+			p1=point.x; p2=point.y;
+		} else if (touchCount==1) {
+			p3=point.x; p4=point.y;
+		}else if (touchCount==2) {
+			p5=point.x; p6=point.y;
+		}else if (touchCount==3) {
+			p7=point.x; p8=point.y;
+		}
+		touchCount++;
 	}
+}
+
+- (void)animateToWorld:(WorldCity *)worldCity
+{    
+	MKCoordinateRegion current = mapView.region;
+    MKCoordinateRegion zoomOut = {{(current.center.latitude + worldCity.coordinate.latitude)/2.0 , (current.center.longitude + worldCity.coordinate.longitude)/2.0 }, {90, 90}};
+    [mapView setRegion:zoomOut animated:YES];
+}
+
+- (void)animateToPlace:(WorldCity *)worldCity
+{
+    MKCoordinateRegion region;
+    region.center = worldCity.coordinate;
+    MKCoordinateSpan span = {0.001, 0.001};
+    region.span = span;
+    [mapView setRegion:region animated:YES];
+	
+	UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
+	[self.mapView addGestureRecognizer:longPressGesture];
+	[longPressGesture release];
 }
 
 - (void)worldCitiesListController:(WorldCitiesListController *)controller didChooseWorldCity:(WorldCity *)aPlace

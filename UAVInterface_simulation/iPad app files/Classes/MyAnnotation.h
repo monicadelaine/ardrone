@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface MyAnnotation : NSObject <MKAnnotation>
 {
     CLLocationCoordinate2D _coordinate;
