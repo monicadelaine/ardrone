@@ -10,11 +10,11 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 #import "AsyncUdpSocket.h"
-#import "MapViewController.h"
+
 
 @interface RoiViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate>
 {
-    MKMapView *mapView;
+    MKMapView *mapView;	
 	NSMutableArray *initCoord;
 	NSMutableArray *initPoint;	
 	NSMutableArray *waypoint;
@@ -32,7 +32,10 @@
 @property (nonatomic, retain) AsyncUdpSocket *socket;
 @property (nonatomic, retain) AsyncUdpSocket *socket2;
 
-- (IBAction)options:(id)sender;
+- (IBAction)roi:(id)sender;
+- (IBAction)waypoint:(id)sender;
+- (IBAction)enlarge:(id)sender;
+- (IBAction)done:(id)sender;
 
 - (void)connectToServer;
 - (void)sendDataToServer:(NSString *)data;

@@ -28,10 +28,12 @@ double xScale, yScale;
 CGPoint point, newPoint1, newPoint2;
 UIImageView *myImage1, *myImage2;
 MyAnnotation *myAnn;
+MyAnnotation0 *myAnn0;
 NSString *pointStr;
 
 int enlargeFlag = 0, enlargeButton = 0, waypointUAV = 0, waypointButton = 0;
 int width = 64, height = 64;
+int wp_cnt = 2;
 
 NSString * host = @"130.160.68.24";
 UInt16 iport = 1501;
@@ -58,6 +60,13 @@ UInt16 oport = 1506;
 {
 	[socket sendData:[data dataUsingEncoding:NSASCIIStringEncoding] withTimeout:-1 tag:0];
 	NSLog (@"Sending: %@",data);
+	
+	[socket2 sendData:[data dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
+	NSLog (@"Sending: %@",data);	
+	
+	//sending unused string
+	/*[socket2 sendData:[@"99,99,99,99" dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
+	NSLog (@"Sending: %@",data);*/
 }
 
 //receive data from server
@@ -132,7 +141,7 @@ UInt16 oport = 1506;
 	//display image1
 	CGRect myImageRect1;
 	if (enlargeFlag == 0) {
-		myImageRect1 = CGRectMake(0.0f, 328.0f, 162.0f, 88.0f); 
+		myImageRect1 = CGRectMake(0.0f, 276.0f, 162.0f, 101.0f); 
 	} else if (enlargeFlag == 1) {
 		myImageRect1 = CGRectMake(0.0f, 0.0f, 320.0f, 418.0f); 
 	}
@@ -140,8 +149,7 @@ UInt16 oport = 1506;
 	[myImage1 setImage:newImage1]; 
 	myImage1.opaque = YES;  
 	if (enlargeFlag == 0) {
-		
-		myImage1.frame = CGRectMake(0.0, 328.0, 162.0, 88.0);
+		myImage1.frame = CGRectMake(0.0, 276.0, 162.0, 101.0);
 		myImage1.layer.borderColor = [UIColor redColor].CGColor;
 		myImage1.layer.borderWidth = 1.0;
 	} 	
@@ -175,18 +183,17 @@ UInt16 oport = 1506;
 	
 	CGRect myImageRect2;
 	if (enlargeFlag == 0) {
-		myImageRect2 = CGRectMake(162.0f, 328.0f, 162.0f, 88.0f); 
+		myImageRect2 = CGRectMake(162.0f, 276.0f, 158.0f, 102.0f); 
 	} else if (enlargeFlag == 2) {
 		myImageRect2 = CGRectMake(0.0f, 0.0f, 320.0f, 418.0f); 
-		
 	}	
 	/*UIImageView **/myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 	myImage2.image = nil; //try to clear the image 
 	[myImage2 setImage:newImage2]; 
 	myImage2.opaque = YES;  
 	if (enlargeFlag == 0) {
-		myImage2.frame = CGRectMake(162.0, 328.0, 162.0, 88.0);
-		myImage2.layer.borderColor = [UIColor blueColor].CGColor;
+		myImage2.frame = CGRectMake(162.0, 276.0, 158.0, 102.0);
+		myImage2.layer.borderColor = [UIColor greenColor].CGColor;
 		myImage2.layer.borderWidth = 1.0;
 	} 	
 	[self.view addSubview:myImage2]; 
@@ -194,50 +201,57 @@ UInt16 oport = 1506;
 	[myImage2 release];		
 }
 
-- (IBAction)options:(id)sender 
+//TODO: action for when user finds target and restarts app
+- (IBAction)done:(id)sender 
 {
-	switch (((UISegmentedControl *)sender).selectedSegmentIndex)
-    {
-        case 0:
-        {
-			//action for ROI
-			NSLog(@"ROI button");
-			myImage1.image = nil; //try to clear the image  
-			myImage2.image = nil; 
-			self.mapView.hidden = NO; //try to show map again
-			[self.mapView removeAnnotations:mapView.annotations];
-			enlargeFlag = 0;
-			break;
-        } 
-		case 1:
-        {
-			//action for Waypoint 
-			NSLog(@"Waypoint button");
-			if (self.mapView.hidden == YES) {
-				self.mapView.hidden = NO; //show map again
-			}
-			waypointButton=1;
-			alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
-			[alertButton show];
-			[alertButton release];
+	NSLog(@"Done button");
+	
+	[socket close];
+	[socket2 close];
+		
+	MapViewController *map = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+	[self presentModalViewController:map animated:YES];	
+	[map release];
+}
+
+- (IBAction)roi:(id)sender 
+{
+	//action for ROI
+	NSLog(@"ROI button");
+	myImage1.image = nil; //try to clear the image  
+	myImage2.image = nil; 
+	self.mapView.hidden = NO; //try to show map again
+	[self.mapView removeAnnotations:mapView.annotations];
+	enlargeFlag = 0;
+		
+}
+
+- (IBAction)enlarge:(id)sender 
+{	
+	//action for Enlarge
+	NSLog(@"Enlarge button");
+	enlargeButton=1;
+	self.mapView.hidden = YES;	//try to hide map	
+	alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Enlarge video for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
+	[alertButton show];
+	[alertButton release];		
+}
+
+- (IBAction)waypoint:(id)sender 
+{
+	//action for Waypoint 
+	NSLog(@"Waypoint button");
+	if (self.mapView.hidden == YES) {
+		self.mapView.hidden = NO; //show map again
+	}
+	waypointButton=1;
+	alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
+	[alertButton show];
+	[alertButton release];
 			
-			UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
-			[self.mapView addGestureRecognizer:longPressGesture];
-			[longPressGesture release];  	
-			break;
-        } 
-        case 2:
-        {	
-			//action for Enlarge
-			NSLog(@"Enlarge button");
-			enlargeButton=1;
-			self.mapView.hidden = YES;	//try to hide map	
-			alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Enlarge video for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
-			[alertButton show];
-			[alertButton release];
-            break;
-        } 
-    }			
+	UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
+	[self.mapView addGestureRecognizer:longPressGesture];
+	[longPressGesture release];  			
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -269,6 +283,11 @@ UInt16 oport = 1506;
 		MKPinAnnotationView *pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"WAYPOINT"] autorelease];
 		pinView.canShowCallout = YES;		
 		return pinView;
+	} else if ([annotation isKindOfClass:[MyAnnotation0 class]]) {
+		MKPinAnnotationView *pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"WAYPOINT"] autorelease];
+		pinView.pinColor = MKPinAnnotationColorGreen;
+		pinView.canShowCallout = YES;		
+		return pinView;
 	} else if ([annotation isKindOfClass:[MyAnnotation1 class]]) {
 		MKAnnotationView *uavView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UAV1"] autorelease];
 		UIImage *uavImage = [UIImage imageNamed:@"uav1.png"];
@@ -279,7 +298,7 @@ UInt16 oport = 1506;
 		return uavView;
 	} else if ([annotation isKindOfClass:[MyAnnotation2 class]]) {
 		MKAnnotationView *uavView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UAV2"] autorelease];
-		UIImage *uavImage = [UIImage imageNamed:@"uav2.png"];
+		UIImage *uavImage = [UIImage imageNamed:@"uav2_.png"];
 		uavView.canShowCallout = YES;			
 		uavView.image=uavImage;
 		uavView.opaque = YES;  
@@ -289,12 +308,12 @@ UInt16 oport = 1506;
 	return nil;
 }
 
-//TODO: clear annotation for old uav position
+//TODO: clear annotation/path for old uav position
 - (void)moveUAVs:(NSMutableArray *)data
 {
-	for (int i=0; i<4; i++) {
+	/*for (int i=0; i<4; i++) {
 		NSLog(@"uav pos %i = %@", i, [data objectAtIndex:i]);
-	}	
+	}*/
 	CGPoint point1, point2;
 	point1 = CGPointMake([[data objectAtIndex:0] doubleValue],[[data objectAtIndex:1]doubleValue]);
 	point2 = CGPointMake([[data objectAtIndex:2] doubleValue],[[data objectAtIndex:3]doubleValue]);	
@@ -322,6 +341,7 @@ UInt16 oport = 1506;
 - (void)handleLongPressGesture:(UIGestureRecognizer*)sender 
 {
 	myAnn = [[MyAnnotation alloc] init];	
+	myAnn0 = [[MyAnnotation0 alloc] init];	
 	[waypoint removeAllObjects];
 	[pointWaypoint removeAllObjects];	
 	if (sender.state==UIGestureRecognizerStateBegan) {
@@ -331,10 +351,21 @@ UInt16 oport = 1506;
 		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.latitude] atIndex:kAnnotationIndex];
 		[self.waypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:kAnnotationIndex];
 		
-		myAnn.latitude = [NSNumber numberWithDouble:locCoord.latitude];
-		myAnn.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
-		[self.mapView addAnnotation:myAnn];
-		[myAnn release];	
+		//Testing Map points
+		MKMapPoint p = MKMapPointForCoordinate(locCoord);
+		NSLog(@"map point %f, %f ", p.x, p.y);
+		
+		if (waypointUAV==1) {
+			myAnn.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+			myAnn.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
+			[self.mapView addAnnotation:myAnn];
+			[myAnn release];
+		} else if (waypointUAV==2) {
+			myAnn0.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+			myAnn0.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
+			[self.mapView addAnnotation:myAnn0];
+			[myAnn0 release];
+		}			
 		
 		[self mapToArea:point.x:point.y];
 		
@@ -352,9 +383,10 @@ UInt16 oport = 1506;
 		}
 
 		//send waypoint to server
-		NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f",waypointUAV,point.x,point.y];
+		NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f,%i",waypointUAV,point.x,point.y,wp_cnt];
 		[socket2 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
 		NSLog (@"Sending: %@",waypointStr);
+		wp_cnt++;
 	}	
 } 
 
@@ -503,8 +535,7 @@ UInt16 oport = 1506;
 	[mapView release];
 	[initCoord release];
 	[waypoint release];
-	[socket close];
-	[socket2 close];
+
 	[socket release];
 	[socket2 release];	
 	

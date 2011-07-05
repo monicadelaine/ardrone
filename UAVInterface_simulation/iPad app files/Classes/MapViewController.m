@@ -54,6 +54,9 @@ int touchCount=0;
 	self.mapView = nil;
 	self.mapAnnotations = nil;
 	self.pointAnnotations = nil;	
+	
+	worldCitiesListController = nil;
+	worldCitiesListNavigationController = nil;
 }
 
 - (void)dealloc
@@ -67,55 +70,45 @@ int touchCount=0;
     [super dealloc];
 }
 
-//TODO: be able to reset more than once
-- (IBAction)setMapType:(id)sender
+- (IBAction)reset:(id)sender
 {
-    switch (((UISegmentedControl *)sender).selectedSegmentIndex)
-    {
-        case 0:
-        {
-            //action for Reset
-			NSLog(@"Reset button");
-			[mapView removeAnnotations:mapView.annotations];
-			[mapAnnotations removeAllObjects];
-			[pointAnnotations removeAllObjects];			
-            break;
-        } 
-        case 1:
-        {
-			//action for when user selects Areas
-			NSLog(@"Areas button");
-            [self.navigationController presentModalViewController:self.worldCitiesListNavigationController animated:YES];
-            break;
-        } 
-        default:
-        {
-            //action for when user selects Done
-			NSLog(@"Done button");
-			if ([pointAnnotations count]<8) {
-				alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Not enough points for ROI" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-				[alertButton show];
-				[alertButton release];		
-				((UISegmentedControl*)sender).selectedSegmentIndex=0;
-			} else {
-				pointStr = [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f,%f,%f",p1,p2,p3,p4,p5,p6,p7,p8];
-				RoiViewController *roi = [[RoiViewController alloc] initWithNibName:nil bundle:nil];
-				[roi setCoord:mapAnnotations];
-				[roi setPoint:pointAnnotations:pointStr];
-				[self presentModalViewController:roi animated:YES];
-				[roi release];	
-			}
-			break;
-        } 
-    }
+	//action for Reset
+	NSLog(@"Reset button");		
+	[mapView removeAnnotations:mapView.annotations];
+	[mapAnnotations removeAllObjects];
+	[pointAnnotations removeAllObjects];			
+}
+
+- (IBAction)areas:(id)sender
+{
+	//action for when user selects Areas
+	NSLog(@"Areas button");
+	[self.navigationController presentModalViewController:self.worldCitiesListNavigationController animated:YES];
+}
+
+- (IBAction)done:(id)sender
+{
+	//action for when user selects Done
+	NSLog(@"Done button");
+	if ([pointAnnotations count]<8) {
+		alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Not enough points for ROI" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+		[alertButton show];
+		[alertButton release];		
+	} else {
+		pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
+		RoiViewController *roi = [[RoiViewController alloc] init];
+		roi.title = @"ROI";
+		[roi setCoord:mapAnnotations];
+		[roi setPoint:pointAnnotations:pointStr];
+		[self.navigationController pushViewController:roi animated:YES];
+		[roi release];		
+	}
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if(alertView == alertButton) {
-		if(buttonIndex == 0) {
-			NSLog(@"Not enough coordinates entered\n");
-		}
+		NSLog(@"Not enough coordinates entered");
 	}
 }
 
@@ -142,6 +135,11 @@ int touchCount=0;
 		// get the CGPoint for the touch and convert it to latitude and longitude coordinates to display on the map
 		CGPoint point = [sender locationInView:self.mapView];
 		CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+
+		//Testing Map points
+		MKMapPoint p = MKMapPointForCoordinate(locCoord);
+		NSLog(@"map point %f, %f ", p.x, p.y);	
+		
 		// create the annotation and add it to the map
 		MyAnnotation *myAnnotation = [[MyAnnotation alloc] init];
 		myAnnotation.latitude = [NSNumber numberWithDouble:locCoord.latitude];
