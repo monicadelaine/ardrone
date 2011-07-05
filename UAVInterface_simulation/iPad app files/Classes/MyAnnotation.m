@@ -20,7 +20,40 @@
 
 - (NSString *)title
 {
-    return @"Waypoint";
+    return @"UAV1 Waypoint";
+}
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+	_coordinate=coordinate;
+	NSLog(@"%f,%f",coordinate.latitude,coordinate.longitude);
+	return self;
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+@end
+
+
+@implementation MyAnnotation0
+
+@synthesize latitude, longitude, _coordinate;
+
+- (CLLocationCoordinate2D)coordinate;
+{
+    CLLocationCoordinate2D theCoordinate;
+	
+	theCoordinate.latitude = self.latitude.doubleValue;
+    theCoordinate.longitude = self.longitude.doubleValue;
+    return theCoordinate;
+}
+
+- (NSString *)title
+{
+    return @"UAV2 Waypoint";
 }
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate

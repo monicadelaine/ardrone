@@ -22,6 +22,7 @@
 		268828B113B26A9B00F8DD1D /* uav1.png in Resources */ = {isa = PBXBuildFile; fileRef = 268828B013B26A9B00F8DD1D /* uav1.png */; };
 		268828B313B26AA400F8DD1D /* uav2.png in Resources */ = {isa = PBXBuildFile; fileRef = 268828B213B26AA400F8DD1D /* uav2.png */; };
 		26882B4F13B5181900F8DD1D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 26882B4E13B5181900F8DD1D /* Default.png */; };
+		269D64D813BCE11C00AE1B97 /* uav2_.png in Resources */ = {isa = PBXBuildFile; fileRef = 269D64D713BCE11C00AE1B97 /* uav2_.png */; };
 		269E402D138EF077009CC51A /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 269E402C138EF077009CC51A /* MyAnnotation.m */; };
 		269E41F2139031DB009CC51A /* RoiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269E41F0139031DB009CC51A /* RoiViewController.xib */; };
 		269E41F51390329B009CC51A /* RoiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269E41F41390329B009CC51A /* RoiViewController.m */; };
@@ -55,6 +56,7 @@
 		268828B013B26A9B00F8DD1D /* uav1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uav1.png; sourceTree = "<group>"; };
 		268828B213B26AA400F8DD1D /* uav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uav2.png; sourceTree = "<group>"; };
 		26882B4E13B5181900F8DD1D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		269D64D713BCE11C00AE1B97 /* uav2_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uav2_.png; sourceTree = "<group>"; };
 		269E402C138EF077009CC51A /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 		269E4034138EF0F1009CC51A /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		269E41F1139031DB009CC51A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RoiViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		2688244913ABB54300F8DD1D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				269D64D713BCE11C00AE1B97 /* uav2_.png */,
 				26882B4E13B5181900F8DD1D /* Default.png */,
 				268828B213B26AA400F8DD1D /* uav2.png */,
 				268828B013B26A9B00F8DD1D /* uav1.png */,
@@ -249,6 +252,7 @@
 				268828B113B26A9B00F8DD1D /* uav1.png in Resources */,
 				268828B313B26AA400F8DD1D /* uav2.png in Resources */,
 				26882B4F13B5181900F8DD1D /* Default.png in Resources */,
+				269D64D813BCE11C00AE1B97 /* uav2_.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +341,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,6 +356,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

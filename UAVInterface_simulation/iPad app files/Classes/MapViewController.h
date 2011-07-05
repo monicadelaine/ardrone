@@ -25,6 +25,8 @@
 @property (nonatomic,retain) NSMutableArray *mapAnnotations;
 @property (nonatomic,retain) NSMutableArray *pointAnnotations;
 
-- (IBAction)setMapType:(id)sender;
+- (IBAction)reset:(id)sender;
+- (IBAction)areas:(id)sender;
+- (IBAction)done:(id)sender;
 
 @end
