@@ -1,0 +1,46 @@
+DEF GROUND Solid {
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/grass.png"
+          ]
+        }
+      }
+      geometry DEF GROUND_FACE_SET IndexedFaceSet {
+        coord Coordinate {
+          point [
+            50 0 50
+            -50 0 50
+            -50 0 -50
+            50 0 -50
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            10 10
+            10 -10
+            -10 -10
+            -10 10
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0
+        ]
+        texCoordIndex [
+          0, 1, 2, 3
+        ]
+      }
+    }
+  ]
+  boundingObject Transform {
+    translation 0 -1 0
+    children [
+      Box {
+        size 100 2 100
+      }
+    ]
+  }
+  locked TRUE
+}

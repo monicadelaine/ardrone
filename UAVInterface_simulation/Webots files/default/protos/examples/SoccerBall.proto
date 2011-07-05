@@ -1,0 +1,29 @@
+# A black and white soccer ball with customizable radius and mass.
+# This object is physics-enabled so it will roll or bounce when hit.
+
+PROTO SoccerBall [
+  field SFVec3f translation 0 0.1 0
+  field SFRotation rotation 0 1 0 0
+  field SFFloat radius 0.1
+  field SFFloat mass 0.5
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF BALL_SHAPE Shape {
+        geometry Sphere {
+          radius IS radius
+          subdivision 10
+        }
+      }
+    ]
+    boundingObject Sphere {
+      radius IS radius
+    }
+    physics Physics {
+      mass IS mass
+    }
+  }
+}

@@ -1,0 +1,329 @@
+# Generic and multiplatform Makefile for a C/C++ or Java Webots controller
+# to be used with GNU make
+#
+# Authors: Olivier.Michel@cyberbotics.com
+#          Edmund Ronald <eronald@polytechnique.fr>
+#          Sergei.Poskriakov@users.ch
+#          Yvan.Bourquin@cyberbotics.com
+#-----------------------------------------------------------------------------
+#
+# The Makefile in the controller directory is very easy to write:
+#
+# - for a simple controller (a single source file), just include these ten
+#   lines:
+# 
+# ifndef WEBOTS_HOME_PATH
+# ifeq ($(OS),Windows_NT)
+# nullstring :=
+# space := $(nullstring) # a string containing a single space
+# WEBOTS_HOME_PATH=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
+# else
+# WEBOTS_HOME_PATH=$(WEBOTS_HOME)
+# endif
+# endif
+# include $(WEBOTS_HOME_PATH)/projects/default/controllers/Makefile.include
+#
+#
+# - for a controller with several C source files, you should prepend this
+#   line:
+#
+# C_SOURCES = my_controller.c my_clever_algo.c my_gui.c
+#
+# - for a controller with several C++ source files, you should prepend this
+#   line:
+#
+# CC_SOURCES = my_controller.cc my_clever_algo.cc my_gui.cc
+#
+#   or this one:
+#
+# CPP_SOURCES = my_controller.cpp my_clever_algo.cpp my_gui.cpp
+#
+# - for Java, you don't need to specify the list of sources
+#
+#-----------------------------------------------------------------------------
+#
+# - if your C/C++ controller needs additional libraries,
+#   simply prepend the following line to the Makefile:
+#
+# LIBRARIES=-L/path/to/my/library -lmy_library -lmy_other_library
+#
+# - if your Java controller needs additional libraries, you prepend the
+#   following line to the Makefile:
+#
+#  CLASSPATH=/path/to/my/classes.jar
+#
+# - if some special CFLAGS need to be passed, for example to find include
+#   files, or set optimization level, simply prepend the following line:
+#
+# CFLAGS=-O3 -I/my_library_path/include
+#
+#
+
+# default commands definitions
+NULL_DEVICE=/dev/null
+PWD_COMMAND=pwd
+RM_COMMAND=rm -f
+LS_COMMAND=ls
+
+# find out whether we are in a Windows Command Prompt
+ifeq ($(OS),Windows_NT)
+ifneq ($(TERM),msys)
+OSTYPE=windows
+NULL_DEVICE=nul
+PWD_COMMAND=cd
+RM_COMMAND=del /Q
+LS_COMMAND=dir /B
+endif
+endif
+
+ifndef OSTYPE
+OSTYPE=$(shell uname)
+endif
+
+ifeq ($(OSTYPE),Linux)
+OSTYPE=linux
+endif
+
+ifeq ($(OSTYPE),linux-gnu)
+OSTYPE=linux
+endif
+
+ifeq ($(OSTYPE),)
+OSTYPE=windows
+endif
+
+ifeq ($(OSTYPE),msys)
+OSTYPE=windows
+endif
+
+ifneq ($(findstring MINGW,$(OSTYPE)),)
+OSTYPE=windows
+endif
+
+ifneq ($(findstring CYGWIN,$(OSTYPE)),)
+OSTYPE=windows
+endif
+
+ifeq ($(OSTYPE),Darwin)
+OSTYPE=darwin
+endif
+
+ifndef DOS_CONSOLE
+WINDOWS_APP=-mwindows
+endif
+
+ifeq ($(OSTYPE),windows)
+PLATFORM_CFLAG=-DWIN32 $(WINDOWS_APP) -I"$(WEBOTS_HOME)\mingw\include" -I"$(WEBOTS_HOME)\mingw\lib\gcc\mingw32\3.4.2\include"
+endif
+
+ifeq ($(OSTYPE),linux)
+PLATFORM_CFLAG=-DLINUX
+endif
+
+ifeq ($(OSTYPE),darwin)
+PLATFORM_CFLAG=-DMACOS
+EXTRA_CFLAGS=-arch ppc -arch i386
+ifndef EXTRA_LFLAGS
+EXTRA_LFLAGS=-arch ppc -arch i386
+endif
+endif
+
+ifndef WEBOTS_HOME
+#assuming we are compiling controller in the installation directory
+export WEBOTS_HOME=../../../..
+else
+WEBOTS_HOME:=$(WEBOTS_HOME)
+endif
+
+# compute the current directory, the CURDIR variable may be already set
+ifndef CURDIR
+CURDIR=$(shell $(PWD_COMMAND))
+endif
+
+# compute the name of the controller from its directory (i.e. braiten)
+BAD_NAME = $(basename $(notdir $(CURDIR)))
+
+# this is a hack to work around a problem with spaces in dir names
+NAME = $(word $(words $(BAD_NAME)),$(BAD_NAME))
+
+# if the source files were not explicitly defined, we try to find
+# the *.c, *.cc, *.cpp or *.java source files.
+
+ifndef C_SOURCES
+ifndef CC_SOURCES
+ifndef CPP_SOURCES
+C_SOURCES=$(shell $(LS_COMMAND) $(NAME).c 2> $(NULL_DEVICE))
+endif
+endif
+endif
+
+ifeq ($(C_SOURCES),)
+ifndef CC_SOURCES
+ifndef CPP_SOURCES
+CC_SOURCES=$(shell $(LS_COMMAND) $(NAME).cc 2> $(NULL_DEVICE))
+endif
+endif
+endif
+
+ifeq ($(C_SOURCES),)
+ifeq ($(CC_SOURCES),)
+ifndef CPP_SOURCES
+CPP_SOURCES=$(shell $(LS_COMMAND) $(NAME).cpp 2> $(NULL_DEVICE))
+C_SOURCES=
+endif
+endif
+endif
+
+JAVA_SOURCE=$(shell $(LS_COMMAND) $(NAME).java 2> $(NULL_DEVICE))
+
+ifndef JAR_FILE
+JAR_FILE=$(NAME).jar
+endif
+
+ifeq ($(OSTYPE),windows)
+EXE_EXTENSION=.exe
+else
+EXE_EXTENSION=
+endif
+
+# the objects files result from the C or C++ sources
+C_OBJECTS   = $(C_SOURCES:.c=.o)
+CPP_OBJECTS = $(CPP_SOURCES:.cpp=.o)
+CC_OBJECTS  = $(CC_SOURCES:.cc=.o)
+RC_OBJECTS  = $(RC_SOURCES:.rc=.o)
+
+# set the controller library needed
+CTR_LIB=Controller
+
+ifeq ($(OSTYPE),windows)
+PLATFORM_LIBS=-lmingw32 $(WINDOWS_APP) -B"$(WEBOTS_HOME)\mingw\lib" -B"$(WEBOTS_HOME)\mingw\lib\gcc\mingw32\3.4.2"
+else
+PLATFORM_LIBS=
+endif
+
+INCLUDE=-I"$(WEBOTS_HOME)/include/controller/c" -I"$(WEBOTS_HOME)/include"
+LIBRARY=-L"$(WEBOTS_HOME)/lib" -l$(CTR_LIB) $(PLATFORM_LIBS) $(LIBRARIES)
+LINKER=$(CC)
+ifneq ($(CC_OBJECTS)$(CPP_OBJECTS),)
+INCLUDE=-I"$(WEBOTS_HOME)/include/controller/cpp" -I"$(WEBOTS_HOME)/include"
+LIBRARY+=-lCppController
+LINKER=$(CXX)
+ifeq ($(OSTYPE),windows)
+LINKER+=-Wl,--enable-auto-import
+endif
+endif
+
+# set the C compiler options
+CC_OPTS=-c $(INCLUDE) -Wall $(CFLAGS) $(CFLAGS_WIN) $(PLATFORM_CFLAG)
+
+# set JAVAC to your favorite Java compiler
+JAVAC=javac
+
+# set the Java compiler options
+
+ifneq ($(CLASSPATH),)
+
+ifeq ($(OSTYPE),windows)
+JAVAC_OPTS=-Xlint -classpath "$(WEBOTS_HOME)/lib/Controller.jar;$(CLASSPATH);."
+else
+JAVAC_OPTS=-Xlint -classpath "$(WEBOTS_HOME)/lib/Controller.jar":"$(CLASSPATH)":.
+endif
+
+else
+
+ifeq ($(OSTYPE),windows)
+JAVAC_OPTS=-Xlint -classpath "$(WEBOTS_HOME)/lib/Controller.jar;."
+else
+JAVAC_OPTS=-Xlint -classpath "$(WEBOTS_HOME)/lib/Controller.jar":.
+endif
+
+endif
+
+ifneq ($(JAVA_SOURCE),)
+TARGETS+=$(NAME).class
+endif
+ifneq ($(C_SOURCES)$(CC_SOURCES)$(CPP_SOURCES),)
+TARGETS+=$(NAME)$(EXE_EXTENSION)
+endif
+
+TARGETS+=$(EXTRA_TARGETS)
+
+all: $(TARGETS)
+compil: all
+
+ifeq ($(CC),cc)
+CC=gcc
+endif
+
+# strip doesn't work on Mac OS X (makes executables unable to launch)
+ifneq ($(OSTYPE),darwin)
+ifeq ($(STRIP),1)
+LINKER+=-s
+endif
+endif
+
+# rules to make the executable file from C/C++ objects
+$(NAME)$(EXE_EXTENSION): $(C_OBJECTS) $(CC_OBJECTS) $(CPP_OBJECTS) $(RC_OBJECTS)
+	$(LINKER) -o $(NAME)$(EXE_EXTENSION) $(C_OBJECTS) $(CC_OBJECTS) $(CPP_OBJECTS) $(RC_OBJECTS) $(LIBRARY) $(EXTRA_LFLAGS)
+	$(EXTRA_FINAL_CMD)
+
+# Java "Compile" rule
+%.class: %.java
+	$(JAVAC) $(JAVAC_OPTS) $<
+
+# Java "Build" rule
+$(NAME).class: *.java
+	@$(RM_COMMAND) *.class 1> $(NULL_DEVICE) 2> $(NULL_DEVICE)
+	$(JAVAC) $(JAVAC_OPTS) $(NAME).java
+
+# Java "Make JAR file" rule
+$(JAR_FILE): *.java
+	@$(RM_COMMAND) *.class 1> $(NULL_DEVICE) 2> $(NULL_DEVICE)
+	$(JAVAC) $(JAVAC_OPTS) $(NAME).java
+	jar cf $@ *.class
+
+jar: $(JAR_FILE)
+
+# rule to make automatic dependencies
+# adapted from the GNU make info file
+%.d:%.c
+	$(CC) $(INCLUDE) $(CFLAGS) $(PLATFORM_CFLAG) -MM $< > $@
+
+%.d:%.cc
+	$(CXX) $(INCLUDE) $(CFLAGS) $(PLATFORM_CFLAG) -MM $< > $@
+
+%.d:%.cpp
+	$(CXX) $(INCLUDE) $(CFLAGS) $(PLATFORM_CFLAG) -MM $< > $@
+
+# e.g. make my_controller.exe
+ifeq ($(MAKECMDGOALS),$(NAME)$(EXE_EXTENSION))
+-include $(C_SOURCES:.c=.d) $(CC_SOURCES:.cc=.d) $(CPP_SOURCES:.cpp=.d)
+endif
+
+# make without specified target
+ifeq ($(MAKECMDGOALS),)
+ifneq ($(C_SOURCES)$(CC_SOURCES)$(CPP_SOURCES),)
+-include $(C_SOURCES:.c=.d) $(CC_SOURCES:.cc=.d) $(CPP_SOURCES:.cpp=.d)
+endif
+endif
+
+# generic rule to make the object files
+%.o:%.c
+	$(CC) $(CC_OPTS) $(EXTRA_CFLAGS) $< -o $@
+
+%.o:%.cpp
+	$(CXX) $(CC_OPTS) $(EXTRA_CFLAGS) $< -o $@
+
+%.o:%.cc
+	$(CXX) $(CC_OPTS) $(EXTRA_CFLAGS) $< -o $@
+
+%.o:%.rc
+	windres -i $< -o $@ $(RC_INCLUDE) --define __WIN32__ --define __WIN95__ --define __GNUWIN32__
+
+# how to clean up the directory
+clean:
+	@$(RM_COMMAND) *.o *.class *.jar *.d *~ $(NAME)$(EXE_EXTENSION) core *.opt *.ncb *.obj *.plg vc60.idb 1> $(NULL_DEVICE) 2> $(NULL_DEVICE)
+
+# show the ostype recognized by the Makefile
+ostype:
+	@echo OSTYPE=$(OSTYPE)

@@ -1,0 +1,60 @@
+# A simple ramp made of two 30° slopes and a flat top.
+# The ramp is a static object (not physics-enabled) so it will not move when hit.
+
+PROTO Ramp_30_Deg [
+  field SFVec3f translation  0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFColor color 0.5 0.5 0.5
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF RAMP Group {
+        children [
+          Transform {
+            translation -1.841 0.45 0
+            rotation 0 0 1 0.5236
+            children [
+              Shape {
+                appearance DEF APPEARANCE Appearance {
+                  material Material {
+                    diffuseColor IS color
+                  }
+                }
+                geometry Box {
+                  size 2 0.1 2
+                }
+              }
+            ]
+          }
+          Transform {
+            translation 0 0.9434 0
+            children [
+              Shape {
+                appearance USE APPEARANCE
+                geometry Box {
+                  size 2 0.1 2
+                }
+              }
+            ]
+          }
+          Transform {
+            translation 1.841 0.45 0
+            rotation 0 0 1 -0.5236
+            children [
+              Shape {
+                appearance USE APPEARANCE
+                geometry Box {
+                  size 2 0.1 2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    boundingObject USE RAMP
+  }
+}
