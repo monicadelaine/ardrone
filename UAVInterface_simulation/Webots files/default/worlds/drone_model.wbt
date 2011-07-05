@@ -1,0 +1,83 @@
+#VRML_SIM V6.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.997329 -0.0506403 -0.0526253 4.83015
+  position 0.0760048 1.93971 0.127096
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  ambientIntensity 0.5
+  attenuation 1 1 1
+  location 0 0.1 0
+}
+Solid {
+  translation -0.5 0 -0.5
+  children [
+    Shape {
+      geometry ElevationGrid {
+        color Color {
+          color [
+            0.803922 0.498039 0.298039
+            1 1 0
+          ]
+        }
+        colorPerVertex FALSE
+        xDimension 11
+        xSpacing 0.1
+        zDimension 11
+        zSpacing 0.1
+      }
+    }
+  ]
+  boundingObject Shape {
+    geometry IndexedFaceSet {
+      coord Coordinate {
+        point [
+          0 0 0
+          0 0 1
+          1 0 1
+          1 0 0
+        ]
+      }
+      coordIndex [
+        0, 1, 2, 3, -1
+      ]
+    }
+  }
+}
+Supervisor {
+  children [
+    Servo {
+      translation 0.09 1.26 0
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 0.00999997 0.04
+          }
+        }
+      ]
+      name "rotor1"
+    }
+    Transform {
+      translation 0 0.59 0
+      children [
+        Shape {
+          geometry Box {
+            size 0.03 0.0300003 0.18
+          }
+        }
+      ]
+    }
+  ]
+  controller "drone2_controller"
+}

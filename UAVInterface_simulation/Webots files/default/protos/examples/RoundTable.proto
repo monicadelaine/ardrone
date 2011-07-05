@@ -1,0 +1,79 @@
+# A round table with customizable color, top radius and mass.
+# This object is physics-enabled so it can be pushed. 
+
+PROTO RoundTable [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFColor color 0.6 0.35 0
+  field SFFloat radius 0.7
+  field SFFloat mass 10
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF TABLEELEMENT1 Transform {
+        translation 0 0.615 0
+        children [
+          Shape {
+            appearance DEF APPEARANCE Appearance {
+              material Material {
+                diffuseColor IS color
+              }
+            }
+            geometry Cylinder {
+              height 0.03
+              radius IS radius
+              subdivision 24
+            }
+          }
+        ]
+      }
+      DEF TABLEELEMENT2 Transform {
+        translation 0 0.045 0
+        children [
+          Shape {
+            appearance USE APPEARANCE
+            geometry Box {
+              size 0.35 0.03 0.35
+            }
+          }
+        ]
+      }
+      DEF TABLEELEMENT3 Transform {
+        translation 0 0.3075 0
+        children [
+          Shape {
+            appearance USE APPEARANCE
+            geometry Box {
+              size 0.09 0.57 0.09
+            }
+          }
+        ]
+      }
+      DEF TABLEELEMENT4 Transform {
+        translation 0 0.015 0
+        children [
+          Shape {
+            appearance USE APPEARANCE
+            geometry Box {
+              size 0.5 0.03 0.5
+            }
+          }
+        ]
+      }
+    ]
+    boundingObject Group {
+      children [
+        USE TABLEELEMENT1
+        USE TABLEELEMENT2
+        USE TABLEELEMENT4
+        USE TABLEELEMENT3
+      ]
+    }
+    physics Physics {
+      mass IS mass
+    }
+  }
+}

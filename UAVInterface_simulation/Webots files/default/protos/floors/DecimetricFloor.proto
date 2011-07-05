@@ -1,0 +1,61 @@
+# A textured floor of 10 x 10 meters.
+# Thick lines delimit 10 x 10 centimeter tiles.
+# Thin lines delimit 5 x 5 centimeter tiles.
+
+PROTO DecimetricFloor [
+  field SFVec3f translation 0 0 0
+  field SFColor color 0.3 0.3 0.3
+  field SFBool locked TRUE
+]
+{
+  Solid {
+    translation IS translation
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor IS color
+          }
+          texture ImageTexture {
+            url [
+              "textures/texture_grid.png"
+            ]
+          }
+        }
+        geometry IndexedFaceSet {
+          coord Coordinate {
+            point [
+              5 0 5
+              -5 0 5
+              -5 0 -5
+              5 0 -5
+            ]
+          }
+          texCoord TextureCoordinate {
+            point [
+              6.25 6.25
+              6.25 -6.25
+              -6.25 -6.25
+              -6.25 6.25
+            ]
+          }
+          coordIndex [
+            3, 2, 1, 0
+          ]
+          texCoordIndex [
+            0, 1, 2, 3
+          ]
+        }
+      }
+    ]
+    boundingObject Transform {
+      translation 0 -1 0
+      children [
+        Box {
+          size 10 2 10
+        }
+      ]
+    }
+    locked IS locked
+  }
+}
