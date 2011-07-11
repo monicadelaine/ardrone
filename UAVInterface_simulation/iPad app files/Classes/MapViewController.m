@@ -8,14 +8,16 @@
 #import "MyAnnotation.h"
 #import "RoiViewController.h"
 
-enum
-{
+#define MAPPOINTX 68940600
+#define MAPPOINTY 107935300
+
+enum {
     kAnnotationIndex = 0
 };
 
 @implementation MapViewController
 
-@synthesize mapView, mapAnnotations, pointAnnotations;
+@synthesize mapView, mapAnnotations, mapPointAnnotations;
 
 NSString *pointStr;
 float p1,p2,p3,p4,p5,p6,p7,p8;
@@ -45,18 +47,15 @@ int touchCount=0;
 {
 	mapView.mapType = MKMapTypeSatellite;
 	self.mapAnnotations = [[NSMutableArray alloc] init];
-	self.pointAnnotations = [[NSMutableArray alloc] init];
+	self.mapPointAnnotations = [[NSMutableArray alloc] init];
 }
 
 
 - (void)viewDidUnload
 {
 	self.mapView = nil;
-	self.mapAnnotations = nil;
-	self.pointAnnotations = nil;	
-	
-	worldCitiesListController = nil;
-	worldCitiesListNavigationController = nil;
+	self.mapAnnotations = nil;	
+	self.mapPointAnnotations = nil;
 }
 
 - (void)dealloc
@@ -65,7 +64,7 @@ int touchCount=0;
     [worldCitiesListController release];
     [worldCitiesListNavigationController release];
 	[mapAnnotations release];
-	[pointAnnotations release];	
+	[mapPointAnnotations release];	
 	
     [super dealloc];
 }
@@ -74,15 +73,14 @@ int touchCount=0;
 {
 	//action for Reset
 	NSLog(@"Reset button");		
-	[mapView removeAnnotations:mapView.annotations];
-	[mapAnnotations removeAllObjects];
-	[pointAnnotations removeAllObjects];			
+	[self resetAll];			
 }
 
 - (IBAction)areas:(id)sender
 {
 	//action for when user selects Areas
 	NSLog(@"Areas button");
+	[self resetAll];
 	[self.navigationController presentModalViewController:self.worldCitiesListNavigationController animated:YES];
 }
 
@@ -90,16 +88,15 @@ int touchCount=0;
 {
 	//action for when user selects Done
 	NSLog(@"Done button");
-	if ([pointAnnotations count]<8) {
-		alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Not enough points for ROI" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+	if ([mapPointAnnotations count]<8) {
+		alertButton = [[UIAlertView alloc] initWithTitle:@"Not enough points for ROI" message:@"Do you want to continue with default ROI?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
 		[alertButton show];
 		[alertButton release];		
 	} else {
 		pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
 		RoiViewController *roi = [[RoiViewController alloc] init];
 		roi.title = @"ROI";
-		[roi setCoord:mapAnnotations];
-		[roi setPoint:pointAnnotations:pointStr];
+		[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
 		[self.navigationController pushViewController:roi animated:YES];
 		[roi release];		
 	}
@@ -108,26 +105,25 @@ int touchCount=0;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if(alertView == alertButton) {
-		NSLog(@"Not enough coordinates entered");
-	}
+		if(buttonIndex == 0) {
+			NSLog(@"Use default ROI");
+			pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
+			RoiViewController *roi = [[RoiViewController alloc] init];
+			roi.title = @"Default ROI";
+			[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
+			[self.navigationController pushViewController:roi animated:YES];
+			[roi release];	
+		} else {
+			NSLog(@"Not enough coordinates entered");
+		}
+	}	
 }
 
-- (void) regionCoord
+- (void)resetAll
 {
-	//saves boundary coordinates of region displayed
-	NSMutableArray *testing = [[NSMutableArray alloc] init];
-	MKCoordinateRegion r = mapView.region;
-	//southwest coords
-	[testing insertObject:[NSNumber numberWithDouble:r.center.latitude - (r.span.latitudeDelta/2)]atIndex:kAnnotationIndex];
-	[testing insertObject:[NSNumber numberWithDouble:r.center.longitude - (r.span.longitudeDelta/2)]atIndex:kAnnotationIndex];
-	//northeast coords
-	[testing insertObject:[NSNumber numberWithDouble:r.center.latitude + (r.span.latitudeDelta/2)]atIndex:kAnnotationIndex];
-	[testing insertObject:[NSNumber numberWithDouble:r.center.longitude + (r.span.longitudeDelta/2)]atIndex:kAnnotationIndex];
-	int count=[testing count];
-	for (int i=0; i<count; i++) {
-		NSLog(@"element %i = %@", i, [testing objectAtIndex:i]);
-	}
-	[testing release];
+	[mapView removeAnnotations:mapView.annotations];
+	[mapAnnotations removeAllObjects];	
+	[mapPointAnnotations removeAllObjects];	
 }
 
 - (void)handleLongPressGesture:(UIGestureRecognizer*)sender {
@@ -135,11 +131,7 @@ int touchCount=0;
 		// get the CGPoint for the touch and convert it to latitude and longitude coordinates to display on the map
 		CGPoint point = [sender locationInView:self.mapView];
 		CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
-
-		//Testing Map points
 		MKMapPoint p = MKMapPointForCoordinate(locCoord);
-		NSLog(@"map point %f, %f ", p.x, p.y);	
-		
 		// create the annotation and add it to the map
 		MyAnnotation *myAnnotation = [[MyAnnotation alloc] init];
 		myAnnotation.latitude = [NSNumber numberWithDouble:locCoord.latitude];
@@ -147,24 +139,24 @@ int touchCount=0;
 		//save the coordinates for the selected ROI
 		[self.mapAnnotations insertObject:myAnnotation.longitude atIndex:kAnnotationIndex];	
 		[self.mapAnnotations insertObject:myAnnotation.latitude atIndex:kAnnotationIndex];
-		[self.pointAnnotations insertObject:[NSNumber numberWithDouble:point.y] atIndex:kAnnotationIndex];	
-		[self.pointAnnotations insertObject: [NSNumber numberWithDouble:point.x] atIndex:kAnnotationIndex];		
+		[self.mapPointAnnotations insertObject:[NSNumber numberWithDouble:p.y] atIndex:kAnnotationIndex];	
+		[self.mapPointAnnotations insertObject: [NSNumber numberWithDouble:p.x] atIndex:kAnnotationIndex];			
 		[self.mapView addAnnotation:myAnnotation];
 		[myAnnotation release];				
 		
 		int cnt=[mapAnnotations count];
-		NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);
-		int pcnt=[pointAnnotations count];
-		NSLog(@"point %i = %f, %f ", pcnt/2, point.x, point.y);		
+		NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);	
+		int mpcnt=[mapPointAnnotations count];
+		NSLog(@"map point %i = %f, %f ", mpcnt/2, p.x, p.y);			
 		
 		if (touchCount==0) {
-			p1=point.x; p2=point.y;
+			p1=p.x-MAPPOINTX; p2=p.y-MAPPOINTY;
 		} else if (touchCount==1) {
-			p3=point.x; p4=point.y;
-		}else if (touchCount==2) {
-			p5=point.x; p6=point.y;
-		}else if (touchCount==3) {
-			p7=point.x; p8=point.y;
+			p3=p.x-MAPPOINTX; p4=p.y-MAPPOINTY;
+		} else if (touchCount==2) {
+			p5=p.x-MAPPOINTX; p6=p.y-MAPPOINTY;
+		} else if (touchCount==3) {
+			p7=p.x-MAPPOINTX; p8=p.y-MAPPOINTY;
 		}
 		touchCount++;
 	}
