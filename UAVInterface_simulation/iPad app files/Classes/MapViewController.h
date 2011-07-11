@@ -16,17 +16,18 @@
     WorldCitiesListController *worldCitiesListController;
     UINavigationController *worldCitiesListNavigationController;
 	NSMutableArray *mapAnnotations;
-	NSMutableArray *pointAnnotations;
+	NSMutableArray *mapPointAnnotations;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain, readonly) WorldCitiesListController *worldCitiesListController;
 @property (nonatomic, retain, readonly) UINavigationController *worldCitiesListNavigationController;
 @property (nonatomic,retain) NSMutableArray *mapAnnotations;
-@property (nonatomic,retain) NSMutableArray *pointAnnotations;
+@property (nonatomic,retain) NSMutableArray *mapPointAnnotations;
 
 - (IBAction)reset:(id)sender;
 - (IBAction)areas:(id)sender;
 - (IBAction)done:(id)sender;
+- (void)resetAll;
 
 @end

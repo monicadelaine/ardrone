@@ -15,22 +15,22 @@
 @interface RoiViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate>
 {
     MKMapView *mapView;	
-	NSMutableArray *initCoord;
-	NSMutableArray *initPoint;	
+	NSMutableArray *initCoord;	
 	NSMutableArray *waypoint;
 	NSMutableArray *pointWaypoint;	
 	UIAlertView *alertButton;
 	AsyncUdpSocket *socket;
 	AsyncUdpSocket *socket2;
+	UIImageView *imageView;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray *initCoord;
-@property (nonatomic, retain) NSMutableArray *initPoint;
 @property (nonatomic, retain) NSMutableArray *pointWaypoint;
 @property (nonatomic, retain) NSMutableArray *waypoint;
 @property (nonatomic, retain) AsyncUdpSocket *socket;
 @property (nonatomic, retain) AsyncUdpSocket *socket2;
+@property (nonatomic, retain) UIImageView *imageView;
 
 - (IBAction)roi:(id)sender;
 - (IBAction)waypoint:(id)sender;
@@ -43,9 +43,6 @@
 - (void)displayImage1:(unsigned char *)data;
 - (void)displayImage2:(unsigned char *)data;
 - (void)moveUAVs:(NSMutableArray *)data;
-- (void)mapToArea:(double)x1:(double)y1;
-- (void)mapToRoi:(double)x1:(double)y1:(double)x2:(double)y2;
-- (void)setPoint:(NSMutableArray *)passedArray:(NSString *)passedStr;
-- (void)setCoord:(NSMutableArray *)passedArray;
+- (void)setPoint:(NSMutableArray *)passedCoord:(NSMutableArray *)passedPoint:(NSString *)passedStr;
 
 @end
