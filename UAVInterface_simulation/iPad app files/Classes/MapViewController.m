@@ -20,8 +20,9 @@ enum {
 @synthesize mapView, mapAnnotations, mapPointAnnotations;
 
 NSString *pointStr;
-float p1,p2,p3,p4,p5,p6,p7,p8;
+float p1=0,p2=0,p3=0,p4=0,p5=0,p6=0,p7=0,p8=0;
 int touchCount=0;
+int algID = 1;
 
 - (WorldCitiesListController *)worldCitiesListController
 {
@@ -88,18 +89,14 @@ int touchCount=0;
 {
 	//action for when user selects Done
 	NSLog(@"Done button");
-	if ([mapPointAnnotations count]<8) {
-		alertButton = [[UIAlertView alloc] initWithTitle:@"Not enough points for ROI" message:@"Do you want to continue with default ROI?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
-		[alertButton show];
-		[alertButton release];		
-	} else {
-		pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
-		RoiViewController *roi = [[RoiViewController alloc] init];
-		roi.title = @"ROI";
-		[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
-		[self.navigationController pushViewController:roi animated:YES];
-		[roi release];		
-	}
+	[self chooseAlgorithm];
+}
+
+- (void)chooseAlgorithm
+{
+	alertButton2 = [[UIAlertView alloc] initWithTitle:@"Which algorithm would you like to use?" message:@"" delegate:self cancelButtonTitle:@"User Waypoints" otherButtonTitles:@"Max Unseen", @"ALUL",nil];
+	[alertButton2 show];
+	[alertButton2 release];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -107,7 +104,8 @@ int touchCount=0;
 	if(alertView == alertButton) {
 		if(buttonIndex == 0) {
 			NSLog(@"Use default ROI");
-			pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
+			//pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];
+			pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
 			RoiViewController *roi = [[RoiViewController alloc] init];
 			roi.title = @"Default ROI";
 			[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
@@ -117,6 +115,38 @@ int touchCount=0;
 			NSLog(@"Not enough coordinates entered");
 		}
 	}	
+	else if(alertView == alertButton2) {
+		if(buttonIndex == 0) {
+			NSLog(@"Use User Waypoints");
+			algID = 1;
+			[self doneCheck];
+		} else if(buttonIndex == 1) {
+			NSLog(@"Use Max Unseen");
+			algID = 2;
+			[self doneCheck];
+		} else if(buttonIndex == 2) {
+			NSLog(@"Use ALUL");
+			algID = 3;
+			[self doneCheck];
+		}	
+	}
+}
+
+- (void) doneCheck
+{
+	if ([mapPointAnnotations count]<8) {
+		alertButton = [[UIAlertView alloc] initWithTitle:@"Not enough points for ROI" message:@"Do you want to continue with default ROI?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+		[alertButton show];
+		[alertButton release];			
+	} else {
+		//pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];		
+		pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
+		RoiViewController *roi = [[RoiViewController alloc] init];
+		roi.title = @"ROI";
+		[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
+		[self.navigationController pushViewController:roi animated:YES];
+		[roi release];	
+	}
 }
 
 - (void)resetAll
@@ -144,8 +174,8 @@ int touchCount=0;
 		[self.mapView addAnnotation:myAnnotation];
 		[myAnnotation release];				
 		
-		int cnt=[mapAnnotations count];
-		NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);	
+		//int cnt=[mapAnnotations count];
+		//NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);	
 		int mpcnt=[mapPointAnnotations count];
 		NSLog(@"map point %i = %f, %f ", mpcnt/2, p.x, p.y);			
 		

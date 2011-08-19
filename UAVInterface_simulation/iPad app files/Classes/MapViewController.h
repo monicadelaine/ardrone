@@ -13,6 +13,7 @@
 {
     MKMapView *mapView;
 	UIAlertView *alertButton;	
+	UIAlertView *alertButton2;		
     WorldCitiesListController *worldCitiesListController;
     UINavigationController *worldCitiesListNavigationController;
 	NSMutableArray *mapAnnotations;
@@ -29,5 +30,7 @@
 - (IBAction)areas:(id)sender;
 - (IBAction)done:(id)sender;
 - (void)resetAll;
+- (void)doneCheck;
+- (void)chooseAlgorithm;
 
 @end
