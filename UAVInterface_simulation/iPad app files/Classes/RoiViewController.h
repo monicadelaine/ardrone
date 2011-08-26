@@ -43,6 +43,8 @@
 - (void)displayImage1:(unsigned char *)data;
 - (void)displayImage2:(unsigned char *)data;
 - (void)moveUAVs:(NSMutableArray *)data;
+- (void)targetInView:(int *)data;
+- (void)wpReached:(int *)data;
 - (void)setPoint:(NSMutableArray *)passedCoord:(NSMutableArray *)passedPoint:(NSString *)passedStr;
 
 @end

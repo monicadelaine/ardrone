@@ -28,6 +28,7 @@ UIImageView *myImage1, *myImage2;
 MyAnnotation *myAnn;
 MyAnnotation0 *myAnn0;
 NSString *pointStr;
+CGPoint point;
 NSTimeInterval mvLastTime = 0.0, tgtLastTime1 = 0.0, tgtLastTime2 = 0.0;
 
 int initDist = 0, wpReach = 0, wpReach1 = 0, wpReach2 = 0;
@@ -36,9 +37,10 @@ int width = 64, height = 64;
 int wp_cnt = 2;
 BOOL connected = FALSE;
 
-NSString * host = @"130.160.68.31";//0";
+NSString * host = @"130.160.68.35";
 UInt16 iport = 1501;
 UInt16 oport = 1506;
+
 
 //initialize sockets and connect to server
 -(void)connectToServer
@@ -108,6 +110,7 @@ UInt16 oport = 1506;
 	} else { // or uav movement data	
 		int *byteData1 = (int)[data bytes];
 		[self targetInView:byteData1];
+		[self wpReached:byteData1];
 		NSMutableArray *posData = [[NSMutableArray alloc] init];
 		[posData insertObject:[NSNumber numberWithDouble:byteData1[3]]atIndex:kAnnotationIndex];
 		[posData insertObject:[NSNumber numberWithDouble:byteData1[2]]atIndex:kAnnotationIndex];
@@ -124,7 +127,7 @@ UInt16 oport = 1506;
 }
 
 //TODO: clear image and return to map view after enlarging
-// diplay images coming back from Webots
+// displays images coming back from Webots
 - (void) displayImage1:(unsigned char *)data
 {
 	unsigned char *rawData1 = malloc(width*height*4);
@@ -170,7 +173,11 @@ UInt16 oport = 1506;
 	}
 	
 	[self.view addSubview:myImage1];
+	
 	[myImage1 release];	
+	CGImageRelease(imageRef1);	
+	CGColorSpaceRelease(colorSpaceRef);	
+	CGDataProviderRelease(provider1);
 }
 
 - (void) displayImage2:(unsigned char *)data
@@ -219,14 +226,20 @@ UInt16 oport = 1506;
 	[self.view addSubview:myImage2];
 	//myImage2.image = nil; //try to clear the image
 	[myImage2 release];		
+	CGImageRelease(imageRef2);
+	CGColorSpaceRelease(colorSpaceRef);
+	CGDataProviderRelease(provider2);	
 }
 
-//TODO: action for when user finds target and restarts app, check if target found
+// action for when user finds target
 - (IBAction)done:(id)sender 
 {
 	NSTimeInterval end = [[NSDate date] timeIntervalSince1970]*1000;
 
 	NSLog(@"Done %f", end);
+	
+	wpReach = 0, wpReach1 = 0, wpReach2 = 0, wp_cnt = 2;
+	connected = FALSE;
 	
 	[socket close];
 	[socket2 close];
@@ -234,7 +247,7 @@ UInt16 oport = 1506;
 	[socket2 release];	
 }
 
-// clears the path of the uav
+// clears the path of the uav in the roi
 - (IBAction)roi:(id)sender 
 {
 	//action for ROI
@@ -271,7 +284,70 @@ UInt16 oport = 1506;
 			
 	UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
 	[self.mapView addGestureRecognizer:longPressGesture];
-	[longPressGesture release];  			
+	[longPressGesture release];  		
+}
+
+// add pin for user waypoint 
+- (void)handleLongPressGesture:(UIGestureRecognizer*)sender 
+{
+	if (sender.state==UIGestureRecognizerStateBegan) {	
+		//action for Waypoint 
+		NSLog(@"Waypoint button");
+		if (self.mapView.hidden == YES) {
+			self.mapView.hidden = NO; //show map again
+		}
+		waypointButton=1;
+		alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
+		[alertButton show];
+		[alertButton release];	
+		
+		point = [sender locationInView:self.mapView];
+	}	
+} 
+
+// sends waypoint to server
+- (void) addWaypoint
+{
+	myAnn = [[MyAnnotation alloc] init];	
+	myAnn0 = [[MyAnnotation0 alloc] init];	
+	[waypoint removeAllObjects];
+
+	CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+	[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.longitude]atIndex:kAnnotationIndex];
+	[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.latitude] atIndex:kAnnotationIndex];
+	[self.waypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:kAnnotationIndex];
+	
+	MKMapPoint p = MKMapPointForCoordinate(locCoord);
+	
+	if (waypointUAV==1) {
+		myAnn.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+		myAnn.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
+		[self.mapView addAnnotation:myAnn];
+		[myAnn release];
+	} else if (waypointUAV==2) {
+		myAnn0.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+		myAnn0.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
+		[self.mapView addAnnotation:myAnn0];
+		[myAnn0 release];
+	}			
+	
+	[self.pointWaypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:wpReach];	
+	[self.pointWaypoint insertObject:[NSNumber numberWithDouble:p.x-MAPPOINTX] atIndex:wpReach+1];	
+	[self.pointWaypoint insertObject:[NSNumber numberWithDouble:p.y-MAPPOINTY] atIndex:wpReach+2];	
+	wpReach+=3;
+	
+	/*int pcnt=[pointWaypoint count];
+	 for (int i=0; i<pcnt; i++) {
+		NSLog(@"waypoint %i = %@", i, [pointWaypoint objectAtIndex:i]);
+	 }*/
+	
+	NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
+	
+	//send waypoint to server
+	NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f,%i",waypointUAV,p.x-MAPPOINTX,p.y-MAPPOINTY,wp_cnt];		
+	[socket2 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
+	NSLog (@"Sending waypoint: %@ %f",waypointStr, wpTime);
+	wp_cnt++;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -283,6 +359,7 @@ UInt16 oport = 1506;
 				enlargeFlag = 1;
 			} else if (waypointButton==1) {
 				waypointUAV = 1;
+				[self addWaypoint];
 			}
 		} else {
 			NSLog(@"UAV2 button pressed\n");
@@ -290,6 +367,7 @@ UInt16 oport = 1506;
 				enlargeFlag = 2;
 			} else if (waypointButton==1) {
 				waypointUAV = 2;
+				[self addWaypoint];
 			}
 		}
 	}
@@ -344,8 +422,9 @@ UInt16 oport = 1506;
 	CLLocationCoordinate2D uavCoord1 = MKCoordinateForMapPoint(p1);
 	CLLocationCoordinate2D uavCoord2 = MKCoordinateForMapPoint(p2);														   
 	
-	if ([[NSDate date] timeIntervalSince1970]*1000 > mvLastTime+interval) {
-		NSLog(@"moveUAVs: p1=%f,%f p2=%f,%f", p1.x-MAPPOINTX, p1.y-MAPPOINTY, p2.x -MAPPOINTX, p2.y-MAPPOINTY);
+	NSTimeInterval currTime = [[NSDate date] timeIntervalSince1970]*1000;
+	if (currTime > mvLastTime+interval) {
+		NSLog(@"moveUAVs: p1=%f,%f p2=%f,%f %f", p1.x-MAPPOINTX, p1.y-MAPPOINTY, p2.x -MAPPOINTX, p2.y-MAPPOINTY, currTime);
 		mvLastTime = [[NSDate date] timeIntervalSince1970]*1000;		
 	}
 	
@@ -362,14 +441,13 @@ UInt16 oport = 1506;
 	myAnn2.longitude = [NSNumber numberWithDouble:uavCoord2.longitude];	
 	[self.mapView addAnnotation:myAnn2];
 	[myAnn2 release];
-	
-	//NSLog(@"moveUAVs coord: p1=%@,%@ p2=%@,%@", myAnn1.latitude, myAnn1.longitude, myAnn2.latitude, myAnn2.longitude);
 }
 
 //TODO: determine threshold for waypoint reached
-//determine if uav reached waypoint
+// determine if uav reached waypoint
 - (void)wpReached:(int *)data
 {
+	int threshold = 10;
 	//uav1
 	if (wpReach1 < wpReach) {
 		double a = [[pointWaypoint objectAtIndex:wpReach1] doubleValue];
@@ -379,7 +457,7 @@ UInt16 oport = 1506;
 			float x1 = pow(data[0] - b, 2.0);
 			float y1 = pow(data[1] - c, 2.0);
 			float dist = sqrt((float)(x1+y1));	
-			if (dist < .02) {
+			if (dist < threshold) {
 				NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
 				NSLog(@"uav1 waypoint %f %f reached %f", b, c, wpTime);
 				wpReach1 +=3;			
@@ -398,7 +476,7 @@ UInt16 oport = 1506;
 			float x1 = pow(data[0] - b, 2.0);
 			float y1 = pow(data[1] - c, 2.0);
 			float dist = sqrt((float)(x1+y1));		
-			if (dist < .02) {
+			if (dist < threshold) {
 				NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
 				NSLog(@"uav2 waypoint %f %f reached %f", b, c, wpTime);
 				wpReach2 +=3;
@@ -414,19 +492,21 @@ UInt16 oport = 1506;
 - (void)targetInView:(int *)data
 {
 	int x1, y1, x2, y2;
+	int threshold = 50;
 	float dist;
 	
 	NSTimeInterval tgtTime = [[NSDate date] timeIntervalSince1970]*1000;
+	
+	//NSLog(@"target (%i,%i)", data[4], data[5]);
 	
 	// uav1
 	x1 = pow(data[0] - data[4], 2.0);
 	y1 = pow(data[1] - data[5], 2.0);
 	dist = sqrt((float)(x1+y1));
 	if (initDist == 0) {
-		NSLog(@"init dist between uav1 and target: %f", dist);
-		NSLog(@"init uav1 pos: %i %i", data[0], data[1]);		
+		NSLog(@"init dist between uav1 (%i,%i) and target (%i,%i): %f", data[0], data[1], data [4], data[5], dist);	
 	}
-	if (dist < 10) { // find out dist of cam view
+	if (dist < threshold) { // find out dist of cam view
 		if ([[NSDate date] timeIntervalSince1970]*1000 > tgtLastTime1+interval) {
 			NSLog(@"Target in UAV 1 view dist: %f %f", dist, tgtTime);
 			tgtLastTime1 = [[NSDate date] timeIntervalSince1970]*1000;		
@@ -438,11 +518,10 @@ UInt16 oport = 1506;
 	y2 = pow(data[3] - data[5], 2.0);
 	dist = sqrt((float)(x2+y2));	
 	if (initDist == 0) {
-		NSLog(@"init dist between uav2 and target: %f", dist);
-		NSLog(@"init uav2 pos: %i %i", data[2], data[3]);			
+		NSLog(@"init dist between uav2 (%i,%i) and target(%i,%i): %f", data[2], data[3], data [4], data[5], dist);		
 		initDist = 1;
 	}	
-	if (dist < 10) { // find out dist of cam view
+	if (dist < threshold) { // find out dist of cam view
 		if ([[NSDate date] timeIntervalSince1970]*1000 > tgtLastTime2+interval) {
 			NSLog(@"Target in UAV 2 view dist: %f %f", dist, tgtTime);
 			tgtLastTime2 = [[NSDate date] timeIntervalSince1970]*1000;		
@@ -450,58 +529,7 @@ UInt16 oport = 1506;
 	}	
 }
 
-// add pin for user waypoint and sends info to server
-- (void)handleLongPressGesture:(UIGestureRecognizer*)sender 
-{
-	myAnn = [[MyAnnotation alloc] init];	
-	myAnn0 = [[MyAnnotation0 alloc] init];	
-	[waypoint removeAllObjects];
-	//[pointWaypoint removeAllObjects];	
-	if (sender.state==UIGestureRecognizerStateBegan) {
-		CGPoint point = [sender locationInView:self.mapView];
-		CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
-		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.longitude]atIndex:kAnnotationIndex];
-		[self.waypoint insertObject:[NSNumber numberWithDouble:locCoord.latitude] atIndex:kAnnotationIndex];
-		[self.waypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:kAnnotationIndex];
-		
-		MKMapPoint p = MKMapPointForCoordinate(locCoord);
-		
-		if (waypointUAV==1) {
-			myAnn.latitude = [NSNumber numberWithDouble:locCoord.latitude];
-			myAnn.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
-			[self.mapView addAnnotation:myAnn];
-			[myAnn release];
-		} else if (waypointUAV==2) {
-			myAnn0.latitude = [NSNumber numberWithDouble:locCoord.latitude];
-			myAnn0.longitude = [NSNumber numberWithDouble:locCoord.longitude];	
-			[self.mapView addAnnotation:myAnn0];
-			[myAnn0 release];
-		}			
-		
-		[self.pointWaypoint insertObject:[NSNumber numberWithDouble:waypointUAV] atIndex:wpReach];	
-		[self.pointWaypoint insertObject:[NSNumber numberWithDouble:p.x-MAPPOINTX] atIndex:wpReach+1];	
-		[self.pointWaypoint insertObject:[NSNumber numberWithDouble:p.y-MAPPOINTY] atIndex:wpReach+2];	
-		wpReach+=3;
-		
-		/*int count=[waypoint count];
-		for (int i=0; i<count; i++) {
-			NSLog(@"waypoint coord %i = %@", i, [waypoint objectAtIndex:i]);
-		}*/
-		/*int pcnt=[pointWaypoint count];
-		for (int i=0; i<pcnt; i++) {
-			NSLog(@"waypoint %i = %@", i, [pointWaypoint objectAtIndex:i]);
-		}*/
-
-		NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
-		
-		//send waypoint to server
-		NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f,%i",waypointUAV,p.x-MAPPOINTX,p.y-MAPPOINTY,wp_cnt];		
-		[socket2 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
-		NSLog (@"Sending waypoint: %@ %f",waypointStr, wpTime);
-		wp_cnt++;
-	}	
-} 
-
+// get the coordinates passed from MapViewController
 - (void) setPoint:(NSMutableArray *)passedCoord:(NSMutableArray *)passedPoint:(NSString *)passedStr
 {
 	initCoord = passedCoord;
@@ -571,8 +599,8 @@ UInt16 oport = 1506;
 	NSTimeInterval start = [[NSDate date] timeIntervalSince1970]*1000;
 	NSLog(@"Start %f", start);
 	
-	//set ROI region
 	mapView.delegate=self;
+	
 	[self regionSet]; 
 	[self setMap];	
 		
@@ -580,9 +608,14 @@ UInt16 oport = 1506;
 	
 	self.waypoint = [[NSMutableArray alloc] init];
 	self.pointWaypoint = [[NSMutableArray alloc] init];	
+	
+	UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
+	[self.mapView addGestureRecognizer:longPressGesture];
+	[longPressGesture release]; 	
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
     [super didReceiveMemoryWarning];
 }
 
@@ -591,12 +624,14 @@ UInt16 oport = 1506;
 	self.mapView = nil;
 	self.initCoord = nil;
 	self.waypoint = nil;
+	self.pointWaypoint = nil;
 }
 
 - (void)dealloc {
 	[mapView release];
 	[initCoord release];
 	[waypoint release];
+	[pointWaypoint release];
 	
 	[super dealloc];
 }

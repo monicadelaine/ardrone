@@ -25,7 +25,9 @@
 #define SENDQUEUE_CAPACITY	  5   // Initial capacity
 #define RECEIVEQUEUE_CAPACITY 5   // Initial capacity
 
-#define DEFAULT_MAX_RECEIVE_BUFFER_SIZE 65535
+//#define DEFAULT_MAX_RECEIVE_BUFFER_SIZE 65535
+#define DEFAULT_MAX_RECEIVE_BUFFER_SIZE 20000
+
 
 NSString *const AsyncUdpSocketException = @"AsyncUdpSocketException";
 NSString *const AsyncUdpSocketErrorDomain = @"AsyncUdpSocketErrorDomain";
