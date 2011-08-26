@@ -25,12 +25,9 @@
 #define LOCAL_SERVER_PORT10 1509
 
 #define MAX_MSG 40000
-#define sBuffer 16
 #define dataSize 12290
 #define waypointSize 128
 #define dataSize_command 255
-#define TOP_RIGHT_X 1260
-#define TOP_RIGHT_Y 1460
 
 int gotCoords=0;
 float IPAD_UNIT_X = 45.080468637;
@@ -39,62 +36,39 @@ float MAT_UNIT_X = 6.798030861;
 float MAT_UNIT_Y = 6.191931294;
 float X_OFFSET = 19.9352;
 float Y_OFFSET = 19.9403;
-int size_of_buffer[sBuffer];
 float ipadCoords[4];
-float webotsCoords[4];
 
 float drone1_X;
 float drone1_Y;
 float drone2_X;
 float drone2_Y;
 
-int rest = 0;
-int rest2 = 0;
-
 int x_head = 0;
 int y_head = 0;
 
-int rowstride = 960;
-int width = 320;
-int height = 240;
 float init_x = 0;
 float init_y = 0;
-int temp_first;
 
 char data1[57600];
 int posArrary[6];
 int posArrary2[6];
 char data1_command[255];
 float wp_data[255];
-float x_wp_data[255];
-float y_wp_data[255];
+float x_wp_data[1000];
+float y_wp_data[1000];
 int data1_send[100];
 char* comData;
+char* comData2;
 
 char data2[57600];
 double data2_command[255];
 int data2_send[255];
 
-char* comData2;
-
 int thread_lock = 0;
 
 int i = 0;
-int i_command = 0;
-int count = 0;
-int count_command = 0;
-
 int done = 0;
 int done2 = 0;
-int done_command = 0;
-int try1 = 0;
-int try1_command = 0;
-static int opt = 0;
-static int opt2 = 0;
-double ready = -16;
-double busy = 16;
-int lock = 0;
-int lock2 = 0;
 int wPoints[64];
 int can_send1;
 int can_send2;
@@ -126,29 +100,14 @@ int startEng = 0;
 
 
 float toWebots(float unit, float val, float offset){
-
-	/* int disx = x - TOP_RIGHT_X;
-	int disy = y - TOP_RIGHT_Y;*/
-
 	float newVal;
 	newVal = (val / unit) - offset;
-	/*
-	if (droneID == 1){
-	webotsCoords[0] = newX;
-	webotsCoords[1] = newY;
-	} else{
-	webotsCoords[2] = newX;
-	webotsCoords[3] = newY;
-	}
-	*/
+
 	return newVal;
 }
 
 
 void toIpad(float x, float y, float x2, float y2) {
-
-	/* int disx = x - TOP_RIGHT_X;
-	int disy = y - TOP_RIGHT_Y;*/
 	float newX = ((x + X_OFFSET)  * IPAD_UNIT_X);
 	float newX2 = ((x2  + X_OFFSET) * IPAD_UNIT_X);
 	float newY = ((y + Y_OFFSET) * IPAD_UNIT_Y) ;
@@ -162,7 +121,6 @@ void toIpad(float x, float y, float x2, float y2) {
 
 
 void toMatlab(float x, float y, float x2, float y2) {
-
 	float newX = ((x + X_OFFSET)  * MAT_UNIT_X);
 	float newX2 = ((x2  + X_OFFSET) * MAT_UNIT_X);
 	float newY = ((y + Y_OFFSET) * MAT_UNIT_Y) ;
@@ -209,8 +167,6 @@ void *videoThread(void) {
 	flags = 0;
 
 	/*////////////////////////////////////////////////Video Socket Drone 1 /////////////////////////////////*/
-
-	/*DATA Thread*/
 
 	while(1){
 		/* printf("vid.");*/
@@ -287,13 +243,10 @@ void *dataThread(){
 		/*continue;*/
 	}
 	else{
-		printf("Got connection!\n");
+		//printf("Got connection!\n");
 		/* printf("Got Packet %d\n",recData);
 		recData++;*/
-		printf("Test %c\n",data1_command[0]);
-		printf("Test2 %c\n",data1_command[1]);
-		printf("Test3 %c\n",data1_command[2]);
-		printf("Test4 %c\n",data1_command[3]);
+		//printf("Test %c\n",data1_command[0]);
 	}
 
 	/*toIpad(-5,-10,-10,-10);
@@ -308,7 +261,6 @@ void *dataThread(){
 
 			switch(recData)    {
 			case 0:
-
 				recData++;
 
 				char datatest[12294];
@@ -333,12 +285,15 @@ void *dataThread(){
 				}
 				thread_lock = 1;*/
 				posArrary[2] = posArrary2[0];
-                posArrary[3] = posArrary2[1];
-                rcP = sendto(sd_command,data1,sizeof(datatest),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
+                		posArrary[3] = posArrary2[1];
+				posArrary[4] = posArrary2[2];
+                		posArrary[5] = posArrary2[3];
+				
+                		rcP = sendto(sd_command,data1,sizeof(datatest),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
 
-                rcP = sendto(sd_command,data2,sizeof(datatest),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
+                		rcP = sendto(sd_command,data2,sizeof(datatest),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
 
-                rcP = sendto(sd_command,posArrary,sizeof(posArrary),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
+                		rcP = sendto(sd_command,posArrary,sizeof(posArrary),flags,(struct sockaddr *)&cliAddr_command,cliLen_command);
 
 
 				int i=0;
@@ -356,11 +311,8 @@ void *dataThread(){
 	}
 }
 
-/* BEGIN jcs 3/30/05 */
-
 flags_command = 0;
 
-/*/////////////////////////////////////////////////////// Commands and Data Comm 1////////////////////*/
 
 /*//////// Just for testing.... function will be created to reduce code later ////////////*/
 
@@ -391,13 +343,9 @@ void *videoThread1(void){
 
 	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT3);
 
-	/* BEGIN jcs 3/30/05 */
-
 	flags2 = 0;
 
 	/*////////////////////////////////////////////////Video Socket Drone 1 /////////////////////////////////*/
-
-	/*DATA Thread*/
 
 	while(1){
 		/* printf("vid.");*/
@@ -468,11 +416,10 @@ void *dataThread1(){
 		/*continue;*/
 	}
 	else{
-		printf("Got connection!\n");
+		//printf("Got connection!\n");
 		/*   printf("Got Packet %d\n",recData);
 		recData++;*/
 		printf("Test %c\n",data1_command[0]);
-		printf("Test2 %c\n",data1_command[1]);
 	}
 
 	int recData = 0;
@@ -545,8 +492,6 @@ void *wayPoints(void) {
 
 	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT7);
 
-	/* BEGIN jcs 3/30/05 */
-
 	flags_wp = 0;
 	float pack_size;
 
@@ -560,11 +505,12 @@ void *wayPoints(void) {
 
 			switch(recData)    {
 			case 0:
+			//if (IPAD_FLAG ==1) {
 				cliLen_wp = sizeof(cliAddr_wp);
-				printf("Entering receive\n");
+				//printf("Entering receive\n");
 				n_wp = recvfrom(sd_wp, wPoints, waypointSize, flags_wp,
 					(struct sockaddr *) &cliAddr_wp, &cliLen_wp);
-				printf("Exit receive\n");
+				//printf("Exit receive\n");
 
 				if(n_wp<0) {
 					printf("%s [5]: cannot receive data \n","prg");
@@ -573,7 +519,7 @@ void *wayPoints(void) {
 				else{
 					/* printf("Got Packet %d\n",recData);*/
 					recData++;
-					printf("Array ID: %c\n",wPoints[0]);
+					//printf("Array ID: %c\n",wPoints[0]);
 
 					pID = strtok ( wPoints, "," );
 					p1x = strtok ( NULL, "," );
@@ -587,9 +533,8 @@ void *wayPoints(void) {
 					algID = strtok ( NULL, "," );
 					wp = strtok ( NULL, "," );
 
-					printf("p1x:%s\np1y:%s\np2x:%s\np2y:%s\np3x:%s\np3y:%s\np4x:%s\np4y:%s\narg_ID:%s\nWP_ID:%s",p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,algID,wp);
+					//printf("p1x:%s\np1y:%s\np2x:%s\np2y:%s\np3x:%s\np3y:%s\np4x:%s\np4y:%s\narg_ID:%s\nWP_ID:%s",p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,algID,wp);
 
-					/* const char* str = "123";*/
 					float pID2;
 					float int_p1x, int_p1y;
 					float int_p2x, int_p2y;
@@ -599,10 +544,10 @@ void *wayPoints(void) {
 					float clone_int_p1x;
 					float clone_int_p1y;
 
-					int *i, *i2;
-					int add_result;
+					int *i;
 
 					/* put this in a FOR Loop later!!!!!*/
+					///////////////////////////////////////
 
 					if(sscanf(pID, "%f", &pID2) == EOF )  {
 						printf("error converting string\n");
@@ -614,6 +559,8 @@ void *wayPoints(void) {
 						printf("error converting string\n");
 					}
 
+					//////////////////////////////////////////////
+
 					if (gotCoords > 0){
 						if(sscanf(p2x, "%f", &int_wp_id) == EOF )  {
 							printf("error converting string\n");
@@ -624,7 +571,7 @@ void *wayPoints(void) {
 						}
 					}
 
-					printf("after \n");
+					//printf("after \n");
 
 					if (gotCoords < 1){
 						if(sscanf(p2x, "%f", &int_p2x) == EOF )   {
@@ -651,11 +598,13 @@ void *wayPoints(void) {
 						gotCoords++;
 						pack_size = 8;
 
-						if (int_alg_id == 2) 
+						if (int_alg_id == 2) { 
 							IPAD_FLAG = 2;
-						else if (int_alg_id == 3)
+							//printf("ipad flag %i\n", IPAD_FLAG);
+						} else if (int_alg_id == 3){
 							IPAD_FLAG = 3;
-
+							//printf("ipad flag %i\n", IPAD_FLAG);
+						}
 						int_p1x = toWebots(IPAD_UNIT_X,int_p1x,X_OFFSET);
 						int_p1y = toWebots(IPAD_UNIT_Y,int_p1y,Y_OFFSET);
 						int_p2x = toWebots(IPAD_UNIT_X,int_p2x,X_OFFSET);
@@ -675,10 +624,10 @@ void *wayPoints(void) {
 					printf("\nBefore\nWebots x: %f \n Webots y: %f \n",int_p1x,int_p1y);*/
 
 					int_p1x = toWebots(IPAD_UNIT_X,int_p1x,X_OFFSET);
-					printf("New ID %f\n",pID2);
-					printf("New P1x: %f\n",int_p1x);
+					//printf("New ID %f\n",pID2);
+					//printf("New P1x: %f\n",int_p1x);
 					int_p1y = toWebots(IPAD_UNIT_Y,int_p1y,Y_OFFSET);
-					printf("New P1y: %f\n",int_p1y);
+					//printf("New P1y: %f\n",int_p1y);
 
 					wp_data[0] = pID2;
 					wp_data[1] = clone_int_p1x;
@@ -692,16 +641,18 @@ void *wayPoints(void) {
 					wp_data[9] = int_p1x;
 					wp_data[10] = int_p1y;
 					wp_data[11] = int_wp_id;
-
+					
+					printf("PID: %f\n",pID2);
+					
 					if (pID2 == 1){
-						x_wp_data[x_head] = pID2;
+						x_wp_data[x_head] = 1;
 						x_wp_data[x_head+1] = int_p1x;
 						x_wp_data[x_head+2] = int_p1y;
 						x_wp_data[3] = int_wp_id;
 						x_head = x_head + 4;
 						can_send1 = 1;
 					}
-					/*temp_first++;*/
+					
 					if ((pID2 == 2)){
 						y_wp_data[y_head] = 2;
 						y_wp_data[y_head+1] = int_p1x;
@@ -710,10 +661,9 @@ void *wayPoints(void) {
 						y_head = y_head + 4;
 						can_send2 = 1;
 					}
-
 					/*printf("\nWebots x: %f \n Webots y: %f \n",int_p1x,int_p1y);*/
 				}
-
+				//}
 				break;
 
 			default:
@@ -732,17 +682,18 @@ void *wayPointsMatlab(void) {
 
 	char *p1x, *p1y, *p2x, *p2y, *wp, *algID;
 
+	while (1) {
 	if (IPAD_FLAG != 1) {
 		
 		if (startEng == 0) {
-			/* Open the MATLAB engine	*/
+			/* Open the MATLAB engine */
 			if (!(ep = engOpen("\0"))) {
 				fprintf(stderr, "\nCan't start MATLAB engine\n");
 				return EXIT_FAILURE;
 			}
 
 			/* testing ALULSimulation */
-			printf("testing AlulRobotSimulation\n");
+			printf("using AlulRobotSimulation\n");
 
 			engEvalString(ep, "clear *");
 			engEvalString(ep, "close all");
@@ -770,13 +721,15 @@ void *wayPointsMatlab(void) {
 				engEvalString(ep, "alulFlag = 0;"); 
 			else if (IPAD_FLAG == 3)
 				engEvalString(ep, "alulFlag = 1;"); 
-
+			printf("ipad flag %i\n", IPAD_FLAG);
+		
 			startEng = 1;
 		}
 
 		/**********************************************************************************/
 
-		while (tFound == 0) {
+		//while (tFound == 0) {
+		while (1) {
 
 			engEvalString(ep, "if (start==1) cameras=[our_cam_pos(1,1) dov; our_cam_pos(2,1) dov]; end");
 			engEvalString(ep, "demoRunAlulRobot");
@@ -787,7 +740,7 @@ void *wayPointsMatlab(void) {
 			cpresult = engGetVariable(ep,"cell_pos");
 			cpresult2 = mxArrayToString(cpresult);
 
-			printf("%s\n", cpresult2);
+			//printf("%s\n", cpresult2);
 
 			if (cresult[0]==1.00) {
 				tFound = 1;
@@ -801,7 +754,7 @@ void *wayPointsMatlab(void) {
 			p2y = strtok ( NULL, "," );
 			wp = strtok ( NULL, "," );
 
-			printf("p1x:%s\np1y:%s\np2x:%s\np2y:%s\nWP_ID:%s\n",p1x,p1y,p2x,p2y,wp);
+			//printf("p1x:%s\np1y:%s\np2x:%s\np2y:%s\nWP_ID:%s\n",p1x,p1y,p2x,p2y,wp);
 
 			float int_p1x, int_p1y, int_p2x, int_p2y, int_wp_id;
 
@@ -823,20 +776,20 @@ void *wayPointsMatlab(void) {
 				printf("error converting string\n");
 			}
 
-			printf("after \n");
+			//printf("after \n");
 
 			/* for loop here ^^^^^^^^^^
 			printf("\nBefore\nWebots x: %f \n Webots y: %f \n",int_p1x,int_p1y);*/
 
 			int_p1x = toWebots(MAT_UNIT_X,int_p1x,X_OFFSET);
-			printf("New P1x: %f\n",int_p1x);
+			//printf("New P1x: %f\n",int_p1x);
 			int_p1y = toWebots(MAT_UNIT_Y,int_p1y,Y_OFFSET);
-			printf("New P1y: %f\n",int_p1y);
+			//printf("New P1y: %f\n",int_p1y);
 
 			int_p2x = toWebots(MAT_UNIT_X,int_p2x,X_OFFSET);
-			printf("New P2x: %f\n",int_p2x);
+			///printf("New P2x: %f\n",int_p2x);
 			int_p2y = toWebots(MAT_UNIT_Y,int_p2y,Y_OFFSET);
-			printf("New P2y: %f\n",int_p2y);
+			//printf("New P2y: %f\n",int_p2y);
 
 			x_wp_data[x_head] = 1;
 			x_wp_data[x_head+1] = int_p1x;
@@ -848,22 +801,21 @@ void *wayPointsMatlab(void) {
 			y_wp_data[y_head] = 2;
 			y_wp_data[y_head+1] = int_p2x;
 			y_wp_data[y_head+2] = int_p2y;
-			y_wp_data[3] = int_wp_id+1; /*changes  this index constantly*/
+			y_wp_data[3] = int_wp_id+1; 
 			y_head = y_head + 4;
 			can_send2 = 1;
 
 			/*printf("\nWebots x: %f \n Webots y: %f \n",int_p1x,int_p1y);*/
 		}
 
-		printf("end testing AlulRobotSimulation\n");
+		//printf("end testing AlulRobotSimulation\n");
 
-		/*
-		* Free memory, close MATLAB engine and exit.
-		*/
+		/* Free memory, close MATLAB engine and exit. */
 		mxDestroyArray(result);
 		engClose(ep);
 
 		return EXIT_SUCCESS;
+	}
 	}
 }
 
@@ -907,7 +859,7 @@ void *sendWaypoints2(void){
 		/*   printf("Got Packet %d\n",recData);
 		recData++;*/
 		printf("Waypoint Ready? %d\n",wp_data[0]);
-		printf("Waypoint Ready? %d\n",wp_data[1]);
+		//printf("Waypoint Ready? %d\n",wp_data[1]);
 	}
 
 	int recData = 0;
@@ -920,19 +872,17 @@ void *sendWaypoints2(void){
 
 			switch(recData)	{
 			case 0:
-
 				recData++;
-
 
 				char datatest2[42000];
 				int rcP2_2;
 				/* memset(data1_send,126,100);*/
 				data2[57600] = 2;
 
-				while ((thread_lock == 1) && (rest2 < 30)) {
-                     rest2++;
-                 }
-				thread_lock = 1;
+				/*while ((thread_lock == 1) ) {
+                 		}*/
+				if(thread_lock == 0){
+				//thread_lock = 1;
 				if (gotCoords > 0){
 					/*   printf("Sending webots coords\n");*/
 					if (wp_data[0] == 0){
@@ -945,12 +895,11 @@ void *sendWaypoints2(void){
 					*/
 					/*printf("Sending: %f\n",wp_data[0]);*/
 					if (can_send2 == 1){
-						printf("Servicing thread 2\n");
+						//printf("Servicing thread 2\n");
 						rcP2_2 = sendto(sd_webots2,y_wp_data,sizeof(y_wp_data),flags, (struct sockaddr *)&cliAddr_webots2,cliLen_webots2);
 					}
 				}
-				thread_lock = 0;
-				rest2 = 0;
+				thread_lock = 1;
 
 				int i=0;
 
@@ -961,7 +910,7 @@ void *sendWaypoints2(void){
 				}else{
 					/*   printf("Data Sent\n");*/
 				}
-
+				}
 				break;
 			}
 		}
@@ -997,11 +946,11 @@ void *sendWaypoints(void){
 		/*continue;*/
 	}
 	else{
-		printf("Got connection!\n");
+		//printf("Got connection!\n");
 		/*   printf("Got Packet %d\n",recData);
 		recData++;*/
 		printf("Waypoint Ready? %d\n",wp_data[0]);
-		printf("Waypoint Ready? %d\n",wp_data[1]);
+		//printf("Waypoint Ready? %d\n",wp_data[1]);
 	}
 
 	int recData = 0;
@@ -1021,20 +970,19 @@ void *sendWaypoints(void){
 				int rcP2;
 				/* memset(data1_send,126,100);*/
 				data2[57600] = 2;
-
-				while ((thread_lock == 1) && (rest < 30)) {
-                     rest++; /* <- the line of code thats key*/
-                 }
-				thread_lock = 1;
+				if(thread_lock == 1){
+				/*while ((thread_lock == 1) ) {
+                 		}*/
+				//thread_lock = 0;
 				if (gotCoords > 0){
 					/*  printf("Sending webots coords\n");*/
 					if (wp_data[0] == 0){
 						rcP2 = sendto(sd_webots,wp_data,sizeof(wp_data),flags,(struct sockaddr *)&cliAddr_webots,cliLen_webots);
 					}
 
-					if (can_send1 == 1){
-						printf("Servicing thread 1\n");
-						rcP2 = sendto(sd_webots,x_wp_data,sizeof(x_wp_data),flags,(struct sockaddr *)&cliAddr_webots,cliLen_webots);
+					if (can_send1 == 1) {
+						//printf("Servicing thread 1\n");
+						rcP2 = sendto(sd_webots,x_wp_data,sizeof(x_wp_data),flags,(struct sockaddr *)&cliAddr_webots,cliLen_webots);				
 					}
 					/*
 					if (wp_data[0] == 2){
@@ -1043,7 +991,6 @@ void *sendWaypoints(void){
 					*/
 				}
 				thread_lock = 0;
-				rest = 0;
 
 				int i=0;
 
@@ -1052,7 +999,8 @@ void *sendWaypoints(void){
 					close(sd);
 					/*exit(1);*/
 				}else{
-					/*              printf("Data Sent\n");*/
+					/*     printf("Data Sent\n");*/
+				}
 				}
 				break;
 			}
@@ -1086,8 +1034,6 @@ void *posThread(void) {
 
 	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT9);
 
-	/* BEGIN jcs 3/30/05 */
-
 	flags2 = 0;
 
 	while(1){
@@ -1097,6 +1043,7 @@ void *posThread(void) {
 		while (recData < 1)    {
 
 			switch(recData)    {
+
 			case 0:
 				cliLen2 = sizeof(cliAddr2);
 				/*printf("Receiving\n");*/
@@ -1146,8 +1093,6 @@ void *posThread2(void) {
 	printf("%s: waiting for data on port UDP %u\n",
 		"prg",LOCAL_SERVER_PORT10);
 
-	/* BEGIN jcs 3/30/05 */
-
 	flags2 = 0;
 	
 	while(1){
@@ -1160,7 +1105,8 @@ void *posThread2(void) {
 			case 0:
 				cliLen2 = sizeof(cliAddr2);
 				/*printf("Receiving\n");*/
-				n2 = recvfrom(sd2, posArrary2, 6, flags2,(struct sockaddr *) &cliAddr2, &cliLen2);
+				n2 = recvfrom(sd2, posArrary2, sizeof(posArrary2), flags2,(struct sockaddr *) &cliAddr2, &cliLen2);
+				//printf("target: %i, %i\n",posArrary2[0],posArrary2[3]);
 
 				if(n2<0) {
 					printf("%s [9]: cannot receive data \n","prg");
@@ -1188,7 +1134,6 @@ int main(int argc, char *argv[]) {
 	comData2 = malloc(57600 * sizeof(uint8_t));
 
 	/*Threads*/
-	pthread_t gtk_pth; 
 	pthread_t video_pth; 
 	pthread_t data_pth;
 	pthread_t video_pth1; 
@@ -1204,8 +1149,8 @@ int main(int argc, char *argv[]) {
 	pthread_create(&pos_pth,NULL,posThread,"pos info.. \n");
 	pthread_create(&pos_pth2,NULL,posThread2,"pos info.. \n");
 	pthread_create(&data_pth,NULL,dataThread,"Data stuff.. \n");
-	pthread_create(&send_waypoint_pth,NULL,sendWaypoints,"Send wp.. \n");
 	pthread_create(&send_waypoint2_pth,NULL,sendWaypoints2,"Send wp.. \n");
+	pthread_create(&send_waypoint_pth,NULL,sendWaypoints,"Send wp.. \n");
 	pthread_create(&video_pth,NULL,videoThread,"Getting Pixbuf Data.\n");
 	pthread_create(&data_pth1,NULL,dataThread1,"Data stuff (Drone 2).. \n");
 	pthread_create(&video_pth1,NULL,videoThread1,"Getting Pixbuf Data (Drone 2).\n");

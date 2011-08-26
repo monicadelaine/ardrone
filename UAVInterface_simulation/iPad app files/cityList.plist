@@ -10,13 +10,5 @@
 		<key>longitudeKey</key>
 		<string>-87.5426</string>
 	</dict>
-	<dict>
-		<key>cityNameKey</key>
-		<string>Desert Area</string>
-		<key>latitudeKey</key>
-		<string>33.43</string>
-		<key>longitudeKey</key>
-		<string>-116.22</string>
-	</dict>
 </array>
 </plist>

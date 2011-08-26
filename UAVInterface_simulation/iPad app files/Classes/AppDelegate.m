@@ -55,8 +55,19 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
+		
+#if TARGET_IPHONE_SIMULATOR == 0
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentDirectory = [paths objectAtIndex:0];
+	NSString *fileName = [NSString stringWithFormat:"%@.log",[NSDate data]];
+	NSString *logFilePath = [documentDirectory stringByAppendingPathComponent::fileName];
+	freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a", stderr);
+	//freopen("@/Users/crawford8/Desktop/logs/logFile.txt" fileSystemRepresentation], "a", stderr);
+#endif
+	
 	[window addSubview:navigationController.view];
     [window makeKeyAndVisible];
+
 }
 
 - (void)dealloc

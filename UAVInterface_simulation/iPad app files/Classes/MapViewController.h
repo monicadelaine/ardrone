@@ -13,6 +13,7 @@
 {
     MKMapView *mapView;
 	UIAlertView *alertButton;	
+	UIAlertView *alertButton1;	
 	UIAlertView *alertButton2;		
     WorldCitiesListController *worldCitiesListController;
     UINavigationController *worldCitiesListNavigationController;
