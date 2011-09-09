@@ -14,7 +14,6 @@
 %    start_targets      - starting positions for targets
 %                           start_targets=uint32(rand(numTargets,1)*numCells);
 %    cameras            - camera positions and parameters
-%    type               - type of surveillance and tracking (1,2 or 3)
 %    heights            - data file that contains the heights for java classes
 %    arl.matlab.simulation.*   - Java classes for target, terrain, camera, alul and gui
 %    alulval            - Maximum alul system value
@@ -68,11 +67,11 @@ if sim_start == 0
     rows=73;
     columns=109;
     
-    posCnt = 1; 
+    posCnt = 2; 
     
     MX = 95;
-    MY = 155;
-    MAX_Y = 200;
+    MY = 130;
+    MAX_Y = 270;
 
     ttIndex=1;
     vote=[];

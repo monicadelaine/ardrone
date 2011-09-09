@@ -19,9 +19,9 @@
 	NSMutableArray *waypoint;
 	NSMutableArray *pointWaypoint;	
 	UIAlertView *alertButton;
+	UIAlertView *alertButtonTest;	
 	AsyncUdpSocket *socket;
 	AsyncUdpSocket *socket2;
-	UIImageView *imageView;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
@@ -30,7 +30,6 @@
 @property (nonatomic, retain) NSMutableArray *waypoint;
 @property (nonatomic, retain) AsyncUdpSocket *socket;
 @property (nonatomic, retain) AsyncUdpSocket *socket2;
-@property (nonatomic, retain) UIImageView *imageView;
 
 - (IBAction)roi:(id)sender;
 - (IBAction)waypoint:(id)sender;
@@ -45,6 +44,6 @@
 - (void)moveUAVs:(NSMutableArray *)data;
 - (void)targetInView:(int *)data;
 - (void)wpReached:(int *)data;
-- (void)setPoint:(NSMutableArray *)passedCoord:(NSMutableArray *)passedPoint:(NSString *)passedStr;
+- (void)setPoint:(NSMutableArray *)passedCoord:(int)passedAlg:(NSString *)passedStr;
 
 @end
