@@ -20,7 +20,7 @@
 
 - (NSString *)title
 {
-    return @"UAV1 Waypoint";
+    return @"UAV1 WP";
 }
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
@@ -53,7 +53,7 @@
 
 - (NSString *)title
 {
-    return @"UAV2 Waypoint";
+    return @"UAV2 WP";
 }
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate

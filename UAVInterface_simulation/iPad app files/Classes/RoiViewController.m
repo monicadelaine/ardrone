@@ -19,18 +19,22 @@ enum {
 
 @synthesize mapView, initCoord, waypoint, pointWaypoint;
 @synthesize socket, socket2;
-@synthesize imageView;
 
 double latSpan, lonSpan, centerCoordLat, centerCoordLon;
 float interval = 500;
+float totalDist1 = 0, totalDist2 = 0;
+float lastX1=-2.0, lastY1=132.0, lastX2=-2.0, lastY2=132.0;
 
 UIImageView *myImage1, *myImage2;
 MyAnnotation *myAnn;
 MyAnnotation0 *myAnn0;
+MyAnnotation1 *myAnn1;
+MyAnnotation2 *myAnn2;
 NSString *pointStr;
 CGPoint point;
-NSTimeInterval mvLastTime = 0.0, tgtLastTime1 = 0.0, tgtLastTime2 = 0.0;
+NSTimeInterval mvLastTime = 0.0, tgtLastTime = 0.0, tgtLastTime1 = 0.0, tgtLastTime2 = 0.0;
 
+int algID;
 int initDist = 0, wpReach = 0, wpReach1 = 0, wpReach2 = 0;
 int enlargeFlag = 0, enlargeButton = 0, waypointUAV = 0, waypointButton = 0;
 int width = 64, height = 64;
@@ -64,7 +68,7 @@ UInt16 oport = 1506;
 		
 		connected = TRUE;
 	}		
-	[self sendDataToServer:pointStr]; //send data
+	[self sendDataToServer:pointStr]; //send init data
 	[self receiveDataFromServer]; //receive data
 }
 
@@ -72,25 +76,14 @@ UInt16 oport = 1506;
 -(void)sendDataToServer:(NSString *)data
 {
 	[socket2 sendData:[data dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
-	NSLog (@"Sending: %@",data);	
+	NSLog (@"Sending: %@ %f",data, [[NSDate date] timeIntervalSince1970]*1000);		
 }
 
 //receive data from server
 -(void)receiveDataFromServer
 {
-	NSLog(@"Receiving Data From Server");
+	NSLog(@"Start receiving data from server");
 	[socket receiveWithTimeout:-1 tag:0];
-}
-
-//Called when the datagram has been sent
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag 
-{
-	NSLog(@"didSendData");
-}
-
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
-{
-	NSLog(@"didNotSendData: %@", error);
 }
 
 //Called when state is received
@@ -122,10 +115,6 @@ UInt16 oport = 1506;
 	return YES;
 }
 
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error {
-	NSLog(@"didNotReceiveData: %@", error);
-}
-
 //TODO: clear image and return to map view after enlarging
 // displays images coming back from Webots
 - (void) displayImage1:(unsigned char *)data
@@ -154,9 +143,8 @@ UInt16 oport = 1506;
 	UIImage *newImage1 = [UIImage imageWithCGImage:imageRef1];	
 	
 	if (enlargeFlag == 0) {
-		//NSLog(@"width %i height %i", self.frame.size.width=320, self.frame.size.height=480);
 		CGRect myImageRect1 = CGRectMake(0.0f, 276.0f, 162.0f, 97.0f); 
-		/*UIImageView **/myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
+		myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
 		[myImage1 setImage:newImage1]; 
 		myImage1.opaque = YES;  
 		myImage1.frame = CGRectMake(0.0, 276.0, 162.0, 97.0);
@@ -164,16 +152,16 @@ UInt16 oport = 1506;
 		myImage1.layer.borderWidth = 1.0;
 	}
 	else if (enlargeFlag == 1) {
-		//self.imageView.hidden = YES;
-		//myImage1.image = nil; //try to clear the image 
 		CGRect myImageRect1 = CGRectMake(0.0f, 0.0f, 320.0f, 380.0f); 
-		/*UIImageView **/myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
+		myImage1 = [[UIImageView alloc] initWithFrame:myImageRect1]; 
 		[myImage1 setImage:newImage1]; 
 		myImage1.opaque = YES;  
 	}
 	
 	[self.view addSubview:myImage1];
 	
+	//[NSThread sleepForTimeInterval:0.01];	
+	//free(rawData1);
 	[myImage1 release];	
 	CGImageRelease(imageRef1);	
 	CGColorSpaceRelease(colorSpaceRef);	
@@ -181,7 +169,7 @@ UInt16 oport = 1506;
 }
 
 - (void) displayImage2:(unsigned char *)data
-{
+{	
 	unsigned char *rawData2 = malloc(width*height*4);
 	
 	for (int i=0; i<width*height; ++i) {
@@ -205,7 +193,7 @@ UInt16 oport = 1506;
 	
 	if (enlargeFlag == 0) {
 		CGRect myImageRect2 = CGRectMake(162.0f, 276.0f, 158.0f, 97.0f);
-		/*UIImageView **/myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
+		myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 		[myImage2 setImage:newImage2]; 
 		myImage2.opaque = YES;  
 		myImage2.frame = CGRectMake(162.0, 276.0, 158.0, 97.0);
@@ -213,18 +201,17 @@ UInt16 oport = 1506;
 		myImage2.layer.borderWidth = 1.0;
 	}
 	else if (enlargeFlag == 2) {
-		//self.imageView.hidden = YES;
-		//myImage2.image = nil; //try to clear the image 
 		CGRect myImageRect2 = CGRectMake(0.0f, 0.0f, 320.0f, 380.0f); 
-		//self.imageView.hidden = YES;
-		/*UIImageView **/myImage1 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
+		UIImageView *myImage2 = [[UIImageView alloc] initWithFrame:myImageRect2]; 
 		myImage2.image = nil; //try to clear the image 
 		[myImage2 setImage:newImage2]; 
 		myImage2.opaque = YES;  
 	}
 	
 	[self.view addSubview:myImage2];
-	//myImage2.image = nil; //try to clear the image
+	
+	//[NSThread sleepForTimeInterval:0.01];	
+	//free(rawData2);
 	[myImage2 release];		
 	CGImageRelease(imageRef2);
 	CGColorSpaceRelease(colorSpaceRef);
@@ -236,6 +223,7 @@ UInt16 oport = 1506;
 {
 	NSTimeInterval end = [[NSDate date] timeIntervalSince1970]*1000;
 
+	NSLog(@"totalDist1=%f totalDist2=%f", totalDist1, totalDist2);	
 	NSLog(@"Done %f", end);
 	
 	wpReach = 0, wpReach1 = 0, wpReach2 = 0, wp_cnt = 2;
@@ -247,15 +235,20 @@ UInt16 oport = 1506;
 	[socket2 release];	
 }
 
-// clears the path of the uav in the roi
+// clears the uav waypoint pins in the roi
 - (IBAction)roi:(id)sender 
 {
-	//action for ROI
-	NSLog(@"ROI button");
-	self.imageView.hidden = YES; //try to clear the image  
-	self.mapView.hidden = NO; //try to show map again
-	[self.mapView removeAnnotations:mapView.annotations];
+	NSLog(@"Clear ROI button");
+	//self.mapView.hidden = NO; //try to show map again
 	enlargeFlag = 0;
+	
+	for (id annotation in mapView.annotations) {   
+		if ([annotation isKindOfClass:[MyAnnotation class]] ) {    			
+			[mapView removeAnnotation:annotation];     
+		} else if ([annotation isKindOfClass:[MyAnnotation0 class]]) {    			
+			[mapView removeAnnotation:annotation];     
+		}    	
+	}	
 }
 
 - (IBAction)enlarge:(id)sender 
@@ -272,7 +265,6 @@ UInt16 oport = 1506;
 // allows user to choose a waypoint for a uav
 - (IBAction)waypoint:(id)sender 
 {
-	//action for Waypoint 
 	NSLog(@"Waypoint button");
 	if (self.mapView.hidden == YES) {
 		self.mapView.hidden = NO; //show map again
@@ -292,16 +284,18 @@ UInt16 oport = 1506;
 {
 	if (sender.state==UIGestureRecognizerStateBegan) {	
 		//action for Waypoint 
-		NSLog(@"Waypoint button");
-		if (self.mapView.hidden == YES) {
-			self.mapView.hidden = NO; //show map again
-		}
-		waypointButton=1;
-		alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
-		[alertButton show];
-		[alertButton release];	
+		NSLog(@"Waypoint");
+		if (algID == 1 || algID == 3) {
+			if (self.mapView.hidden == YES) {
+				self.mapView.hidden = NO; //show map again
+			}
+			waypointButton=1;
+			alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:@"UAV1" otherButtonTitles:@"UAV2", nil];
+			[alertButton show];
+			[alertButton release];	
 		
-		point = [sender locationInView:self.mapView];
+			point = [sender locationInView:self.mapView];
+		}
 	}	
 } 
 
@@ -336,15 +330,10 @@ UInt16 oport = 1506;
 	[self.pointWaypoint insertObject:[NSNumber numberWithDouble:p.y-MAPPOINTY] atIndex:wpReach+2];	
 	wpReach+=3;
 	
-	/*int pcnt=[pointWaypoint count];
-	 for (int i=0; i<pcnt; i++) {
-		NSLog(@"waypoint %i = %@", i, [pointWaypoint objectAtIndex:i]);
-	 }*/
-	
 	NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
 	
 	//send waypoint to server
-	NSString *waypointStr = [NSString stringWithFormat:@"%i,%f,%f,%i",waypointUAV,p.x-MAPPOINTX,p.y-MAPPOINTY,wp_cnt];		
+	NSString *waypointStr = [NSString stringWithFormat:@"1,%i,%f,%f,%i",waypointUAV,p.x-MAPPOINTX,p.y-MAPPOINTY,wp_cnt];		
 	[socket2 sendData:[waypointStr dataUsingEncoding:NSASCIIStringEncoding] toHost:(NSString *)host port:(UInt16)oport withTimeout:-1 tag:0];
 	NSLog (@"Sending waypoint: %@ %f",waypointStr, wpTime);
 	wp_cnt++;
@@ -370,9 +359,14 @@ UInt16 oport = 1506;
 				[self addWaypoint];
 			}
 		}
+		enlargeButton=0;
+		waypointButton=0;
 	}
-	enlargeButton=0;
-	waypointButton=0;
+	
+	//for testing
+	if (alertView == alertButtonTest) {
+			NSLog(@"Target in View");
+	}
 }
 
 // determines which pin and uav to display
@@ -407,14 +401,9 @@ UInt16 oport = 1506;
 	return nil;
 }
 
-//TODO: clear annotation/path for old uav position
 // moves uav according to data received from Webots
 - (void)moveUAVs:(NSMutableArray *)data
-{
-	/*for (int i=0; i<4; i++) {
-		NSLog(@"uav pos %i = %@", i, [data objectAtIndex:i]);
-	}*/
-	
+{	
 	MKMapPoint p1 = MKMapPointMake([[data objectAtIndex:0] doubleValue],[[data objectAtIndex:1]doubleValue]);
 	MKMapPoint p2 = MKMapPointMake([[data objectAtIndex:2] doubleValue],[[data objectAtIndex:3]doubleValue]);
 	p1.x += MAPPOINTX; p2.x += MAPPOINTX;
@@ -424,30 +413,30 @@ UInt16 oport = 1506;
 	
 	NSTimeInterval currTime = [[NSDate date] timeIntervalSince1970]*1000;
 	if (currTime > mvLastTime+interval) {
-		NSLog(@"moveUAVs: p1=%f,%f p2=%f,%f %f", p1.x-MAPPOINTX, p1.y-MAPPOINTY, p2.x -MAPPOINTX, p2.y-MAPPOINTY, currTime);
+		//NSLog(@"moveUAVs: p1=%f,%f p2=%f,%f %f", p1.x-MAPPOINTX, p1.y-MAPPOINTY, p2.x-MAPPOINTX, p2.y-MAPPOINTY, currTime);
 		mvLastTime = [[NSDate date] timeIntervalSince1970]*1000;		
+	
+		[self.mapView removeAnnotation:myAnn1]; 
+		[self.mapView removeAnnotation:myAnn2]; 
+	
+		/*MyAnnotation1 **/myAnn1 = [[MyAnnotation1 alloc] init];
+		myAnn1.latitude = [NSNumber numberWithDouble:uavCoord1.latitude];
+		myAnn1.longitude = [NSNumber numberWithDouble:uavCoord1.longitude];	
+		[self.mapView addAnnotation:myAnn1];
+		[myAnn1 release];	
+	
+		/*MyAnnotation2 **/myAnn2 = [[MyAnnotation2 alloc] init];
+		myAnn2.latitude = [NSNumber numberWithDouble:uavCoord2.latitude];
+		myAnn2.longitude = [NSNumber numberWithDouble:uavCoord2.longitude];	
+		[self.mapView addAnnotation:myAnn2];
+		[myAnn2 release];
 	}
-	
-	//[mapView removeAnnotations:mapView.annotations]; 
-	
-	MyAnnotation1 *myAnn1 = [[MyAnnotation1 alloc] init];
-	myAnn1.latitude = [NSNumber numberWithDouble:uavCoord1.latitude];
-	myAnn1.longitude = [NSNumber numberWithDouble:uavCoord1.longitude];	
-	[self.mapView addAnnotation:myAnn1];
-	[myAnn1 release];	
-	
-	MyAnnotation2 *myAnn2 = [[MyAnnotation2 alloc] init];
-	myAnn2.latitude = [NSNumber numberWithDouble:uavCoord2.latitude];
-	myAnn2.longitude = [NSNumber numberWithDouble:uavCoord2.longitude];	
-	[self.mapView addAnnotation:myAnn2];
-	[myAnn2 release];
 }
 
-//TODO: determine threshold for waypoint reached
 // determine if uav reached waypoint
 - (void)wpReached:(int *)data
 {
-	int threshold = 10;
+	int threshold = 5;
 	//uav1
 	if (wpReach1 < wpReach) {
 		double a = [[pointWaypoint objectAtIndex:wpReach1] doubleValue];
@@ -473,8 +462,8 @@ UInt16 oport = 1506;
 		if (a == 2) {
 			double b = [[pointWaypoint objectAtIndex:wpReach2+1] doubleValue];
 			double c = [[pointWaypoint objectAtIndex:wpReach2+2] doubleValue];
-			float x1 = pow(data[0] - b, 2.0);
-			float y1 = pow(data[1] - c, 2.0);
+			float x1 = pow(data[2] - b, 2.0);
+			float y1 = pow(data[3] - c, 2.0);
 			float dist = sqrt((float)(x1+y1));		
 			if (dist < threshold) {
 				NSTimeInterval wpTime = [[NSDate date] timeIntervalSince1970]*1000;
@@ -492,47 +481,74 @@ UInt16 oport = 1506;
 - (void)targetInView:(int *)data
 {
 	int x1, y1, x2, y2;
-	int threshold = 50;
-	float dist;
+	int threshold = 65;
+	float dist1, dist2;
 	
 	NSTimeInterval tgtTime = [[NSDate date] timeIntervalSince1970]*1000;
-	
-	//NSLog(@"target (%i,%i)", data[4], data[5]);
-	
+		
 	// uav1
-	x1 = pow(data[0] - data[4], 2.0);
-	y1 = pow(data[1] - data[5], 2.0);
-	dist = sqrt((float)(x1+y1));
-	if (initDist == 0) {
-		NSLog(@"init dist between uav1 (%i,%i) and target (%i,%i): %f", data[0], data[1], data [4], data[5], dist);	
-	}
-	if (dist < threshold) { // find out dist of cam view
-		if ([[NSDate date] timeIntervalSince1970]*1000 > tgtLastTime1+interval) {
-			NSLog(@"Target in UAV 1 view dist: %f %f", dist, tgtTime);
-			tgtLastTime1 = [[NSDate date] timeIntervalSince1970]*1000;		
+	if (data[0] != 0 && data[1] != 0) {
+		x1 = pow(data[0] - data[4], 2.0);
+		y1 = pow(data[1] - data[5], 2.0);
+		dist1 = sqrt((float)(x1+y1));
+		if (initDist == 0) {
+			NSLog(@"init dist between uav1 (%i,%i) and target (%i,%i): %f", data[0], data[1], data [4], data[5], dist1);	
+		}	
+		if (dist1 < threshold) { // find out dist of cam view
+			if (tgtTime > tgtLastTime1+interval) {
+				NSLog(@"Target in UAV 1 view dist: %f %f", dist1, tgtTime);
+				tgtLastTime1 = [[NSDate date] timeIntervalSince1970]*1000;	
+				//for testing
+				/*alertButtonTest = [[UIAlertView alloc] initWithTitle:@"" message:@"Target in UAV1 view" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				[alertButtonTest show];
+				[alertButtonTest release];*/			
+			}
 		}
-	}							  
-							  
+	}								  
+					
 	// uav2
-	x2 = pow(data[2] - data[4], 2.0);
-	y2 = pow(data[3] - data[5], 2.0);
-	dist = sqrt((float)(x2+y2));	
-	if (initDist == 0) {
-		NSLog(@"init dist between uav2 (%i,%i) and target(%i,%i): %f", data[2], data[3], data [4], data[5], dist);		
-		initDist = 1;
-	}	
-	if (dist < threshold) { // find out dist of cam view
-		if ([[NSDate date] timeIntervalSince1970]*1000 > tgtLastTime2+interval) {
-			NSLog(@"Target in UAV 2 view dist: %f %f", dist, tgtTime);
-			tgtLastTime2 = [[NSDate date] timeIntervalSince1970]*1000;		
+	if (data[2] != 0 && data[3] != 0) {	
+		x2 = pow(data[2] - data[4], 2.0);
+		y2 = pow(data[3] - data[5], 2.0);
+		dist2 = sqrt((float)(x2+y2));	
+		if (initDist == 0) {
+			NSLog(@"init dist between uav2 (%i,%i) and target(%i,%i): %f", data[2], data[3], data [4], data[5], dist2);		
+			initDist = 1;
+		}	
+		if (dist2 < threshold) { // find out dist of cam view
+			if (tgtTime > tgtLastTime2+interval) {
+				NSLog(@"Target in UAV 2 view dist: %f %f", dist2, tgtTime);
+				tgtLastTime2 = [[NSDate date] timeIntervalSince1970]*1000;		
+				//for testing
+				/*alertButtonTest = [[UIAlertView alloc] initWithTitle:@"" message:@"Target in UAV2 view" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				[alertButtonTest show];
+				[alertButtonTest release];	*/			
+			}
 		}
-	}	
+	}			
+	
+	if ((tgtTime > tgtLastTime+interval) && (data[0] != 0) && (data[2] != 0)) {
+		NSLog(@"p1=%i,%i p2=%i,%i target=%i,%i dist1=%f dist2=%f %f", data[0], data[1], data [2], data[3], data[4], data[5], dist1, dist2, tgtTime);		
+		tgtLastTime = [[NSDate date] timeIntervalSince1970]*1000;	
+	
+		int dx1 = pow(data[0] - lastX1, 2.0);
+		int dy1 = pow(data[1] - lastY1, 2.0);
+		totalDist1 += sqrt((float)(dx1+dy1));
+	
+		int dx2 = pow(data[2] - lastX2, 2.0);	
+		int dy2 = pow(data[3] - lastY2, 2.0);
+		totalDist2 += sqrt((float)(dx2+dy2));
+	
+		lastX1 = data[0], lastY1 = data[1];
+		lastX2 = data[2], lastY2 = data[3];	
+	}
 }
 
 // get the coordinates passed from MapViewController
-- (void) setPoint:(NSMutableArray *)passedCoord:(NSMutableArray *)passedPoint:(NSString *)passedStr
+- (void) setPoint:(NSMutableArray *)passedCoord:(int)passedAlg:(NSString *)passedStr
 {
 	initCoord = passedCoord;
+	algID = passedAlg;
 }
 
 - (double) calcDist:(int)x1:(int)y1:(int)x2:(int)y2
@@ -594,11 +610,19 @@ UInt16 oport = 1506;
 	[mapView setRegion:region animated:YES];
 }
 	
+- (void) initVar
+{
+	mvLastTime = 0.0, tgtLastTime1 = 0.0, tgtLastTime2 = 0.0;
+	initDist = 0, wpReach = 0, wpReach1 = 0, wpReach2 = 0;
+	waypointUAV = 0, waypointButton = 0;
+}
+
 - (void)viewDidLoad
 {
 	NSTimeInterval start = [[NSDate date] timeIntervalSince1970]*1000;
 	NSLog(@"Start %f", start);
 	
+	[self initVar];
 	mapView.delegate=self;
 	
 	[self regionSet]; 

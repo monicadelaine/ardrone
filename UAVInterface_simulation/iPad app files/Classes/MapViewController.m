@@ -93,7 +93,7 @@ int algID = 1;
 
 - (void)chooseAlgorithm
 {
-	alertButton2 = [[UIAlertView alloc] initWithTitle:@"Which metric would you like to use?" message:@"" delegate:self cancelButtonTitle:@"User Waypoints" otherButtonTitles:@"Max Unseen", @"ALUL",nil];
+	alertButton2 = [[UIAlertView alloc] initWithTitle:@"Which metric would you like to use?" message:@"" delegate:self cancelButtonTitle:@"User Waypoints" otherButtonTitles:@"QoS", @"QoS + User Waypoints",nil];
 	[alertButton2 show];
 	[alertButton2 release];
 }
@@ -104,10 +104,10 @@ int algID = 1;
 	if(alertView == alertButton) {
 		if(buttonIndex == 0) {
 			NSLog(@"Use default ROI");
-			pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
+			pointStr = [NSString stringWithFormat:@"0,0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
 			RoiViewController *roi = [[RoiViewController alloc] init];
 			roi.title = @"Default ROI";
-			[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
+			[roi setPoint:mapAnnotations:algID:pointStr];
 			[self.navigationController pushViewController:roi animated:YES];
 			[roi release];	
 		} else {
@@ -123,11 +123,11 @@ int algID = 1;
 			algID = 1;
 			[self doneCheck];
 		} else if(buttonIndex == 1) {
-			NSLog(@"Use Max Unseen");
+			NSLog(@"Use QoS Metric");
 			algID = 2;
 			[self doneCheck];
 		} else if(buttonIndex == 2) {
-			NSLog(@"Use ALUL");
+			NSLog(@"Use QoS + Waypoints");
 			algID = 3;
 			[self doneCheck];
 		}	
@@ -145,12 +145,11 @@ int algID = 1;
 		alertButton1 = [[UIAlertView alloc] initWithTitle:@"Incorrect number points for ROI" message:@"Please reset ROI and try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
 		[alertButton1 show];
 		[alertButton1 release];	
-	} else {
-		//pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,254",p1,p2,p3,p4,p5,p6,p7,p8];		
-		pointStr = [NSString stringWithFormat:@"0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
+	} else {		
+		pointStr = [NSString stringWithFormat:@"0,0,%f,%f,%f,%f,%f,%f,%f,%f,%i,254",p1,p2,p3,p4,p5,p6,p7,p8,algID];
 		RoiViewController *roi = [[RoiViewController alloc] init];
 		roi.title = @"ROI";
-		[roi setPoint:mapAnnotations:mapPointAnnotations:pointStr];
+		[roi setPoint:mapAnnotations:algID:pointStr];
 		[self.navigationController pushViewController:roi animated:YES];
 		[roi release];	
 	}
@@ -186,7 +185,7 @@ int algID = 1;
 		//int cnt=[mapAnnotations count];
 		//NSLog(@"coordinate %i = %@, %@ ", cnt/2, myAnnotation.latitude, myAnnotation.longitude);	
 		int mpcnt=[mapPointAnnotations count];
-		NSLog(@"map point %i = %f, %f ", mpcnt/2, p.x, p.y);			
+		NSLog(@"point %i = %f, %f ", mpcnt/2, p.x-MAPPOINTX, p.y-MAPPOINTY);			
 		
 		if (touchCount==0) {
 			p1=p.x-MAPPOINTX; p2=p.y-MAPPOINTY;
