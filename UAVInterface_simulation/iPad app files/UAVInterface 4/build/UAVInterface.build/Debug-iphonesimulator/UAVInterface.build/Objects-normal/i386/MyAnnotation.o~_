@@ -1,0 +1,108 @@
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:68: warning: cannot find interface declaration for 'MyAnnotation3'
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:68: error: no declaration of property 'latitude' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:68: error: no declaration of property 'longitude' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:68: error: no declaration of property '_coordinate' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation3 coordinate]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:73: error: request for member 'latitude' in something not a structure or union
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:74: error: request for member 'longitude' in something not a structure or union
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation3 initWithCoordinate:]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:82: error: '_coordinate' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:82: error: (Each undeclared identifier is reported only once
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:82: error: for each function it appears in.)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation3 dealloc]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:88: error: 'latitude' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:89: error: 'longitude' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:90: error: no super class declared in @interface for 'MyAnnotation3'
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: At top level:
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:162: warning: cannot find interface declaration for 'MyAnnotation4'
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:162: error: no declaration of property 'latitude' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:162: error: no declaration of property 'longitude' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:162: error: no declaration of property 'image' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:162: error: no declaration of property '_coordinate' found in the interface
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation4 coordinate]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:167: error: request for member 'latitude' in something not a structure or union
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:168: error: request for member 'longitude' in something not a structure or union
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation4 initWithCoordinate:]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:176: error: '_coordinate' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m: In function '-[MyAnnotation4 dealloc]':
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:183: error: 'latitude' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:184: error: 'longitude' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:185: error: 'image' undeclared (first use in this function)
+/Users/crawford8/Downloads/UAVInterface pilot study copy/Classes/MyAnnotation.m:186: error: no super class declared in @interface for 'MyAnnotation4'
+{standard input}:782:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" minus "L00000000018$pb"
+{standard input}:782:symbol: "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:757:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" minus "L00000000017$pb"
+{standard input}:757:symbol: "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:725:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" minus "L00000000016$pb"
+{standard input}:725:symbol: "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:700:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" minus "L00000000015$pb"
+{standard input}:700:symbol: "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:670:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0._coordinate$non_lazy_ptr" minus "L00000000014$pb"
+{standard input}:670:symbol: "L_OBJC_IVAR_$_MyAnnotation0._coordinate$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:639:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_5" minus "L00000000013$pb"
+{standard input}:639:symbol: "L_OBJC_SELECTOR_REFERENCES_5" can't be undefined in a subtraction expression
+{standard input}:635:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_2" minus "L00000000013$pb"
+{standard input}:635:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_2" can't be undefined in a subtraction expression
+{standard input}:627:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000013$pb"
+{standard input}:627:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+{standard input}:621:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" minus "L00000000013$pb"
+{standard input}:621:symbol: "L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:614:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000013$pb"
+{standard input}:614:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+{standard input}:608:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" minus "L00000000013$pb"
+{standard input}:608:symbol: "L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:562:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation0._coordinate$non_lazy_ptr" minus "L00000000012$pb"
+{standard input}:562:symbol: "L_OBJC_IVAR_$_MyAnnotation0._coordinate$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:493:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000010$pb"
+{standard input}:493:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression
+{standard input}:487:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_3" minus "L00000000010$pb"
+{standard input}:487:symbol: "L_OBJC_SELECTOR_REFERENCES_3" can't be undefined in a subtraction expression
+{standard input}:479:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000010$pb"
+{standard input}:479:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression
+{standard input}:473:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_2" minus "L00000000010$pb"
+{standard input}:473:symbol: "L_OBJC_SELECTOR_REFERENCES_2" can't be undefined in a subtraction expression
+{standard input}:436:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" minus "L00000000009$pb"
+{standard input}:436:symbol: "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:411:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" minus "L00000000008$pb"
+{standard input}:411:symbol: "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:379:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" minus "L00000000007$pb"
+{standard input}:379:symbol: "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:354:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" minus "L00000000006$pb"
+{standard input}:354:symbol: "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:324:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation._coordinate$non_lazy_ptr" minus "L00000000005$pb"
+{standard input}:324:symbol: "L_OBJC_IVAR_$_MyAnnotation._coordinate$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:293:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_5" minus "L00000000004$pb"
+{standard input}:293:symbol: "L_OBJC_SELECTOR_REFERENCES_5" can't be undefined in a subtraction expression
+{standard input}:289:non-relocatable subtraction expression, "L_OBJC_CLASSLIST_SUP_REFS_$_1" minus "L00000000004$pb"
+{standard input}:289:symbol: "L_OBJC_CLASSLIST_SUP_REFS_$_1" can't be undefined in a subtraction expression
+{standard input}:281:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000004$pb"
+{standard input}:281:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+{standard input}:275:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" minus "L00000000004$pb"
+{standard input}:275:symbol: "L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:268:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_4" minus "L00000000004$pb"
+{standard input}:268:symbol: "L_OBJC_SELECTOR_REFERENCES_4" can't be undefined in a subtraction expression
+{standard input}:262:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" minus "L00000000004$pb"
+{standard input}:262:symbol: "L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:216:non-relocatable subtraction expression, "L_OBJC_IVAR_$_MyAnnotation._coordinate$non_lazy_ptr" minus "L00000000003$pb"
+{standard input}:216:symbol: "L_OBJC_IVAR_$_MyAnnotation._coordinate$non_lazy_ptr" can't be undefined in a subtraction expression
+{standard input}:136:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000001$pb"
+{standard input}:136:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression
+{standard input}:130:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_3" minus "L00000000001$pb"
+{standard input}:130:symbol: "L_OBJC_SELECTOR_REFERENCES_3" can't be undefined in a subtraction expression
+{standard input}:122:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_1" minus "L00000000001$pb"
+{standard input}:122:symbol: "L_OBJC_SELECTOR_REFERENCES_1" can't be undefined in a subtraction expression
+{standard input}:116:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_2" minus "L00000000001$pb"
+{standard input}:116:symbol: "L_OBJC_SELECTOR_REFERENCES_2" can't be undefined in a subtraction expression
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_2
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_1
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_3
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation._coordinate$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation.latitude$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_4
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation.longitude$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_1
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_5
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation0._coordinate$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation0.latitude$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_IVAR_$_MyAnnotation0.longitude$non_lazy_ptr
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_2
