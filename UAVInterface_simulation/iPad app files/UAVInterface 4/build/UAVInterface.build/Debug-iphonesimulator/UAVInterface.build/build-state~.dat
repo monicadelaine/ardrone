@@ -1,0 +1,775 @@
+TUAVInterface
+v7
+r0
+t330533037.391405
+cCheck dependencies
+cProcessInfoPlistFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Info.plist UAVInterface-Info.plist
+cCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib
+cCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib
+cCopyPlistFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/cityList.plist cityList.plist
+cCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Default.png images/Default.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-72.png images/Icon-72.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small-50.png images/Icon-Small-50.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small.png images/Icon-Small.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small@2x.png images/Icon-Small@2x.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon.png images/Icon.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon@2x.png images/Icon@2x.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/iTunesArtwork images/iTunesArtwork
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/uav.png images/../uav.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/uav1.png images/uav1.png
+cCpResource build/Debug-iphonesimulator/UAVInterface.app/uav2.png images/uav2.png
+cProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch.gch UAVInterface_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o /Users/crawford8/Downloads/UAVInterface/Classes/../main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o /Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o /Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o /Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o /Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MyAnnotation.o /Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/RoiViewController.o /Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AsyncUdpSocket.o /Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface normal i386
+cGenerateDSYMFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app.dSYM /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface
+cTouch /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004D5C9B4E0000000000000110
+t1297914702
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004D54CF7C00000000001C41F0
+t1297403772
+s1851888
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
+c000000004D54CF5900000000000004CF
+t1297403737
+s1231
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D02800000000001D6EC0
+t1297403944
+s1928896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D01A000000000000046B
+t1297403930
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h
+c000000004D54CF0300000000000004FE
+t1297403651
+s1278
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004D54DEB600000000000001D0
+t1297407670
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKAnnotation.h
+c000000004D5C9BDB00000000000002BC
+t1297914843
+s700
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004D5C9BDB00000000000002FE
+t1297914843
+s766
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004D5C9BEB000000000018CAB0
+t1297914859
+s1624752
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004D54D2DD00000000000000C4
+t1297404637
+s196
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
+c000000004D4F7A2B0000000000001B19
+t1297054251
+s6937
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/arpa/inet.h
+c000000004D54C5040000000000001533
+t1297401092
+s5427
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/net/if.h
+c000000004D54D0E60000000000003DBA
+t1297404134
+s15802
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/netdb.h
+c000000004D54C504000000000000307F
+t1297401092
+s12415
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/netinet/in.h
+c000000004D54D0E60000000000006BAC
+t1297404134
+s27564
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/sys/ioctl.h
+c000000004D54D0E9000000000000116C
+t1297404137
+s4460
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/sys/socket.h
+c000000004D54D0EB0000000000005ACF
+t1297404139
+s23247
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/../main.m
+c000000004C2536880000000000000AA7
+t1277507208
+s2727
+i<UIKit/UIKit.h>
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.h
+c000000004DDFFBE40000000000000C09
+t1306524644
+s3081
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m
+c000000004DDFFBE40000000000000BCC
+t1306524644
+s3020
+i"AppDelegate.h"
+i"MapViewController.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.h
+c000000004DED05FA00000000000037E2
+t1307379194
+s14306
+i<Foundation/Foundation.h>
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m
+c000000004DF63AB50000000000010308
+t1307982517
+s66312
+i"AsyncUdpSocket.h"
+i<sys/socket.h>
+i<netinet/in.h>
+i<arpa/inet.h>
+i<sys/ioctl.h>
+i<net/if.h>
+i<netdb.h>
+i<CFNetwork/CFNetwork.h>
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.h
+c000000004E00FC9300000000000003DE
+t1308687507
+s990
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i"WorldCitiesListController.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m
+c000000004E01F4FF0000000000001A33
+t1308751103
+s6707
+i"MapViewController.h"
+i"WorldCity.h"
+i"MyAnnotation.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.h
+c000000004E02372400000000000005A5
+t1308768036
+s1445
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m
+c000000004E02381A00000000000006F1
+t1308768282
+s1777
+i"MyAnnotation.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.h
+c000000004E0254960000000000000608
+t1308775574
+s1544
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i<CoreGraphics/CoreGraphics.h>
+i"AsyncUdpSocket.h"
+i"MapViewController.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m
+c000000004E0350FF0000000000005399
+t1308840191
+s21401
+i<QuartzCore/QuartzCore.h>
+i"RoiViewController.h"
+i"MapViewController.h"
+i"MyAnnotation.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.h
+c000000004C2536880000000000000C3E
+t1277507208
+s3134
+i<UIKit/UIKit.h>
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m
+c000000004C2536880000000000001302
+t1277507208
+s4866
+i"WorldCitiesListController.h"
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.h
+c000000004C2536880000000000000BC3
+t1277507208
+s3011
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m
+c000000004C2536880000000000000BE3
+t1277507208
+s3043
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface/UAVInterface_Prefix.pch
+c000000004C2536880000000000000B0D
+t1277507208
+s2829
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app
+t1308840237
+s612
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app.dSYM
+t1308840237
+s102
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Default.png
+t1308840235
+s18806
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon-72.png
+t1308840235
+s1063
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon-Small-50.png
+t1308840235
+s992
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon-Small.png
+t1308840235
+s918
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon-Small@2x.png
+t1308840235
+s1010
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon.png
+t1308840235
+s1007
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Icon@2x.png
+t1308840235
+s1252
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Info.plist
+t1308840235
+s744
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/PkgInfo
+t1308840235
+s8
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface
+t1308840237
+s145336
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/cityList.plist
+t1308840235
+s161
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/MainWindow.nib
+t1308840235
+s1560
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/MapViewController.nib
+t1308840235
+s2031
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/RoiViewController.nib
+t1308840235
+s2312
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/iTunesArtwork
+t1308840235
+s5188
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/uav.png
+t1308840235
+s1209
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/uav1.png
+t1308840235
+s134
+
+N/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/uav2.png
+t1308840235
+s135
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o
+t1308840237
+s60952
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AsyncUdpSocket.o
+t1308840237
+s130260
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o
+t1308840237
+s76520
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MyAnnotation.o
+t1308840237
+s31220
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/RoiViewController.o
+t1308840237
+s120236
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/UAVInterface.LinkFileList
+c000000004E03512B0000000000000475
+t1308840235
+s1141
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o
+t1308840236
+s52468
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o
+t1308840237
+s14024
+
+N/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o
+t1308840236
+s8124
+
+N/Users/crawford8/Downloads/UAVInterface/cityList.plist
+c000000004DEE5F6F0000000000000221
+t1307467631
+s545
+
+N/Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib
+c000000004DDAC7A60000000000006C13
+t1306183590
+s27667
+
+N/Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib
+c000000004DFA3D520000000000006232
+t1308245330
+s25138
+
+N/Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib
+c000000004DFB804700000000000074CD
+t1308328007
+s29901
+
+N/Users/crawford8/Downloads/UAVInterface/images/../uav.png
+c000000004DFCDB7700000000000004B9
+t1308416887
+s1209
+
+N/Users/crawford8/Downloads/UAVInterface/images/Default.png
+c000000004C1BFDDB0000000000004976
+t1276902875
+s18806
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon-72.png
+c000000004C1FC4110000000000000427
+t1277150225
+s1063
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon-Small-50.png
+c000000004C1FC41100000000000003E0
+t1277150225
+s992
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon-Small.png
+c000000004C1BFDDB0000000000000396
+t1276902875
+s918
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon-Small@2x.png
+c000000004C1BFDDB00000000000003F2
+t1276902875
+s1010
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon.png
+c000000004C1BFDDB00000000000003EF
+t1276902875
+s1007
+
+N/Users/crawford8/Downloads/UAVInterface/images/Icon@2x.png
+c000000004C1BFDDB00000000000004E4
+t1276902875
+s1252
+
+N/Users/crawford8/Downloads/UAVInterface/images/iTunesArtwork
+c000000004C224B310000000000001444
+t1277315889
+s5188
+
+N/Users/crawford8/Downloads/UAVInterface/images/uav1.png
+c000000004E0232B40000000000000086
+t1308766900
+s134
+
+N/Users/crawford8/Downloads/UAVInterface/images/uav2.png
+c000000004E0232B90000000000000087
+t1308766905
+s135
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch.gch
+t1308840236
+s16707792
+
+NUAVInterface-Info.plist
+c000000004C1FC411000000000000046A
+t1277150225
+s1130
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies330533035#330533035#0(0"0(0#1#0"8626252928#0"0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o /Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.880224
+e330533037.011328
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m330533036#330533037#0(0"0(0#0#61"/Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m8645042624#2047"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/AppDelegate.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AsyncUdpSocket.o /Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533037.040385
+e330533037.322219
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AsyncUdpSocket.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m330533037#330533037#0(0"0(0#0#64"/Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m8640574848#2053"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/AsyncUdpSocket.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AsyncUdpSocket.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o /Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.881115
+e330533037.040264
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m: In function '-[MapViewController setMapType:]':
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: 'RoiViewController' may not respond to '-setCoord:'
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: (Messages without a matching method signature
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: will be assumed to return 'id' and accept
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: '...' as arguments.)
+o/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:99: warning: 'RoiViewController' may not respond to '-setPoint:'
+lSLF07#2@75"Compile /Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m330533036#330533037#0(735"/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m: In function '-[MapViewController setMapType:]':/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: 'RoiViewController' may not respond to '-setCoord:'/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: (Messages without a matching method signature/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: will be assumed to return 'id' and accept/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:98: warning: '...' as arguments.)/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m:99: warning: 'RoiViewController' may not respond to '-setPoint:'3(22@51"'RoiViewController' may not respond to '-setCoord:'330533036#117#133#0(6@67"/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m330443903#98#0#98#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)330533036#250#127#0(6@67"/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m330443903#98#0#98#0#0"0(22@51"'RoiViewController' may not respond to '-setPoint:'330533036#602#133#0(6@67"/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m330443903#99#0#99#0#26"'*' may not respond to '*'0(0#0#67"/Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m8644438112#2059"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/MapViewController.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MyAnnotation.o /Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.993217
+e330533037.109284
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MyAnnotation.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@70"Compile /Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m330533036#330533037#0(0"0(0#0#62"/Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m8618340640#2049"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/MyAnnotation.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MyAnnotation.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/RoiViewController.o /Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533037.011463
+e330533037.231512
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/RoiViewController.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@75"Compile /Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m330533037#330533037#0(0"0(0#0#67"/Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m8614132672#2059"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/RoiViewController.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/RoiViewController.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o /Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.882084
+e330533036.993090
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@83"Compile /Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m330533036#330533036#0(0"0(0#0#75"/Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m8641674208#2075"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/WorldCitiesListController.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o /Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.954744
+e330533037.047521
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@67"Compile /Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m330533036#330533037#0(0"0(0#0#59"/Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m8625724512#2043"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/WorldCity.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o0#
+
+CCompileC build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o /Users/crawford8/Downloads/UAVInterface/Classes/../main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533036.879063
+e330533036.954463
+r1
+xCompileC
+xbuild/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o
+x/Users/crawford8/Downloads/UAVInterface/Classes/../main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@65"Compile /Users/crawford8/Downloads/UAVInterface/Classes/../main.m330533036#330533036#0(0"0(0#0#57"/Users/crawford8/Downloads/UAVInterface/Classes/../main.m8644910624#2036"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch -c /Users/crawford8/Downloads/UAVInterface/Classes/../main.m -o /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib
+s330533035.419797
+e330533035.849872
+r1
+xCompileXIB
+x/Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib
+lSLF07#2@34"CompileXIB en.lproj/MainWindow.xib330533035#330533035#0(0"0(0#0#63"/Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib8641544448#596"    cd /Users/crawford8/Downloads/UAVInterface    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/MainWindow.nib /Users/crawford8/Downloads/UAVInterface/en.lproj/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib
+s330533035.420576
+e330533035.894566
+r1
+xCompileXIB
+x/Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib
+lSLF07#2@41"CompileXIB en.lproj/MapViewController.xib330533035#330533035#0(0"0(0#0#70"/Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib8640421088#610"    cd /Users/crawford8/Downloads/UAVInterface    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/MapViewController.nib /Users/crawford8/Downloads/UAVInterface/en.lproj/MapViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCompileXIB /Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib
+s330533035.421769
+e330533035.910746
+r1
+xCompileXIB
+x/Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib
+lSLF07#2@41"CompileXIB en.lproj/RoiViewController.xib330533035#330533035#0(0"0(0#0#70"/Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib8639088608#610"    cd /Users/crawford8/Downloads/UAVInterface    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/en.lproj/RoiViewController.nib /Users/crawford8/Downloads/UAVInterface/en.lproj/RoiViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCopyPlistFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/cityList.plist cityList.plist
+s330533035.421158
+e330533035.448134
+r1
+xCopyPlistFile
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/cityList.plist
+xcityList.plist
+lSLF07#2@19"Copy cityList.plist330533035#330533035#0(0"0(0#0#54"/Users/crawford8/Downloads/UAVInterface/cityList.plist8639099808#396"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist --convert binary1 cityList.plist --outdir /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Default.png images/Default.png
+s330533035.448248
+e330533035.456340
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Default.png
+ximages/Default.png
+lSLF07#2@23"Copy images/Default.png330533035#330533035#0(0"0(0#0#58"/Users/crawford8/Downloads/UAVInterface/images/Default.png8638907904#484"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Default.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-72.png images/Icon-72.png
+s330533035.449238
+e330533035.457951
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon-72.png
+ximages/Icon-72.png
+lSLF07#2@23"Copy images/Icon-72.png330533035#330533035#0(0"0(0#0#58"/Users/crawford8/Downloads/UAVInterface/images/Icon-72.png8619116160#484"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon-72.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small-50.png images/Icon-Small-50.png
+s330533035.449898
+e330533035.465437
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon-Small-50.png
+ximages/Icon-Small-50.png
+lSLF07#2@29"Copy images/Icon-Small-50.png330533035#330533035#0(0"0(0#0#64"/Users/crawford8/Downloads/UAVInterface/images/Icon-Small-50.png8618501856#490"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon-Small-50.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small.png images/Icon-Small.png
+s330533035.450685
+e330533035.458067
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon-Small.png
+ximages/Icon-Small.png
+lSLF07#2@26"Copy images/Icon-Small.png330533035#330533035#0(0"0(0#0#61"/Users/crawford8/Downloads/UAVInterface/images/Icon-Small.png8617068704#487"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon-Small.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon-Small@2x.png images/Icon-Small@2x.png
+s330533035.451371
+e330533035.471365
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon-Small@2x.png
+ximages/Icon-Small@2x.png
+lSLF07#2@29"Copy images/Icon-Small@2x.png330533035#330533035#0(0"0(0#0#64"/Users/crawford8/Downloads/UAVInterface/images/Icon-Small@2x.png8616524928#490"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon-Small@2x.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon.png images/Icon.png
+s330533035.451979
+e330533035.463889
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon.png
+ximages/Icon.png
+lSLF07#2@20"Copy images/Icon.png330533035#330533035#0(0"0(0#0#55"/Users/crawford8/Downloads/UAVInterface/images/Icon.png8616264000#481"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/Icon@2x.png images/Icon@2x.png
+s330533035.452578
+e330533035.464024
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/Icon@2x.png
+ximages/Icon@2x.png
+lSLF07#2@23"Copy images/Icon@2x.png330533035#330533035#0(0"0(0#0#58"/Users/crawford8/Downloads/UAVInterface/images/Icon@2x.png8615455104#484"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/Icon@2x.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/iTunesArtwork images/iTunesArtwork
+s330533035.456455
+e330533035.480978
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/iTunesArtwork
+ximages/iTunesArtwork
+lSLF07#2@25"Copy images/iTunesArtwork330533035#330533035#0(0"0(0#0#60"/Users/crawford8/Downloads/UAVInterface/images/iTunesArtwork8614876384#486"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/iTunesArtwork /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/uav.png images/../uav.png
+s330533035.458132
+e330533035.478576
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/uav.png
+ximages/../uav.png
+lSLF07#2@22"Copy images/../uav.png330533035#330533035#0(0"0(0#0#57"/Users/crawford8/Downloads/UAVInterface/images/../uav.png8614504448#483"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/../uav.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/uav1.png images/uav1.png
+s330533035.462487
+e330533035.469069
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/uav1.png
+ximages/uav1.png
+lSLF07#2@20"Copy images/uav1.png330533035#330533035#0(0"0(0#0#55"/Users/crawford8/Downloads/UAVInterface/images/uav1.png8613800384#481"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/uav1.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CCpResource build/Debug-iphonesimulator/UAVInterface.app/uav2.png images/uav2.png
+s330533035.464095
+e330533035.471912
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/UAVInterface.app/uav2.png
+ximages/uav2.png
+lSLF07#2@20"Copy images/uav2.png330533035#330533035#0(0"0(0#0#55"/Users/crawford8/Downloads/UAVInterface/images/uav2.png8606669568#481"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/UAVInterface/images/uav2.png /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+
+CGenerateDSYMFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app.dSYM /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface
+s330533037.361177
+e330533037.387798
+r1
+xGenerateDSYMFile
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app.dSYM
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface
+lSLF07#2@124"GenerateDSYMFile build/Debug-iphonesimulator/UAVInterface.app.dSYM build/Debug-iphonesimulator/UAVInterface.app/UAVInterface330533037#330533037#0(0"0(0#0#97"/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface8641482848#401"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface -o /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app.dSYM0#
+
+CLd /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface normal i386
+s330533037.322334
+e330533037.361107
+r1
+xLd
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface
+xnormal
+xi386
+lSLF07#2@102"Link /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface330533037#330533037#0(0"0(0#0#0"8644576768#989"    cd /Users/crawford8/Downloads/UAVInterface    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -filelist /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/UAVInterface.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework MapKit -framework CoreData -framework CFNetwork -o /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/UAVInterface0#
+
+CProcessInfoPlistFile /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Info.plist UAVInterface-Info.plist
+s330533035.416063
+e330533035.419719
+r1
+xProcessInfoPlistFile
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Info.plist
+xUAVInterface-Info.plist
+lSLF07#2@31"Process UAVInterface-Info.plist330533035#330533035#0(0"0(0#0#63"/Users/crawford8/Downloads/UAVInterface/UAVInterface-Info.plist8640801984#497"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility UAVInterface-Info.plist -genpkginfo /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app/Info.plist0#
+
+CProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch.gch UAVInterface_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s330533035.910887
+e330533036.878929
+r1
+xProcessPCH
+x/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch.gch
+xUAVInterface_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@34"Precompile UAVInterface_Prefix.pch330533035#330533036#0(0"0(0#0#63"/Users/crawford8/Downloads/UAVInterface/UAVInterface_Prefix.pch8642280224#1911"    cd /Users/crawford8/Downloads/UAVInterface    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-generated-files.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-own-target-headers.hmap -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-all-target-headers.hmap -iquote /Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/UAVInterface-project-headers.hmap -F/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/UAVInterface/build/UAVInterface.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -c /Users/crawford8/Downloads/UAVInterface/UAVInterface_Prefix.pch -o /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-gccmrvgojrgnstaontvpmarrjrqv/UAVInterface_Prefix.pch.gch0#
+
+CTouch /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app
+s330533037.387893
+e330533037.391375
+r1
+xTouch
+x/Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app
+lSLF07#2@90"Touch /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app330533037#330533037#0(0"0(0#0#0"8641384352#285"    cd /Users/crawford8/Downloads/UAVInterface    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/crawford8/Downloads/UAVInterface/build/Debug-iphonesimulator/UAVInterface.app0#
+

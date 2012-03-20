@@ -1,0 +1,15 @@
+-Start server
+ 
+ cd Desktop/matlabEngServer/
+
+
+ gcc -o uavserver uavServer.c -lpthread -I/usr/local/matlab/R2009a/extern/include/ -L/usr/local/matlab/R2009a/bin/glnx86/ -leng -lm -lmat -lmx -lut
+
+gcc -o uavserver uavServer.c -lpthread -I/usr/local/matlab/extern/include/ -L/usr/local/matlab/bin/glnx86/ -leng -lm -lmat -lmx -lut
+
+
+ ./uavserver
+
+-Start Webots
+
+-Start Interface

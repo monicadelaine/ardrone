@@ -1,0 +1,21 @@
+//in matlab (doesn't work with server)
+mex('-f', fullfile(matlabroot, 'bin', 'engopts.sh'), 'engdemo.c');
+
+setenv LD_LIBRARY_PATH usr/local/matlab/R2009a/bin/glnx86:usr/local/matlab/R2009a/sys/os/glnx86
+
+mex('-v', '-f', fullfile(matlabroot, 'bin', 'engopts.sh'), '-lpthread', 'engdemo.c');
+
+!./engdemo
+
+//on command line (works with server)
+gcc -o uavserver uavServer.c -lpthread -I/usr/local/matlab/R2009a/extern/include/ -L/usr/local/matlab/R2009a/bin/glnx86/ -leng -lm -lmat -lmx -lut
+
+./uavserver
+
+
+//note
+matlabroot = usr/local/matlab/R2009a
+
+install csh => sudo apt-get install csh
+
+add to .bashrc => export LD_LIBRARY_PATH = /usr/local/matlab/R2009a/bin/glnx86:usr/local/matlab/R2009a/sys/os/glnx86

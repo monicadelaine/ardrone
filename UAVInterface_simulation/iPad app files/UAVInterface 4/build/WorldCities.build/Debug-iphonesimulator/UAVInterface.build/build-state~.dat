@@ -1,0 +1,523 @@
+TUAVInterface
+v7
+r0
+t327943510.112675
+cCheck dependencies
+cProcessInfoPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Info.plist WorldCities-Info.plist
+cCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+cCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+cCopyPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/cityList.plist cityList.plist
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Default.png images/Default.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small.png images/Icon-Small.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small@2x.png images/Icon-Small@2x.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon.png images/Icon.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon@2x.png images/Icon@2x.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-72.png images/Icon-72.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small-50.png images/Icon-Small-50.png
+cCpResource build/Debug-iphonesimulator/WorldCities.app/iTunesArtwork images/iTunesArtwork
+cProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch.gch WorldCities_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o /Users/crawford8/Downloads/WorldCities/Classes/../main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o /Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o /Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o /Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o /Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities normal i386
+cGenerateDSYMFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app.dSYM /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities
+cTouch /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004D5C9B4E0000000000000110
+t1297914702
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D02800000000001D6EC0
+t1297403944
+s1928896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D01A000000000000046B
+t1297403930
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004D54DEB600000000000001D0
+t1297407670
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004D5C9BDB00000000000002FE
+t1297914843
+s766
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004D5C9BEB000000000018CAB0
+t1297914859
+s1624752
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
+c000000004D4F7A2B0000000000001B19
+t1297054251
+s6937
+
+N/Users/crawford8/Downloads/WorldCities/Classes/../main.m
+c000000004C2536880000000000000AA7
+t1277507208
+s2727
+i<UIKit/UIKit.h>
+
+N/Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.h
+c000000004C2536880000000000000B7B
+t1277507208
+s2939
+
+N/Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m
+c000000004C2536880000000000000B7A
+t1277507208
+s2938
+i"AppDelegate.h"
+i"MapViewController.h"
+
+N/Users/crawford8/Downloads/WorldCities/Classes/MapViewController.h
+c000000004C2536880000000000000C6D
+t1277507208
+s3181
+i<MapKit/MapKit.h>
+i"WorldCitiesListController.h"
+
+N/Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m
+c000000004DDACB8900000000000014DA
+t1306184585
+s5338
+i"MapViewController.h"
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.h
+c000000004C2536880000000000000C3E
+t1277507208
+s3134
+i<UIKit/UIKit.h>
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m
+c000000004C2536880000000000001302
+t1277507208
+s4866
+i"WorldCitiesListController.h"
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/WorldCities/Classes/WorldCity.h
+c000000004C2536880000000000000BC3
+t1277507208
+s3011
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m
+c000000004C2536880000000000000BE3
+t1277507208
+s3043
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/WorldCities/WorldCities_Prefix.pch
+c000000004C2536880000000000000B0D
+t1277507208
+s2829
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app
+t1306250710
+s510
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app.dSYM
+t1306250710
+s102
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Default.png
+t1306250708
+s18806
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon-72.png
+t1306250708
+s1063
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon-Small-50.png
+t1306250708
+s992
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon-Small.png
+t1306250708
+s918
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon-Small@2x.png
+t1306250708
+s1010
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon.png
+t1306250708
+s1007
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Icon@2x.png
+t1306250708
+s1252
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Info.plist
+t1306250708
+s740
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/PkgInfo
+t1306250708
+s8
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities
+t1306250710
+s31188
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/cityList.plist
+t1306250708
+s164
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/en.lproj/MainWindow.nib
+t1306250709
+s1560
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/en.lproj/MapViewController.nib
+t1306250709
+s2122
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/iTunesArtwork
+t1306250708
+s5188
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o
+t1306250710
+s55764
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o
+t1306250710
+s57496
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCities.LinkFileList
+c000000004DDBCDD400000000000002BD
+t1306250708
+s701
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o
+t1306250710
+s52468
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o
+t1306250710
+s14020
+
+N/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o
+t1306250709
+s8120
+
+N/Users/crawford8/Downloads/WorldCities/cityList.plist
+c000000004DDABBCE0000000000000224
+t1306180558
+s548
+
+N/Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+c000000004DDAC7A60000000000006C13
+t1306183590
+s27667
+
+N/Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+c000000004B32888000000000000061A1
+t1261602944
+s24993
+
+N/Users/crawford8/Downloads/WorldCities/images/Default.png
+c000000004C1BFDDB0000000000004976
+t1276902875
+s18806
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-72.png
+c000000004C1FC4110000000000000427
+t1277150225
+s1063
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small-50.png
+c000000004C1FC41100000000000003E0
+t1277150225
+s992
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small.png
+c000000004C1BFDDB0000000000000396
+t1276902875
+s918
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small@2x.png
+c000000004C1BFDDB00000000000003F2
+t1276902875
+s1010
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon.png
+c000000004C1BFDDB00000000000003EF
+t1276902875
+s1007
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon@2x.png
+c000000004C1BFDDB00000000000004E4
+t1276902875
+s1252
+
+N/Users/crawford8/Downloads/WorldCities/images/iTunesArtwork
+c000000004C224B310000000000001444
+t1277315889
+s5188
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch.gch
+t1306250709
+s16707792
+
+NWorldCities-Info.plist
+c000000004C1FC411000000000000046A
+t1277150225
+s1130
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies327943508#327943508#0(0"0(0#1#0"8633580288#0"0#
+
+CCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o /Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.914266
+e327943510.028359
+r1
+xCompileC
+xbuild/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o
+x/Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m327943509#327943510#0(0"0(0#0#60"/Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m8634307872#2023"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch -c /Users/crawford8/Downloads/WorldCities/Classes/AppDelegate.m -o /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/AppDelegate.o0#
+
+CCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o /Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.915094
+e327943510.043733
+r1
+xCompileC
+xbuild/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o
+x/Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m327943509#327943510#0(0"0(0#0#66"/Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m8631703104#2035"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch -c /Users/crawford8/Downloads/WorldCities/Classes/MapViewController.m -o /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/MapViewController.o0#
+
+CCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o /Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.915938
+e327943510.026620
+r1
+xCompileC
+xbuild/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o
+x/Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@82"Compile /Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m327943509#327943510#0(0"0(0#0#74"/Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m8628307360#2051"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch -c /Users/crawford8/Downloads/WorldCities/Classes/WorldCitiesListController.m -o /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCitiesListController.o0#
+
+CCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o /Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.983034
+e327943510.063961
+r1
+xCompileC
+xbuild/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o
+x/Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@66"Compile /Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m327943509#327943510#0(0"0(0#0#58"/Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m8615420064#2019"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch -c /Users/crawford8/Downloads/WorldCities/Classes/WorldCity.m -o /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCity.o0#
+
+CCompileC build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o /Users/crawford8/Downloads/WorldCities/Classes/../main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.913252
+e327943509.982841
+r1
+xCompileC
+xbuild/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o
+x/Users/crawford8/Downloads/WorldCities/Classes/../main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@64"Compile /Users/crawford8/Downloads/WorldCities/Classes/../main.m327943509#327943509#0(0"0(0#0#56"/Users/crawford8/Downloads/WorldCities/Classes/../main.m8626897152#2012"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -include /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch -c /Users/crawford8/Downloads/WorldCities/Classes/../main.m -o /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+s327943508.589469
+e327943509.013018
+r1
+xCompileXIB
+x/Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+lSLF07#2@34"CompileXIB en.lproj/MainWindow.xib327943508#327943509#0(0"0(0#0#62"/Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib8616521632#592"    cd /Users/crawford8/Downloads/WorldCities    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/en.lproj/MainWindow.nib /Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+s327943508.590214
+e327943509.071033
+r1
+xCompileXIB
+x/Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+lSLF07#2@41"CompileXIB en.lproj/MapViewController.xib327943508#327943509#0(0"0(0#0#69"/Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib8616092256#606"    cd /Users/crawford8/Downloads/WorldCities    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/en.lproj/MapViewController.nib /Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCopyPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/cityList.plist cityList.plist
+s327943508.590808
+e327943508.751483
+r1
+xCopyPlistFile
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/cityList.plist
+xcityList.plist
+lSLF07#2@19"Copy cityList.plist327943508#327943508#0(0"0(0#0#53"/Users/crawford8/Downloads/WorldCities/cityList.plist8615921824#393"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist --convert binary1 cityList.plist --outdir /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Default.png images/Default.png
+s327943508.591401
+e327943508.634663
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Default.png
+ximages/Default.png
+lSLF07#2@23"Copy images/Default.png327943508#327943508#0(0"0(0#0#57"/Users/crawford8/Downloads/WorldCities/images/Default.png8615632512#480"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Default.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-72.png images/Icon-72.png
+s327943508.594496
+e327943508.634946
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon-72.png
+ximages/Icon-72.png
+lSLF07#2@23"Copy images/Icon-72.png327943508#327943508#0(0"0(0#0#57"/Users/crawford8/Downloads/WorldCities/images/Icon-72.png8614505216#480"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon-72.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small-50.png images/Icon-Small-50.png
+s327943508.595090
+e327943508.638725
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon-Small-50.png
+ximages/Icon-Small-50.png
+lSLF07#2@29"Copy images/Icon-Small-50.png327943508#327943508#0(0"0(0#0#63"/Users/crawford8/Downloads/WorldCities/images/Icon-Small-50.png8613972512#486"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon-Small-50.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small.png images/Icon-Small.png
+s327943508.592046
+e327943508.633390
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon-Small.png
+ximages/Icon-Small.png
+lSLF07#2@26"Copy images/Icon-Small.png327943508#327943508#0(0"0(0#0#60"/Users/crawford8/Downloads/WorldCities/images/Icon-Small.png8615551968#483"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon-Small.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon-Small@2x.png images/Icon-Small@2x.png
+s327943508.592682
+e327943508.634829
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon-Small@2x.png
+ximages/Icon-Small@2x.png
+lSLF07#2@29"Copy images/Icon-Small@2x.png327943508#327943508#0(0"0(0#0#63"/Users/crawford8/Downloads/WorldCities/images/Icon-Small@2x.png8615414400#486"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon-Small@2x.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon.png images/Icon.png
+s327943508.593317
+e327943508.633535
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon.png
+ximages/Icon.png
+lSLF07#2@20"Copy images/Icon.png327943508#327943508#0(0"0(0#0#54"/Users/crawford8/Downloads/WorldCities/images/Icon.png8615019936#477"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/Icon@2x.png images/Icon@2x.png
+s327943508.593893
+e327943508.638483
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/Icon@2x.png
+ximages/Icon@2x.png
+lSLF07#2@23"Copy images/Icon@2x.png327943508#327943508#0(0"0(0#0#57"/Users/crawford8/Downloads/WorldCities/images/Icon@2x.png8614607872#480"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/Icon@2x.png /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CCpResource build/Debug-iphonesimulator/WorldCities.app/iTunesArtwork images/iTunesArtwork
+s327943508.633612
+e327943508.651504
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/WorldCities.app/iTunesArtwork
+ximages/iTunesArtwork
+lSLF07#2@25"Copy images/iTunesArtwork327943508#327943508#0(0"0(0#0#59"/Users/crawford8/Downloads/WorldCities/images/iTunesArtwork8609054496#482"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/crawford8/Downloads/WorldCities/images/iTunesArtwork /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
+CGenerateDSYMFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app.dSYM /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities
+s327943510.091022
+e327943510.109217
+r1
+xGenerateDSYMFile
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app.dSYM
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities
+lSLF07#2@121"GenerateDSYMFile build/Debug-iphonesimulator/WorldCities.app.dSYM build/Debug-iphonesimulator/WorldCities.app/WorldCities327943510#327943510#0(0"0(0#0#94"/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities8616313024#395"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities -o /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app.dSYM0#
+
+CLd /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities normal i386
+s327943510.064087
+e327943510.090880
+r1
+xLd
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities
+xnormal
+xi386
+lSLF07#2@99"Link /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities327943510#327943510#0(0"0(0#0#0"8618312672#959"    cd /Users/crawford8/Downloads/WorldCities    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -filelist /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/Objects-normal/i386/WorldCities.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework MapKit -framework CoreData -o /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/WorldCities0#
+
+CProcessInfoPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Info.plist WorldCities-Info.plist
+s327943508.586172
+e327943508.589381
+r1
+xProcessInfoPlistFile
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Info.plist
+xWorldCities-Info.plist
+lSLF07#2@30"Process WorldCities-Info.plist327943508#327943508#0(0"0(0#0#61"/Users/crawford8/Downloads/WorldCities/WorldCities-Info.plist8626001024#491"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility WorldCities-Info.plist -genpkginfo /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app/Info.plist0#
+
+CProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch.gch WorldCities_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s327943509.071160
+e327943509.913148
+r1
+xProcessPCH
+x/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch.gch
+xWorldCities_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@33"Precompile WorldCities_Prefix.pch327943509#327943509#0(0"0(0#0#61"/Users/crawford8/Downloads/WorldCities/WorldCities_Prefix.pch8627387680#1888"    cd /Users/crawford8/Downloads/WorldCities    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-generated-files.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-own-target-headers.hmap -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-all-target-headers.hmap -iquote /Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/WorldCities-project-headers.hmap -F/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator -I/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/include -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources/i386 -I/Users/crawford8/Downloads/WorldCities/build/WorldCities.build/Debug-iphonesimulator/UAVInterface.build/DerivedSources -c /Users/crawford8/Downloads/WorldCities/WorldCities_Prefix.pch -o /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorldCities_Prefix-amdqnfxskklmtzaeogoksstzkgqz/WorldCities_Prefix.pch.gch0#
+
+CTouch /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app
+s327943510.109316
+e327943510.112645
+r1
+xTouch
+x/Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app
+lSLF07#2@88"Touch /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app327943510#327943510#0(0"0(0#0#0"8615941568#282"    cd /Users/crawford8/Downloads/WorldCities    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/crawford8/Downloads/WorldCities/build/Debug-iphonesimulator/WorldCities.app0#
+
