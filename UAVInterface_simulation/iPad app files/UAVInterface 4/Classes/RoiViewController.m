@@ -27,6 +27,8 @@ int lastX1=-2, lastY1=132, lastX2=-2, lastY2=132, lastX3 = -2, lastY3 = 132, las
 UIImageView *myImage1, *myImage2, *myImage3, *myImage4;
 MyAnnotation *myAnn;   MyAnnotation0 *myAnn0; MyAnnotation3 *myAnn3; MyAnnotation5 *myAnn5; //wp
 MyAnnotation1 *myAnn1; MyAnnotation2 *myAnn2; MyAnnotation4 *myAnn4; MyAnnotation6 *myAnn6; //uav
+MKPolyline *polyl, *polyl2, *polyl3, *polyl4; //route
+MKPolygon *poly, *poly2, *poly3, *poly4; //overlay
 
 NSString *pointStr;
 CGPoint point;
@@ -39,7 +41,6 @@ int width = 64, height = 64;
 BOOL connected = FALSE;
 
 NSString * host = @"130.160.47.198";
-//NSString * host = @"130.160.68.35";
 UInt16 iport = 1501;
 UInt16 oport = 1506;
 
@@ -104,9 +105,14 @@ UInt16 oport = 1506;
 		}
 	} else { // or uav movement data	
 		int *byteData1 = (int)[data bytes];
-		[self targetInView:byteData1];
-		[self wpReached:byteData1];
-		[self moveUAVs:byteData1];
+		if (byteData1[18] == -2) {
+			[self targetInView:byteData1];
+			[self wpReached:byteData1];
+			[self moveUAVs:byteData1];
+			//[self addRouteLine:byteData1];
+		} else {
+			//[self addOverlayArea:byteData1]; 
+		}
 	}
 	[sock receiveWithTimeout:-1 tag:0]; 
 	return YES;
@@ -341,6 +347,30 @@ UInt16 oport = 1506;
 				alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:nil otherButtonTitles:@"UAV1",@"UAV2",@"UAV3", nil];
 			} else if (numUAV == 4) {
 				alertButton = [[UIAlertView alloc] initWithTitle:@"" message:@"Choose waypoint for" delegate:self cancelButtonTitle:nil otherButtonTitles:@"UAV1",@"UAV2",@"UAV3",@"UAV4", nil];
+				
+				UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(207.0, 73.0, 13.0, 13.0)];
+				UIImage *img1 = [UIImage imageNamed:@"uav1.png"];
+				[imageView1 setImage:img1];
+				[alertButton addSubview:imageView1];
+				[imageView1 release];
+				
+				UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(207.0, 122.0, 13.0, 13.0)];
+				UIImage *img2 = [UIImage imageNamed:@"uav2_.png"];
+				[imageView2 setImage:img2];
+				[alertButton addSubview:imageView2];
+				[imageView2 release];
+				
+				UIImageView *imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(207.0, 173.0, 13.0, 13.0)];
+				UIImage *img3 = [UIImage imageNamed:@"uav3.png"];
+				[imageView3 setImage:img3];
+				[alertButton addSubview:imageView3];
+				[imageView3 release];
+				
+				UIImageView *imageView4 = [[UIImageView alloc] initWithFrame:CGRectMake(207.0, 237.0, 13.0, 13.0)];
+				UIImage *img4 = [UIImage imageNamed:@"uav4.png"];
+				[imageView4 setImage:img4];
+				[alertButton addSubview:imageView4];
+				[imageView4 release];
 			}
 			[alertButton show];
 			[alertButton release];	
@@ -490,6 +520,117 @@ UInt16 oport = 1506;
 	return nil;
 }
 
+// for overlay
+- (MKOverlayView *) mapView:(MKMapView *)theMapView viewForOverlay:(id <MKOverlay>) overlay
+{
+	if ([overlay isKindOfClass:[MKPolygon class]]) {
+		MKPolygonView *aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay]  autorelease];
+		aView.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.2];
+		//aView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+		aView.lineWidth = 1;
+		return aView;	
+	} else if ([overlay isKindOfClass:[MKPolyline class]]) {
+		MKPolylineView *aView = [[[MKPolylineView alloc] initWithPolyline:(MKPolyline*)overlay]  autorelease];
+		aView.fillColor = [UIColor blackColor];
+		aView.strokeColor = [UIColor blackColor];
+		aView.lineWidth = 1;
+		return aView;	
+	}
+	
+	return nil;
+}
+
+// determine which area to display overlay 
+- (void)addOverlayArea:(int *)data
+{
+	int rows = data[0];
+	int cols = data[1];
+	//NSLog(@"overlay %i %i", rows, cols);
+	int bArray[rows][cols];
+	
+	int i, j, k=2;
+	for (i=0; i<cols; i++) {
+		for (j=0; j<rows; j++) {
+			bArray[j][i] = data[k];
+			k+=1; 
+		}
+	}
+		
+	for (i=0; i<rows; i++) {
+		 for (j=0; j<cols; j++) {
+			 printf("%i ",bArray[i][j]);
+		 }
+		 printf("\n");
+	}
+	
+	
+	CLLocationCoordinate2D points[rows];
+	j=0, k=0;
+	for (int i=0; i<rows*cols; i++) {	
+		if (bArray[i][0] >= 0 && bArray[i][1] >= 0) {
+			MKMapPoint p = MKMapPointMake(bArray[i][0]+MAPPOINTX,bArray[i][1]+MAPPOINTY);		
+			CLLocationCoordinate2D coord = MKCoordinateForMapPoint(p);
+			points[j] = coord;
+			j+=1;
+		} /*else if (bArray[i][0] == -2 && bArray[i][1] == -2 ) {
+			MKMapPoint p = MKMapPointMake(bArray[i][0]+MAPPOINTX,bArray[i][1]+MAPPOINTY);		
+			CLLocationCoordinate2D coord = MKCoordinateForMapPoint(p);
+			MKPolygon polygonWithCoordinates:[interior count:j];
+			j+=1;
+		} */else if (bArray[i][0] == -1 && bArray[i][1] == -1 && j > 2){
+			NSLog(@"add points ");
+			for (int a=0; a<j; a++) 
+				NSLog(@" %i ", points[a]);
+			[mapView removeOverlay:poly];
+			poly = [MKPolygon polygonWithCoordinates:points count:j+1];
+			[mapView addOverlay:poly]; 
+			k += 1; j=0;
+		}
+	}
+}
+
+// add route line for each uav
+- (void) addRouteLine:(int *)data
+ {
+	 if (algID != 1) {
+		 	 
+		 CLLocationCoordinate2D points[2];
+ 
+		 for (int i=2; i<10; i+=2) {	
+			 MKMapPoint p = MKMapPointMake(data[i]+MAPPOINTX,data[i+1]+MAPPOINTY);
+			 MKMapPoint r = MKMapPointMake(data[i+8]+MAPPOINTX,data[i+8+1]+MAPPOINTY);	
+ 
+			 //NSLog(@"route: p=%f,%f r=%f,%f", p.x-MAPPOINTX, p.y-MAPPOINTY, r.x-MAPPOINTX, r.y-MAPPOINTY);
+ 
+			 CLLocationCoordinate2D coord1 = MKCoordinateForMapPoint(p);
+			 CLLocationCoordinate2D coord2 = MKCoordinateForMapPoint(r);
+ 
+			 points[0] = coord1, points[1] = coord2;
+			 
+			 if (i==2) {
+				 [mapView removeOverlay:polyl];
+				 polyl = [MKPolyline polylineWithCoordinates:points count:2];
+				 [mapView addOverlay:polyl]; 
+			 }
+			 if (i==4) {
+				 [mapView removeOverlay:polyl2];
+				 polyl2 = [MKPolyline polylineWithCoordinates:points count:2];
+				 [mapView addOverlay:polyl2];
+			 }
+			 if (i==6) {
+				 [mapView removeOverlay:polyl3];
+				 polyl3 = [MKPolyline polylineWithCoordinates:points count:2];
+				 [mapView addOverlay:polyl3];
+			 }
+			 if (i==8) {
+				 [mapView removeOverlay:polyl4];
+				 polyl4 = [MKPolyline polylineWithCoordinates:points count:2];
+				 [mapView addOverlay:polyl4];
+			 }
+		 }	
+	 }
+ }
+
 // moves uav according to data received from Webots
 - (void)moveUAVs:(int *)data
 {
@@ -500,23 +641,19 @@ UInt16 oport = 1506;
 		d=1;
 	}
 	
-	MKMapPoint p1 = MKMapPointMake(data[2],data[3]);
-	MKMapPoint p2 = MKMapPointMake(data[4],data[5]);
-	p1.x += MAPPOINTX; p2.x += MAPPOINTX;
-	p1.y += MAPPOINTY; p2.y += MAPPOINTY;
+	MKMapPoint p1 = MKMapPointMake(data[2]+MAPPOINTX,data[3]+MAPPOINTY);
+	MKMapPoint p2 = MKMapPointMake(data[4]+MAPPOINTX,data[5]+MAPPOINTY);
 	
 	CLLocationCoordinate2D uavCoord1 = MKCoordinateForMapPoint(p1);
 	CLLocationCoordinate2D uavCoord2 = MKCoordinateForMapPoint(p2);
 	CLLocationCoordinate2D uavCoord3, uavCoord4;
 	
 	if (numUAV >= 3) { 
-		MKMapPoint p3 = MKMapPointMake(data[6],data[7]);
-		p3.x += MAPPOINTX; p3.y += MAPPOINTY;
+		MKMapPoint p3 = MKMapPointMake(data[6]+MAPPOINTX,data[7]+MAPPOINTY);
 		uavCoord3 = MKCoordinateForMapPoint(p3);
 	}
 	if (numUAV == 4) { 
-		MKMapPoint p4 = MKMapPointMake(data[8],data[9]);
-		p4.x += MAPPOINTX; p4.y += MAPPOINTY;
+		MKMapPoint p4 = MKMapPointMake(data[8]+MAPPOINTX,data[9]+MAPPOINTY);
 		uavCoord4 = MKCoordinateForMapPoint(p4);
 	}
 	
@@ -680,7 +817,7 @@ UInt16 oport = 1506;
 	}
 	
 	// keeps up with total dist traveled
-	if ((tgtTime > tgtLastTime+interval) && (data[2] != 0) && (data[4] != 0) && (data[6] != 0) && (data[8] != 0)) {
+	if ((tgtTime > tgtLastTime+interval) && (data[2] > 0) && (data[4] > 0) && (data[6] > 0) && (data[8] > 0)) {
 		NSLog(@"target=%i,%i p1=%i,%i p2=%i,%i p3=%i,%i p4=%i,%i dist1=%f dist2=%f dist3=%f dist4=%f %f", 
 			  data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], dist1, dist2, dist3, dist4, tgtTime);		
 		tgtLastTime = [[NSDate date] timeIntervalSince1970]*1000;	

@@ -44,6 +44,8 @@
 - (void)moveUAVs:(int *)data;
 - (void)targetInView:(int *)data;
 - (void)wpReached:(int *)data;
+- (void)addRouteLine:(int *)data;
+- (void)addOverlayArea:(int *)data;
 - (float)distEq:(int)x1:(int)x2:(int)y1:(int)y2;
 - (void)setPoint:(NSMutableArray *)passedCoord:(int)passedAlg:(NSString *)passedStr:(int)passedUAV;
 
