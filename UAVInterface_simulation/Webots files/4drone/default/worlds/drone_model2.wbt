@@ -1,0 +1,527 @@
+#VRML_SIM V6.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.267574 0.687787 0.674799 3.67214
+  position -3.54387 36.7733 -9.48147
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  ambientIntensity 30
+  attenuation 1.08 1 1
+  intensity 0
+  location 0 5 0
+  radius 200
+}
+Solid {
+  translation -0.5 0 -0.5
+  rotation 0.0764443 0.985282 -0.152889 0.0168151
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/dock.png"
+          ]
+        }
+      }
+      geometry ElevationGrid {
+        color Color {
+          color [
+            0.803922 0.498039 0.298039
+            1 1 0
+          ]
+        }
+        colorPerVertex FALSE
+        xDimension 50
+        xSpacing 0.1
+        zDimension 50
+        zSpacing 0.1
+      }
+    }
+  ]
+  boundingObject Shape {
+    geometry IndexedFaceSet {
+      coord Coordinate {
+        point [
+          0 0 0
+          0 0 1
+          1 0 1
+          1 0 0
+        ]
+      }
+      coordIndex [
+        0, 1, 2, 3, -1
+      ]
+    }
+  }
+}
+Solid {
+  translation 1.28 0 2.89
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          emissiveColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.2 0.75 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 2.88 0 1.19
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          emissiveColor 0.211765 0.866667 0.211765
+        }
+      }
+      geometry Box {
+        size 0.2 0.75 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.21 0 1.31
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          emissiveColor 0 0 1
+        }
+      }
+      geometry Sphere {
+        radius 0.3
+      }
+    }
+  ]
+}
+DEF Drone1 Supervisor {
+  translation 3.17 8.31001 2.16
+  children [
+    Transform {
+      translation 0.07 0.595 -0.11
+      rotation -nan -nan -nan 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 1 1 1
+            }
+          }
+          geometry Cylinder {
+            height 0.00999997
+            radius 0.001
+          }
+        }
+      ]
+    }
+    DEF Rotor1 Servo {
+      translation 0.07 0.6 -0.11
+      rotation 0 1 0 9426.66
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor1"
+      position 228200
+    }
+    DEF Rotor2 Servo {
+      translation 0.07 0.6 0.06
+      rotation 0 1 0 27731.7
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor2"
+      position 226834
+    }
+    DEF Rotor3 Servo {
+      translation -0.08 0.6 -0.11
+      rotation 0 1 0 60825.3
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor3"
+      position 226834
+    }
+    DEF Rotor4 Servo {
+      translation -0.08 0.6 0.06
+      rotation 0 1 0 133775
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor4"
+      position 226834
+    }
+    DEF BODY Transform {
+      translation 0 0.59 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.278431 0.121569 0.121569
+            }
+          }
+          geometry Box {
+            size 0.03 0.0300003 0.18
+          }
+        }
+      ]
+    }
+    DEF Rotor1_Bridge Transform {
+      translation 0.04 0.59 -0.08
+      rotation 0 1 0 2.38319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor2_Bridge Transform {
+      translation 0.04 0.59 0.05
+      rotation 0 1 0 1.08319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor3_Bridge Transform {
+      translation -0.05 0.59 -0.08
+      rotation 0 1 0 0.88319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor4_Bridge Transform {
+      translation -0.05 0.59 0.05
+      rotation 0 1 0 1.98319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF CamNode Camera {
+      translation 0 0.57 0
+      rotation 1 0 0 4.7
+      children [
+        Shape {
+          appearance Appearance {
+          }
+          geometry Cylinder {
+            height 0.00999997
+            radius 0.01
+          }
+        }
+      ]
+      name "camera1"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+      windowPosition 0.301263 0.043956
+    }
+  ]
+  controller "drone2_controller"
+}
+DEF Drone2 Supervisor {
+  translation 9.73 9.72 2.71994
+  children [
+    Transform {
+      translation 0.07 0.595 -0.11
+      rotation -nan -nan -nan 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 1 1 1
+            }
+          }
+          geometry Cylinder {
+            height 0.00999997
+            radius 0.001
+          }
+        }
+      ]
+    }
+    DEF Rotor5 Servo {
+      translation 0.07 0.6 -0.11
+      rotation 0 1 0 9426.66
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor5"
+      position 228200
+    }
+    DEF Rotor6 Servo {
+      translation 0.07 0.6 0.06
+      rotation 0 1 0 27731.7
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor6"
+      position 226834
+    }
+    DEF Rotor8 Servo {
+      translation -0.08 0.6 -0.11
+      rotation 0 1 0 60825.3
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor7"
+      position 226834
+    }
+    DEF Rotor8 Servo {
+      translation -0.08 0.6 0.06
+      rotation 0 1 0 133775
+      children [
+        Shape {
+          geometry Box {
+            size 0.00999997 -2.98023e-08 0.11
+          }
+        }
+      ]
+      name "rotor4"
+      position 226834
+    }
+    DEF BODY Transform {
+      translation 0 0.59 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.278431 0.121569 0.121569
+            }
+          }
+          geometry Box {
+            size 0.03 0.0300003 0.18
+          }
+        }
+      ]
+    }
+    DEF Rotor1_Bridge Transform {
+      translation 0.04 0.59 -0.08
+      rotation 0 1 0 2.38319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor2_Bridge Transform {
+      translation 0.04 0.59 0.05
+      rotation 0 1 0 1.08319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor3_Bridge Transform {
+      translation -0.05 0.59 -0.08
+      rotation 0 1 0 0.88319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF Rotor4_Bridge Transform {
+      translation -0.05 0.59 0.05
+      rotation 0 1 0 1.98319
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              emissiveColor 0.560784 0.0980392 0.0980392
+            }
+          }
+          geometry Box {
+            size 0.01 0.0100003 0.12
+          }
+        }
+      ]
+    }
+    DEF CamNode Camera {
+      translation 0 0.57 0
+      rotation 1 0 0 4.7
+      children [
+        Shape {
+          appearance Appearance {
+          }
+          geometry Cylinder {
+            height 0.00999997
+            radius 0.01
+          }
+        }
+      ]
+      name "camera2"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+      windowPosition 0.205521 0.800824
+    }
+  ]
+  controller "dupliDrone2_controller"
+}
+DEF GROUND Solid {
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/dock.png"
+          ]
+          repeatS FALSE
+          repeatT FALSE
+        }
+        textureTransform TextureTransform {
+        }
+      }
+      geometry DEF GROUND_FACE_SET IndexedFaceSet {
+        coord Coordinate {
+          point [
+            20 0 20
+            -20 0 20
+            -20 0 -20
+            20 0 -20
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            1 1
+            1 -1
+            -1 -1
+            -1 1
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0
+        ]
+        texCoordIndex [
+          0, 1, 2, 3
+        ]
+      }
+    }
+  ]
+  boundingObject Transform {
+    translation 0 -1 0
+    children [
+      Box {
+        size 40 2 40
+      }
+    ]
+  }
+  locked TRUE
+}
+DirectionalLight {
+  direction 0.2 -0.4 0.1
+}
+Solid {
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+        }
+      }
+      geometry Box {
+        size 40 0.2 40
+      }
+    }
+  ]
+  boundingObject Box {
+    size 40 0.2 40
+  }
+}

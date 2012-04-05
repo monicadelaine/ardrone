@@ -1,0 +1,9 @@
+#################################################################
+### Default Urbi controller file                              ###
+#################################################################
+
+
+# Load the robot devices configuration
+load("template.ini");
+
+# Write here your robot behaviour.

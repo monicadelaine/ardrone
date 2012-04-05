@@ -1,0 +1,57 @@
+# Three steps with customizable height and color.
+# This is not a physics-enabled object so it will not move when hit.
+
+PROTO ThreeSteps [
+  field SFVec3f translation  0 -0.5 0
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f increment 0 0.1 0
+  field SFColor color 0.5 0.5 0.5
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Solid {
+        translation IS increment
+        children [
+          Shape {
+            appearance DEF APPEARANCE Appearance {
+              material Material {
+                diffuseColor IS color
+              }
+            }
+            geometry DEF BOX1 Box {
+              size 3 1 6
+            }
+          }
+          Solid {
+            translation IS increment
+            children [
+              Shape {
+                appearance USE APPEARANCE
+                geometry DEF BOX2 Box {
+                  size 3 1 4
+                }
+              }
+              Solid {
+                translation IS increment
+                children [
+                  Shape {
+                    appearance USE APPEARANCE
+                    geometry DEF BOX3 Box {
+                      size 3 1 2
+                    }
+                  }
+                ]
+                boundingObject USE BOX3
+              }
+            ]
+            boundingObject USE BOX2
+          }
+        ]
+        boundingObject USE BOX1
+      }
+    ]
+  }
+}
