@@ -1,0 +1,49 @@
+#---------------------------------------------------------------------
+#  File:     sound_config.txt
+#            (This file must be located in the sound plugin directory)
+#  Purpose:  Definitions for Webots sound simulation
+#  Author:   yvan.bourquin@cyberbotics.com
+#  Created:  01-Nov-2007
+#---------------------------------------------------------------------
+
+# Speed of sound in meters per second
+sound_speed = 340.29
+
+# Number of sound samples per ms
+samples_rate = 40.0
+
+# Cutoff for significant sound intensity
+min_strength = 1.0
+
+# Background Gaussian sound noise
+additive_noise = 0.0
+
+# Multiplicate Gaussian noise width
+multiplicative_noise = 0.0
+
+# Attenuation from wall reflection
+reflection_damping = 0.2
+
+# Maximum strength of a sound source
+max_speaker_strength = 20.0
+
+# Maximum number of sound paths that will be generated
+max_paths = 100
+
+# Test point: this defines a point that must be placed in the inside of the arena
+# in order to allow descriminating the inside from the outside
+# this point is drawn as a yellow vertical line segment
+test_point_x = 0.0
+test_point_z = 0.0
+
+# width/depth ratio threshold to switch from a 4-segment to a 1-segment box representation
+box_ratio_threshold = 10
+
+# enable/disable OpenGL rendering of microphone, speakers, obstacles and sound paths
+draw = 1
+
+# debug show plugin calls
+debug_plugin = 0
+
+# print all sound paths
+debug_paths = 0

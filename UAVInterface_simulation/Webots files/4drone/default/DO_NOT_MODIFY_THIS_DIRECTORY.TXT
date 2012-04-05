@@ -1,0 +1,5 @@
+PLEASE DO NOT REMOVE OR MODIFY ANY FILE FROM THIS DIRECTORY !
+This is a system directory used for storing default resources for Webots.
+If any file is removed from here Webots may stop working correctly.
+PLEASE DO NOT STORE YOUR PROJECT FILES IN THIS DIRECTORY !
+Projects directories should be located outside Webots distribution.

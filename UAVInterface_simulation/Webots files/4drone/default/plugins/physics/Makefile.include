@@ -1,0 +1,221 @@
+# Generic Makefile for a C or C++ physics library
+# to be used with GNU make
+#
+# Author: Olivier.Michel@cyberbotics.com
+# and Edmund Ronald <eronald@polytechnique.fr>
+# Date:   October 12th, 1999.
+#
+# Revision: yvan.bourquin@epfl.ch
+# Purpose:  Fixed problems when compiling from Webots IDE or Command Prompt
+# Date:     August 18, 2006
+#
+# The Makefile in the physics directory is very easy to write:
+#
+# for a simple library (a single source file), just include this line:
+# include $(WEBOTS_HOME_PATH)/projects/default/plugins/physics/Makefile.include
+#
+# for a library with several C sources files, the Makefile should be:
+# C_SOURCES = my_library.c my_clever_algo.c my_gui.c
+# include $(WEBOTS_HOME_PATH)/projects/default/plugins/physics/Makefile.include
+#
+# for a library with several C++ source files, the Makefile should be:
+# CC_SOURCES = my_library.cc my_clever_algo.cc my_gui.cc
+# include $(WEBOTS_HOME_PATH)/projects/default/plugins/physics/Makefile.include
+#
+# or:
+# include ../Makefile.include
+# CPP_SOURCES = my_physics.cpp my_clever_algo.cpp my_gui.cpp
+#
+# if your library needs additional libraries,
+# simply prepend the following line to the Makefile:
+# LIBRARIES=-L/path/to/my/library -lmy_library -lmy_other_library
+#
+# if some special CFLAGS need to be passed, for example to find include
+# files, or set optimization level, simply prepend the following line:
+# CFLAGS=-O3 -I/my_library_path/include
+#
+# finally, on Windows, if you want that your library opens up a DOS
+# console to display the printf output, simply add the following line:
+# DOS_CONSOLE=1
+
+# default commands definitions
+NULL_DEVICE=/dev/null
+PWD_COMMAND=pwd
+RM_COMMAND=rm -f
+LS_COMMAND=ls
+
+# find out whether we are in a Windows Command Prompt
+ifeq ($(OS),Windows_NT)
+ifneq ($(TERM),msys)
+OSTYPE=windows
+NULL_DEVICE=nul
+PWD_COMMAND=cd
+RM_COMMAND=del /Q
+LS_COMMAND=dir /B
+endif
+endif
+
+ifndef OSTYPE
+OSTYPE=$(shell uname)
+endif
+
+ifeq ($(OSTYPE),Linux)
+OSTYPE=linux
+endif
+
+ifeq ($(OSTYPE),linux-gnu)
+OSTYPE=linux
+endif
+
+ifeq ($(OSTYPE),)
+OSTYPE=windows
+endif
+
+ifeq ($(OSTYPE),msys)
+OSTYPE=windows
+endif
+
+ifneq ($(findstring MINGW,$(OSTYPE)),)
+OSTYPE=windows
+endif
+
+ifneq ($(findstring CYGWIN,$(OSTYPE)),)
+OSTYPE=windows
+endif
+
+ifeq ($(OSTYPE),darwin)
+OSTYPE=Darwin
+endif
+
+ifndef DOS_CONSOLE
+WINDOWS_APP=-mwindows
+endif
+
+ifeq ($(OSTYPE),windows)
+PLATFORM_CFLAG=-DWIN32 -I"$(WEBOTS_HOME)\mingw\include" -I"$(WEBOTS_HOME)\mingw\lib\gcc\mingw32\3.4.2\include"
+endif
+
+ifeq ($(OSTYPE),linux)
+PLATFORM_CFLAG=-DLINUX -fPIC
+endif
+
+ifeq ($(OSTYPE),Darwin)
+PLATFORM_CFLAG=-DMACOS
+endif
+
+WEBOTS_HOME:=$(WEBOTS_HOME)
+
+# compute the current directory, the CURDIR variable may be already set
+ifndef CURDIR
+CURDIR := $(shell $(PWD_COMMAND))
+endif
+
+# compute the name of the plugin from its directory (i.e. sample)
+BAD_NAME = $(basename $(notdir $(CURDIR)))
+
+# this is a hack to work around a problem with spaces in dir names
+NAME = $(word $(words $(BAD_NAME)),$(BAD_NAME))
+
+# if the source files were not explicitly defined, we assume that
+# there is only one C or Java source file
+
+ifndef C_SOURCES
+C_SOURCES   =$(shell $(LS_COMMAND) $(NAME).c 2> $(NULL_DEVICE))
+endif
+ifndef CPP_SOURCES
+CPP_SOURCES =$(shell $(LS_COMMAND) $(NAME).cpp 2> $(NULL_DEVICE))
+endif
+ifndef CC_SOURCES
+CC_SOURCES  =$(shell $(LS_COMMAND) $(NAME).cc 2> $(NULL_DEVICE))
+endif
+
+INCLUDE=-I"$(WEBOTS_HOME)/include"
+
+ifeq ($(OSTYPE),windows)
+LIB_EXTENSION=.dll
+else
+ifeq ($(OSTYPE),Darwin)
+LIB_EXTENSION=.dylib
+else
+LIB_EXTENSION=.so
+endif
+endif
+
+# the objects files result from the C or C++ sources
+C_OBJECTS   = $(C_SOURCES:.c=.o)
+CPP_OBJECTS = $(CPP_SOURCES:.cpp=.o)
+CC_OBJECTS  = $(CC_SOURCES:.cc=.o)
+
+# set CC to your favorit C or C++ compiler
+ifneq ($(C_SOURCES),)
+CC=gcc
+else
+ifneq ($(CPP_SOURCES),)
+CC=g++
+else
+ifneq ($(CC_SOURCES),)
+CC=g++
+else
+CC=unknow_compiler
+endif
+endif
+endif
+
+ifneq ($(OSTYPE),windows)
+PLATFORM_LIBS=
+else
+PLATFORM_LIBS=-lmingw32 $(WINDOWS_APP) -B"$(WEBOTS_HOME)\mingw\lib" -B"$(WEBOTS_HOME)\mingw\lib\gcc\mingw32\3.4.2"
+endif
+
+LIBRARY=$(PLATFORM_LIBS) $(LIBRARIES)
+
+ifeq ($(OSTYPE),windows)
+CFLAGS_WIN=$(WINDOWS_APP)
+WINSTUFF=-L"$(WEBOTS_HOME)/lib" -lode -lOpenGL32
+else
+WINSTUFF=
+endif
+
+ifeq ($(OSTYPE),Darwin)
+PLATFORM_CFLAG+=-arch ppc -arch i386
+LINK_OPTS=-arch ppc -arch i386 -dynamiclib -flat_namespace -undefined suppress -install_name $(NAME).dylib -compatibility_version 1.0 -current_version 1.0.0
+else
+LINK_OPTS=-shared
+endif
+
+PHYSICS_OBJECTS=$(WEBOTS_HOME_PATH)/projects/default/plugins/physics/physics.o
+PHYSICS_LINKED_OBJECT="$(WEBOTS_HOME)/projects/default/plugins/physics/physics.o"
+
+# set the C compiler options
+CC_OPTS=-c $(INCLUDE) -Wall $(CFLAGS) $(CFLAGS_WIN) $(PLATFORM_CFLAG)
+
+TARGET=$(NAME)$(LIB_EXTENSION)
+
+all: $(TARGET)
+compil: all
+
+# rules to make shared lib from C/C++ objects
+$(NAME)$(LIB_EXTENSION): $(C_OBJECTS) $(CC_OBJECTS) $(CPP_OBJECTS) $(PHYSICS_OBJECTS)
+	$(CC) $(LINK_OPTS) -o $(NAME)$(LIB_EXTENSION) $(C_OBJECTS) $(CC_OBJECTS) $(CPP_OBJECTS) $(PHYSICS_LINKED_OBJECT) $(LIBRARY) $(WINSTUFF)
+	$(EXTRA_FINAL_CMD)
+
+$(WEBOTS_HOME_PATH)/projects/default/plugins/physics/physics.o: $(WEBOTS_HOME_PATH)/projects/default/plugins/physics/physics.c
+	$(CC) $(CC_OPTS) $< -o $@
+
+# generic rule to make the object files
+%.o:%.c
+	$(CC) $(CC_OPTS) $<
+
+%.o:%.cpp
+	$(CC) $(CC_OPTS) $<
+
+%.o:%.cc
+	$(CC) $(CC_OPTS) $<
+
+# how to clean up the directory
+clean:
+	@-$(RM_COMMAND) *.o *.so *.d *~ $(NAME)$(LIB_EXTENSION) *.opt *.ncb *.obj *.plg *.exp *.lib vc60.idb core
+
+# show the ostype recognized by the Makefile
+ostype:
+	@echo OSTYPE=$(OSTYPE)
