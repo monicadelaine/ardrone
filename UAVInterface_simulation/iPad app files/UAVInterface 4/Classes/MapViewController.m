@@ -22,7 +22,7 @@ enum {
 NSString *pointStr;
 float p1=0,p2=0,p3=0,p4=0,p5=0,p6=0,p7=0,p8=0;
 int touchCount=0;
-int algID = 1, numUAV = 2;
+int algID = 1, numUAV = 4;
 
 - (WorldCitiesListController *)worldCitiesListController
 {
@@ -156,15 +156,18 @@ int algID = 1, numUAV = 2;
 		if(buttonIndex == 0) {
 			NSLog(@"Use User Waypoints (manual)");
 			algID = 1;
-			[self uavCheck];
+			//[self uavCheck];
+			[self doneCheck];
 		} else if(buttonIndex == 1) {
 			NSLog(@"Use QoS Metric (autonomous)");
 			algID = 2;
-			[self uavCheck];
+			//[self uavCheck];
+			[self doneCheck];
 		} else if(buttonIndex == 2) {
 			NSLog(@"Use QoS + Waypoints (semi-autonomous)");
 			algID = 3;
-			[self uavCheck];
+			//[self uavCheck];
+			[self doneCheck];
 		}	
 	} else if (alertView == alertButton3) {
 		if(buttonIndex == 0) {

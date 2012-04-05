@@ -26,7 +26,7 @@ if start==0
     %    dynamic_t          - flag for dynamic targets
     %    alulFlag           - flag to use ALUL
     
-    maxUnseen = 50;
+    maxUnseen = 20;
     steps = 100;
     alulval = 0;
     dynamic_t = 0;

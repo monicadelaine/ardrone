@@ -87,7 +87,6 @@ if sim_start == 0
     alul = javaObject('arl.matlab.surveil.ALUL',gui);
     alul.setAlul(alulval);
     alul.getALUL();
-
     terrain = javaObject('arl.matlab.surveil.Terrain','heights', 73,109,5,329723,4321586.5);
 
     sim_start = 1;
@@ -101,7 +100,6 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %disp 'get actions to see a cell'
     choices = [];
-    allChoicesVisible = [];
     allChoicesUnseen = [];
     choiceCnt = 1;
     cnt=1;
@@ -118,10 +116,6 @@ end
         for k = 1:numChoices
             temp_pos(c,1) = choices(choiceCnt,1);
             [v,l,s] = isVisible(ourcells,temp_pos,our_occlusion_status,our_occlusions);
-
-            votevisible(:,choiceCnt) = l(:,c);
-            totalvotesvisible = sum(votevisible(:,choiceCnt));
-            allChoicesVisible = [allChoicesVisible; c choiceCnt totalvotesvisible choices(choiceCnt,1)];
           
             %unseen(choices(choiceCnt,1),1)   
             voteunseen(:,choiceCnt) = l(:,c) .*(2.^ unseen );
@@ -182,10 +176,10 @@ end
 						thisVisible = sum(l(:,1:numCameras),2) > 0; %visible by some camera
 						[avgALUL, minALUL, maxALUL]=calculateALUL4ROI(thisVisible,109,73,ROI);
 						maxALUL_Results(alulCnt,:) = maxALUL;
-						maxALUL_Pos(alulCnt,:) = [allChoices(i,1) allChoices(j,1) allChoices(k,1) allChoices(m,1)]
+						maxALUL_Pos(alulCnt,:) = [allChoices(i,1) allChoices(j,1) allChoices(k,1) allChoices(m,1)];
 						alulCnt = alulCnt + 1;
 						maxALUL
-						prevALUL
+						%prevALUL
 						% Check if this solution is valid
 						if (maxALUL < ALUL_THRESHOLD) || (maxALUL <= prevALUL)
 							AlulFound=1;
@@ -200,6 +194,17 @@ end
         temp_pos(2,1) = allChoices(numChoices+1,1);
         temp_pos(3,1) = allChoices(numChoices*2+1,1);
         temp_pos(4,1) = allChoices(numChoices*3+1,1);
+    end
+
+    %check for duplicate positions
+    if size((unique(temp_pos,'rows')),1) ~= 4
+	mat=temp_pos(:,1);
+	[newmat,index] = unique(mat,'rows','first');
+	repeatIndex = setdiff(1:size(mat,1),index);
+	for i=1:size(repeatIndex,2)
+	     a=repeatIndex(1,i);
+	     temp_pos(a,1) = allChoices(((a-1)*numChoices)+2,1);
+	end
     end
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,51 +227,27 @@ end
         yc(j,1)=(ucells(our_cam_pos(j,1),2)-4321586.5)-MY;
     end
     cell_pos = [num2str(xc(1,1)) ',' num2str(MAX_Y-yc(1,1)) ',' num2str(xc(2,1)) ',' num2str(MAX_Y-yc(2,1)) ',' num2str(xc(3,1)) ',' num2str(MAX_Y-yc(3,1)) ',' num2str(xc(4,1)) ',' num2str(MAX_Y-yc(4,1)) ',' num2str(posCnt)]
-    %cell_pos1 = [num2str(1) ',' num2str(xc(1,1)) ',' num2str(MAX_Y-yc(1,1)) ',' num2str(posCnt)]
-    %cell_pos2 = [num2str(2) ',' num2str(xc(2,1)) ',' num2str(MAX_Y-yc(2,1)) ',' num2str(posCnt+1)]
-    %cell_pos3 = [num2str(3) ',' num2str(xc(3,1)) ',' num2str(MAX_Y-yc(3,1)) ',' num2str(posCnt+2)]
-    %cell_pos4 = [num2str(4) ',' num2str(xc(4,1)) ',' num2str(MAX_Y-yc(4,1)) ',' num2str(posCnt+3)]
     posCnt = posCnt + 4;
     
-    [v,l,s]=isVisible(ourcells,our_cam_pos,our_occlusion_status,our_occlusions);
     %l(:,5) - 1 means totally occluded by all cameras
     %l(:,1:4) - 1 means visible...
     %occlusion_status - 1 means not visible
-
-    %calculate unseen cells for this step
+    [v,l,s]=isVisible(ourcells,our_cam_pos,our_occlusion_status,our_occlusions);
     thisVisible = sum(l(:,1:numCameras),2) > 0; %visible by some camera
-    
+    [avgALUL, minALUL, maxALUL]=calculateALUL4ROI(thisVisible,109,73,ROI);
+    prevALUL=maxALUL;
+    alul.setCurrentALUL(maxALUL);    
     %increment all unseen cells by 1
     index = find(~thisVisible & pvisible); %get index of all currently invisble but could be seen cells
     unseen(index,1) = unseen(index,1) + 1;
+    unseenSum = sum(unseen);
+    unseenMax = max(unseen);
+    mdata = [num2str(maxALUL) ',' num2str(unseenMax) ',' num2str(unseenSum)]
     
     %zero out all cells that are visible now....
-    unseen(find(thisVisible==1),1) = 0;
-    unseenReturn(t) = size(find(unseen ~= 0), 1);
-    %disp unseen
-    unseenReturn(t);
-    
-    % Get max unseen cell
-    maxUnseenReturn(t) = max(unseen);
-    %disp maxUnseen
-    maxUnseenReturn(t);
-    
-    %figure(2);hist(unseen');
-    %axis([0 steps 0 numCells]);
-    %axis([0 50 0 numCells]);
-    [alulReturn(t,1),alulReturn(t,2),alulReturn(t,3)]=calculateALUL4ROI(thisVisible,109,73,ROI);
-    prevALUL=alulReturn(t, 3);
-    alul.setCurrentALUL(alulReturn(t, 3));
+    unseen(find(thisVisible==1),1) = 0;  
 
-    %if t > 1
-    %    figure(1);
-    %    hold on;
-    %    plot([t-1;t],[alulReturn(t-1,1);alulReturn(t,1)],'k-'); % avg
-    %    plot([t-1;t],[alulReturn(t-1,2);alulReturn(t,2)],'g'); % min
-    %    plot([t-1;t],[alulReturn(t-1,3);alulReturn(t,3)],'r'); % max
-    %end
     figure(3);
-    %hold off;
     imagesc(f2);
     for j = 1:numCameras
     	plotcamera(ucells(our_cam_pos(j,1),1),ucells(our_cam_pos(j,1),2),3,j,90,180,dov);
@@ -276,7 +257,169 @@ end
     plotpoints(ourcells(find(thisVisible==1),1),ourcells(find(thisVisible==1),2),3,'.',[1 1 1]);
     plotpoints(ourcells(find(unseen > maxUnseen == 1),1),ourcells(find(unseen > maxUnseen == 1),2),3,'.',[0 0 0]);
     
-    t=t+1;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FIND BOUNDARY CELLS 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    %pause(1)
+    j=1; k=1;
+    hull=[];
+    for i=28:-1:1
+        for l=1:26
+           if unseen(j,1) > 3%maxUnseen
+                hull(i,l) = 1;
+                j = j + 1; k = k+1;
+           else
+                hull(i,l) = 0;
+                j = j + 1;
+           end
+        end
+    end 
+    %hull
+    
+    st=1;
+    boundary=[];
+    allboundary = [];
+    [B,L,N,A] = bwboundaries(hull);
+    figure(1); imshow(hull); hold on;
+    for k=1:length(B),
+        if(~sum(A(k,:)))
+            boundary = B{k};
+            plot(boundary(:,2),boundary(:,1),'r','LineWidth',2);
+            sz=size(boundary,1);
+            allboundary(st:st+sz-1,:) = boundary;
+            allboundary(st+sz,1) = -1; allboundary(st+sz,2) = -1;
+            st=st+sz+1;        
+            for l=find(A(:,k))'
+                boundary = B{l};
+                plot(boundary(:,2),boundary(:,1),'g','LineWidth',2);
+                sz=size(boundary,1);
+                allboundary(st,1) = -2; allboundary(st,2) = -2;
+                allboundary(st+1:st+1+sz-1,:) = boundary;
+                allboundary(st+1+sz,1) = -1; allboundary(st+1+sz,2) = -1;
+                st=st+1+sz+1; 
+            end
+            %boundary   
+        end
+    end
+    %allboundary
+    
+    %first check
+    if size(allboundary,1)>0
+        temp = 0; cnt = 2;
+        lastx = 0; lasty = 0;
+        outer = [];
+        outer(1,1) = allboundary(1,1);
+        outer(1,2) = allboundary(1,2);
+	for i=1:size(allboundary,1)
+            x = allboundary(i,1);
+            y = allboundary(i,2);
+            if (x == -1 && y == -1) && i<size(allboundary,1)
+                outer(cnt,1) = lastx;
+                outer(cnt,2) = lasty;
+                outer(cnt+1,1) = x;
+                outer(cnt+1,2) = y; 
+                if allboundary(i+1,1)==-2 && allboundary(i+1,2)==-2
+                    outer(cnt+2,1) = -2;
+                    outer(cnt+2,2) = -2;
+                    outer(cnt+3,1) = allboundary(i+2,1);
+                    outer(cnt+3,2) = allboundary(i+2,2);
+                    cnt=cnt+4;
+                else
+                    outer(cnt+2,1) = allboundary(i+1,1);
+                    outer(cnt+2,2) = allboundary(i+1,2);
+                    cnt=cnt+3;
+                end
+                temp = 0; lastx = 0; lasty = 0;       
+            elseif (x == -2 && y == -2)
+               	continue
+            elseif x == lastx 
+                lastx=x; lasty=y;
+            else %x ~= lastx 
+                if temp == 0 
+                    temp = 1;
+                    lastx=x; lasty=y;
+                else
+                    if outer(cnt-1,1) == lastx && outer(cnt-1,2) == lasty
+                        outer(cnt-1,:) = [];
+                        cnt = cnt-1;
+                    end
+                    outer(cnt,1) = lastx;
+                    outer(cnt,2) = lasty;
+                    outer(cnt+1,1) = x;
+                    outer(cnt+1,2) = y;
+                    lastx=x; lasty=y;
+                    cnt=cnt+2; 
+                end
+            end
+        end
+
+        %second check
+	for i=1:size(outer,1)
+            x = outer(i,1);
+            y = outer(i,2);
+            if (x == -1 && y == -1) && i<size(outer,1)
+                outer2(cnt,1) = lastx;
+                outer2(cnt,2) = lasty; 
+                outer2(cnt+1,1) = x;
+                outer2(cnt+1,2) = y; 
+                if outer(i+1,1)==-2 && outer(i+1,2)==-2
+                    outer2(cnt+2,1) = -2;
+                    outer2(cnt+2,2) = -2;
+                    outer2(cnt+3,1) = outer(i+2,1);
+                    outer2(cnt+3,2) = outer(i+2,2);
+                    cnt=cnt+4;
+                else
+                    outer2(cnt+2,1) = outer(i+1,1);
+                    outer2(cnt+2,2) = outer(i+1,2);
+                    cnt=cnt+3;
+                end
+                temp = 0; lastx = 0; lasty = 0;  
+         	elseif (x == -2 && y == -2)
+               	continue
+            elseif  y == lasty
+                lastx=x; lasty=y;
+            else 
+                if temp == 0 
+                    temp = 1;
+                    lastx=x; lasty=y;
+                else
+                    if outer2(cnt-1,1) == lastx && outer2(cnt-1,2) == lasty
+                        outer2(cnt-1,:) = [];
+                        cnt = cnt-1;
+                    end
+                    outer2(cnt,1) = lastx;
+                    outer2(cnt,2) = lasty;
+                    outer2(cnt+1,1) = x;
+                    outer2(cnt+1,2) = y;
+                    lastx=x; lasty=y;
+                    cnt=cnt+2;
+                end
+            end
+        end
+        %outer
+        %outer2  
+         
+        j=1;
+        bcells=[];
+        for i=1:size(outer2,1)
+            if outer2(i,1) >= 0 && outer2(i,2) >= 0 
+                a=(outer2(i,1)-1) * 26 + outer2(i,2);
+                bcells(j,1)=(ourcells(a,1)-329723)-MX;
+                bcells(j,2)=(ourcells(a,2)-4321586.5)-MY;
+                j=j+1;
+            elseif outer2(i,1) == -2 && outer2(i,2) == -2
+                bcells(j,1)=-2;
+                bcells(j,2)=-2;
+                j=j+1;
+            else 
+                bcells(j,1)=-1;
+                bcells(j,2)=-1;
+                j=j+1;
+            end
+        end
+        bcells
+    end
+
+    %t=t+1;
+
 %end
