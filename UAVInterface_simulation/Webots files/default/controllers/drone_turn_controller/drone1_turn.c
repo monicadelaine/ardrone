@@ -27,21 +27,13 @@
 #include <pthread.h>
 #include <math.h>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <errno.h>
-
 #define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.35"
-//#define SOCKET_SERVER "172.27.184.111"
+#define SOCKET_SERVER "130.160.68.24"
 #define SOCKET_SERVER1 "130.160.47.64"
-#define REMOTE_SERVER_PORT 1502
-#define REMOTE_SERVER_PORT_WP 1507
+#define REMOTE_SERVER_PORT 1500
+#define REMOTE_SERVER_PORT_WP 1505
 #define REMOTE_SERVER_PORT2 1501
-#define REMOTE_SERVER_PORT3 1509
+#define REMOTE_SERVER_PORT3 1508
 #define SOCKET_ERROR -1
 
 #define pi 3.14159265
@@ -71,8 +63,7 @@ int x_send, y_send;
 float turn;
 int moving_block = 0;
 float start_x, start_y;
-extern int b = 1;
-double line[255];
+
 
 #include <stdlib.h>
 #include <sys/types.h>
@@ -307,7 +298,7 @@ void movePlane(double y, double angle)
 
     double r = 20*sqrt(2);
     double angle_x, angle_z;
-    double factor =  0.001;
+    double factor =  0.0006;
     angle = angle - (pi/2);;
     angle_x = factor * (r * sin(angle));
     angle_z = factor * (r * cos(angle));
@@ -575,7 +566,7 @@ void dofSelection(int DOF, float x)
        //x_send = (int)coords[0]+20;
        //y_send = (int)coords[2]+20;
        
-       //toIpad(coords[0],coords[2]);
+      // toIpad(coords[0],coords[2]);
        //printf("Ipad: %d\n",ipadCoords[0]);
       // data_pack1[0] = ipadCoords[0];
        //data_pack1[1] = ipadCoords[1];
@@ -801,15 +792,11 @@ int receiveInfo() {
             case 0:
                 //printf("tryin to receive\n");
                 if (get_wp == 0 ){
-              // printf("Drone 2 Waiting\n");
+               // printf("Waiting\n");
                 rc_wp = recvfrom(sd_wp,wp_info,12290, flags,
                 (struct sockaddr *) &echoServAddr_wp,
                 &echoLen_wp);
-                
-                //readPipe();
                 }
-                
-                //printf("data here -> %f\n", wp_info[4]);
                 /*
                 rc = sendto(sd,storage,4, flags,
                 (struct sockaddr *) &remoteServAddr,
@@ -827,9 +814,8 @@ int receiveInfo() {
                
                 //printf("Receiving: %f\n",wp_info[temp_head+3]);
                
-                //printf("wp[4]: %f\nwp[7]: %f\n",wp_info[4],wp_info[5]);
-                if (wp_info[0] == 2.000 && (wp_info[3] != curr_wp)){
-                printf("Got new waypoint 2! (%f,%f)\n",wp_info[x_i+1],wp_info[x_i+2]);
+                if (wp_info[0] == 1.000 && (wp_info[3] != curr_wp)){
+                printf("Got new waypoint! (%f,%f)\n",wp_info[x_i+1],wp_info[x_i+2]);
                 get_wp = 1;
                  
                 x_coord = wp_info[x_i+1];
@@ -852,7 +838,7 @@ int receiveInfo() {
                // waypoints[1] = y_coord + 19.9403;
                
                 //head = head + 2;
-                //printf("Received X: %f\nReceived Y: %f\n",x_coord,y_coord);
+                printf("Received X: %f\nReceived Y: %f\n",x_coord,y_coord);
               //  int result2 = (int)(wp_info);
                // printf("Result: %d\n",result2);
                got_it++;
@@ -865,7 +851,7 @@ int receiveInfo() {
                
                }else if ((moving_block == 0)&&(wp_info[3] == curr_wp)){
                   random_fly = 1; 
-                  //printf("Random Flying\n");
+                  printf("Random Flying\n");
                   randomFlight();
                 }
                 
@@ -969,9 +955,6 @@ void toIpad(double x, double y){
 
     pos_pack[0] = newX;
     pos_pack[1] = newY;
-    
-    //data_pack1[0] = newX;
-    //data_pack1[1] = newY;
     
     
    
@@ -1102,8 +1085,6 @@ void goToPos()
 	turn = a - getAngle();
   last_heading = rot[3];
   rot[3] = a;
-  
-  
  // printf("Turn: %f\nA: %f\nM: %f\nN: %f\nAngle: %f\n",turn,a,m,n,getAngle());
  // printf("Going (%f,%f)\n",waypoints[0],waypoints[1]);
   
@@ -1119,7 +1100,6 @@ void goToPos()
 	
  //printf("A: %f\nM: %f\nN: %f\nTurn %f\nTravel Distance: %f\n",a,m,n,turn,dist);
  }
-// printf("Current Rot: %f\n",rot[3]);
  // dofSelection(RIGHT, turn);
   //printf("My angle: %f\n",getAngle());
   
@@ -1269,30 +1249,6 @@ void goToPos()
 
 }
 
-void readPipe(void)
-
-{
-  // line[0] = '\0';
- //  line[255] = '\0';
-   int pipe;
-   int l;
-// open a named pipe
-   pipe = open("/usr/wp_data", O_RDONLY);
-
-   if (pipe == -1){
-       printf("Error reading. \n");
-   }
-    
-    l = read(pipe, wp_info, 1000);
-     //printf("Data: %f\n",wp_info[3]);
-    
-/*
-    if(l)
-    { printf("Gamepad: %f \n",line[psi]); }
-*/
-   close(pipe);
-
-}
 
 
 
@@ -1354,7 +1310,7 @@ pack = 0;
     
     
     
-    drone_node = wb_supervisor_node_get_from_def("Drone2");
+    drone_node = wb_supervisor_node_get_from_def("Drone1");
    // cam_node = wb_supervisor_node_get_from_def("CamNode");
     drone_trans_field = wb_supervisor_node_get_field(drone_node,"translation");
     drone_rot_field = wb_supervisor_node_get_field(drone_node,"rotation");

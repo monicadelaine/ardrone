@@ -1,8 +1,9 @@
 /*
  * File:         
  * Date:         
+ * Description: 
  * Description:  
- * Author:       
+ * Author:      
  * Modifications:
  */
 
@@ -10,7 +11,6 @@
  * You may need to add include files like <webots/distance_sensor.h> or
  * <webots/differential_wheels.h>, etc.
  */
-#include <webots/robot.h>
 
 #include <webots/robot.h>
 #include <webots/distance_sensor.h>
@@ -18,35 +18,47 @@
 #include <webots/receiver.h>
 #include <webots/servo.h>
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <webots/camera.h>
 #include <webots/supervisor.h>
+
 #include <pthread.h>
 #include <math.h>
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h> /* memset() */
+
+#include <fcntl.h>
 #include <errno.h>
 
+/////////////////////TCP/////////////////
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <netinet/in.h>         /* definition of struct sockaddr_in */
+#include <netdb.h>              /* definition of gethostbyname */
+#include <arpa/inet.h>          /* definition of inet_ntoa */
+#include <unistd.h>
+
 #define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.35"
+#define SOCKET_SERVER "130.160.47.198"
+//#define SOCKET_SERVER "192.168.1.121"
+//#define SOCKET_SERVER "130.160.68.35"
 //#define SOCKET_SERVER "172.27.184.111"
 #define SOCKET_SERVER1 "130.160.47.64"
-#define REMOTE_SERVER_PORT 1502
-#define REMOTE_SERVER_PORT_WP 1507
+#define REMOTE_SERVER_PORT 1511 //video
+#define REMOTE_SERVER_PORT_WP 1512 //rec wp
 #define REMOTE_SERVER_PORT2 1501
-#define REMOTE_SERVER_PORT3 1509
+#define REMOTE_SERVER_PORT3 1513 // send wp
 #define SOCKET_ERROR -1
+#define SOCKET_PORT 1500
 
 #define pi 3.14159265
 
-
+#define TIME_STEP 64
 #define TIMESTEP 256
 #define LEFT 3
 #define FORWARD 4
@@ -59,7 +71,7 @@
 /*
  * You may want to add defines macro here.
  */
-#define TIME_STEP 64
+
 unsigned char *data_pack1;
 int pos_pack[16];
 //int *pos_pack;
@@ -73,29 +85,9 @@ int moving_block = 0;
 float start_x, start_y;
 extern int b = 1;
 double line[255];
-
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <stdio.h>
-#include <unistd.h> /* close() */
-#include <string.h> /* memset() */
-
-
-
-/////////////////////TCP/////////////////
-
-#include <sys/socket.h>
-#include <sys/time.h>
-#include <netinet/in.h>         /* definition of struct sockaddr_in */
-#include <netdb.h>              /* definition of gethostbyname */
-#include <arpa/inet.h>          /* definition of inet_ntoa */
-#include <unistd.h>    
+    
 int server_fd;
-#define SOCKET_PORT 1500
+
 float ipadCoords[2]; 
 int storage[4];
 int init_wp=0;
@@ -180,7 +172,7 @@ static WbFieldRef drone_rot_field;
 
 static int fd;
 static fd_set rfds;
-double coords[3] = {-11,7,-16};
+double coords[3] = {-20,11,-17};
 double rot[4] = {0,1,0,0};
 double camCoords[4] = {1,0,0,5.2774};
 double circleScale = 6.29;
@@ -212,6 +204,17 @@ float last_heading = 0;
 flight_count = 0;
 
 
+
+
+long long int send_interval1 = 100;
+long long int send_time1 = 0;
+
+
+long long get_current_time() {
+ struct timeval t;
+ gettimeofday(&t, NULL);
+ return (long long) (t.tv_sec ) * 1000000 + (t.tv_usec);
+} 
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -307,7 +310,10 @@ void movePlane(double y, double angle)
 
     double r = 20*sqrt(2);
     double angle_x, angle_z;
-    double factor =  0.001;
+    // fast mode speed 
+   // double factor =  0.0003;
+    //double factor =  0.00003;//orig speed
+     double factor =  0.0008;
     angle = angle - (pi/2);;
     angle_x = factor * (r * sin(angle));
     angle_z = factor * (r * cos(angle));
@@ -383,7 +389,7 @@ if (dofState != 0){
       //distance++;
       }
       else if (!(getDistance(coords[0],coords[2],start_coords[0],start_coords[1]) < x)){
-        printf("Done!\n");
+        printf("Done! inside forward\n");
         get_wp = 0;
         dofState = 1;
         simState = 0;
@@ -397,8 +403,15 @@ if (dofState != 0){
         waypoints[0] = x_coord + 19.9352 ;
         waypoints[1] = y_coord + 19.9403 ;
         waypoint_active = 0;
-        goToPos();
-        printf("Going to waypoint: %d at (%f,%f)\n",(head/4),x_coord,y_coord);
+        if (!((x_coord == 0.0) || (y_coord == 0.0))){
+          goToPos();
+          printf("Going to waypoint: %d at (%f,%f)\n",(head/4),x_coord,y_coord);
+        }
+        else{
+          //x_i+4;
+          ;
+        }
+
         
       }
       
@@ -802,9 +815,10 @@ int receiveInfo() {
                 //printf("tryin to receive\n");
                 if (get_wp == 0 ){
               // printf("Drone 2 Waiting\n");
-                rc_wp = recvfrom(sd_wp,wp_info,12290, flags,
+                rc_wp = recvfrom(sd_wp,wp_info,sizeof(wp_info), flags,
                 (struct sockaddr *) &echoServAddr_wp,
                 &echoLen_wp);
+                
                 
                 //readPipe();
                 }
@@ -828,8 +842,8 @@ int receiveInfo() {
                 //printf("Receiving: %f\n",wp_info[temp_head+3]);
                
                 //printf("wp[4]: %f\nwp[7]: %f\n",wp_info[4],wp_info[5]);
-                if (wp_info[0] == 2.000 && (wp_info[3] != curr_wp)){
-                printf("Got new waypoint 2! (%f,%f)\n",wp_info[x_i+1],wp_info[x_i+2]);
+                if ((wp_info[0] == 3.000) && (wp_info[3] != curr_wp) &&(wp_info[x_i+1] != 0.0) && (wp_info[x_i+2] != 0.0)){
+                printf("Got new waypoint 3! (%f,%f)\n",wp_info[x_i+1],wp_info[x_i+2]);
                 get_wp = 1;
                  
                 x_coord = wp_info[x_i+1];
@@ -866,7 +880,7 @@ int receiveInfo() {
                }else if ((moving_block == 0)&&(wp_info[3] == curr_wp)){
                   random_fly = 1; 
                   //printf("Random Flying\n");
-                  randomFlight();
+                  //randomFlight();
                 }
                 
                 //printf("Moving Block: %f\n",moving_block);
@@ -953,9 +967,16 @@ void toIpad(double x, double y){
 
   //  int disx = x - TOP_RIGHT_X;
    // int disy = y - TOP_RIGHT_Y;
+   double t_x = 3;
+   double t_y = -1;
     float newX = ((x + 19.9352)  * UNIT_X);
    // printf("x: %f\n",newX);
     float newY = ((y + 19.9403) * UNIT_Y);
+    
+    float new_objx = (( t_x + 19.9352)  * UNIT_X);
+    
+    float new_objy = (( t_y + 19.9403) * UNIT_Y);
+    
     //printf("X: %d\n",newX);
     //storage[0] = -999;
     //storage[1] = newX;
@@ -969,6 +990,8 @@ void toIpad(double x, double y){
 
     pos_pack[0] = newX;
     pos_pack[1] = newY;
+    pos_pack[2] = new_objx;
+    pos_pack[3] = new_objy;
     
     //data_pack1[0] = newX;
     //data_pack1[1] = newY;
@@ -1133,7 +1156,8 @@ void goToPos()
  // printf("Forward Motion\n");
    int i;
   //temp_wp[i++] = 1.3;
-  if ((x_coord != 0) && (y_coord != 0)){
+  float bound_z = 0.0;
+  if (((x_coord != bound_z) && (y_coord != bound_z))){
 	dofSelection(FORWARD, dist);
   }
 
@@ -1354,7 +1378,7 @@ pack = 0;
     
     
     
-    drone_node = wb_supervisor_node_get_from_def("Drone2");
+    drone_node = wb_supervisor_node_get_from_def("Drone4");
    // cam_node = wb_supervisor_node_get_from_def("CamNode");
     drone_trans_field = wb_supervisor_node_get_field(drone_node,"translation");
     drone_rot_field = wb_supervisor_node_get_field(drone_node,"rotation");
@@ -1450,8 +1474,21 @@ pack = 0;
        pack++;
       receiveInfo();
       goToPos();
+     
+      
+      long long int curr_time = get_current_time()/1000;
+    
+      if (curr_time > send_time1 + send_interval1) {     
+      
        mainUdp();
        posUdp();
+       
+         send_time1 = get_current_time()/1000;
+      }
+       
+       
+       
+       
        //printf("Looping\n");
       
        //dofSelection(RIGHT,1.0);

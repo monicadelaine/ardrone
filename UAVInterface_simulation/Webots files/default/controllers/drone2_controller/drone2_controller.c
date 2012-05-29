@@ -28,11 +28,12 @@
 #include <math.h>
 
 #define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.24"
+#define SOCKET_SERVER "130.160.68.30"
 #define SOCKET_SERVER1 "130.160.47.64"
 #define REMOTE_SERVER_PORT 1500
 #define REMOTE_SERVER_PORT_WP 1505
 #define REMOTE_SERVER_PORT2 1501
+#define REMOTE_SERVER_PORT3 1508
 #define SOCKET_ERROR -1
 
 #define pi 3.14159265
@@ -44,14 +45,16 @@
 #define RIGHT 5
 #define X_OFFSET 19.9352
 #define Y_OFFSET 19.9403
-#define UNIT_X 11.37745
-#define UNIT_Y 11.48603
+#define UNIT_X 45.080468637
+#define UNIT_Y 45.201098449
 
 /*
  * You may want to add defines macro here.
  */
 #define TIME_STEP 64
 unsigned char *data_pack1;
+int pos_pack[16];
+//int *pos_pack;
 char pack_send[12290];
 int width;
 int height;
@@ -107,15 +110,22 @@ int random_fly;
  */
  
 static int sd, clientSocket,  rc, i, n, echoLen, flags, error, timeOut;
+static struct sockaddr_in cliAddr, remoteServAddr, echoServAddr;
+static struct hostent *h;
+
 static int sd_data, rc_data, i_data, n_data, echoLen_data, flags_data, error_data, timeOut_data;
+static struct sockaddr_in cliAddr_data, remoteServAddr_data, echoServAddr_data;
+
+static int sd_pos, clientSocket_pos,  rc_pos, i_pos, n_pos, echoLen_pos, flags_pos, error_pos, timeOut_pos;
+static struct sockaddr_in cliAddr_pos, remoteServAddr_pos, echoServAddr_pos;
+static struct hostent *h3;
 
 static int sd_wp, rc_wp, i_wp, n_wp, echoLen_wp, flags_wp, error_wp, timeOut_wp;
 static struct sockaddr_in cliAddr_wp, remoteServAddr_wp, echoServAddr_wp;
 static struct hostent *h2;
 
-static struct sockaddr_in cliAddr_data, remoteServAddr_data, echoServAddr_data;
-static struct sockaddr_in cliAddr, remoteServAddr, echoServAddr;
-static struct hostent *h;
+
+
 
 int pack;
 
@@ -288,7 +298,7 @@ void movePlane(double y, double angle)
 
     double r = 20*sqrt(2);
     double angle_x, angle_z;
-    double factor =  0.0006;
+    double factor =  0.001;
     angle = angle - (pi/2);;
     angle_x = factor * (r * sin(angle));
     angle_z = factor * (r * cos(angle));
@@ -556,7 +566,7 @@ void dofSelection(int DOF, float x)
        //x_send = (int)coords[0]+20;
        //y_send = (int)coords[2]+20;
        
-       toIpad(coords[0],coords[2]);
+       //toIpad(coords[0],coords[2]);
        //printf("Ipad: %d\n",ipadCoords[0]);
       // data_pack1[0] = ipadCoords[0];
        //data_pack1[1] = ipadCoords[1];
@@ -828,7 +838,7 @@ int receiveInfo() {
                // waypoints[1] = y_coord + 19.9403;
                
                 //head = head + 2;
-                printf("Received X: %f\nReceived Y: %f\n",x_coord,y_coord);
+                //printf("Received X: %f\nReceived Y: %f\n",x_coord,y_coord);
               //  int result2 = (int)(wp_info);
                // printf("Result: %d\n",result2);
                got_it++;
@@ -841,7 +851,7 @@ int receiveInfo() {
                
                }else if ((moving_block == 0)&&(wp_info[3] == curr_wp)){
                   random_fly = 1; 
-                  printf("Random Flying\n");
+                  //printf("Random Flying\n");
                   randomFlight();
                 }
                 
@@ -859,7 +869,7 @@ int receiveInfo() {
                //center_y = (drone_max_y - wp_info[4])/2; 
                //center_x = (wp_info[3] - drone_min_x)/2;
                
-               printf("ROI:\n Min: (%f,%f) Max: (%f,%f)\n",drone_min_x,drone_min_y,drone_max_x,drone_max_y);
+               //printf("ROI:\n Min: (%f,%f) Max: (%f,%f)\n",drone_min_x,drone_min_y,drone_max_x,drone_max_y);
                }
                 }
                 sent++;
@@ -943,8 +953,13 @@ void toIpad(double x, double y){
    //printf("storage: %f\n",storage[0]);
 
 
-    data_pack1[0] = newX;
-    data_pack1[1] = newY;
+    pos_pack[0] = newX;
+    pos_pack[1] = newY;
+    
+    //data_pack1[0] = newX;
+    //data_pack1[1] = newY;
+    
+    
    
     //printf("data: %d\n",data_pack1[0]);
    
@@ -1073,6 +1088,8 @@ void goToPos()
 	turn = a - getAngle();
   last_heading = rot[3];
   rot[3] = a;
+  
+  
  // printf("Turn: %f\nA: %f\nM: %f\nN: %f\nAngle: %f\n",turn,a,m,n,getAngle());
  // printf("Going (%f,%f)\n",waypoints[0],waypoints[1]);
   
@@ -1088,6 +1105,7 @@ void goToPos()
 	
  //printf("A: %f\nM: %f\nN: %f\nTurn %f\nTravel Distance: %f\n",a,m,n,turn,dist);
  }
+ printf("Current Rot: %f\n",rot[3]);
  // dofSelection(RIGHT, turn);
   //printf("My angle: %f\n",getAngle());
   
@@ -1110,6 +1128,135 @@ void goToPos()
 
 	return;
 }
+
+
+ void clientInit3()
+ {
+  printf("Connecting WP: \n");
+ // Video Socket ////////////////////////////////////////////////////////////////////////
+  
+   h3 = gethostbyname(SOCKET_SERVER);
+  if(h3==NULL) {
+    printf("%s: unknown host '%s' \n", "program", "program");
+	    exit(1);
+	  }
+	
+	  printf("%s: sending data to '%s' (IP : %s) \n", "program", h3->h_name,
+	        inet_ntoa(*(struct in_addr *)h3->h_addr_list[0]));
+	
+	  remoteServAddr_pos.sin_family = h3->h_addrtype;
+	  memcpy((char *) &remoteServAddr_pos.sin_addr.s_addr,
+	         h3->h_addr_list[0], h3->h_length);
+	  remoteServAddr_pos.sin_port = htons(REMOTE_SERVER_PORT3);
+	
+	  /* socket creation */
+	  sd_pos = socket(PF_INET,SOCK_DGRAM,0);
+	  if(sd_pos<0) {
+    printf("%s: cannot open socket \n","program");
+	    exit(1);
+	  }
+	
+	  /* bind any port */
+	  cliAddr_pos.sin_family = AF_INET;
+	  cliAddr_pos.sin_addr.s_addr = htonl(INADDR_ANY);
+	  cliAddr_pos.sin_port = htons(REMOTE_SERVER_PORT3);
+	
+	  rc_pos = bind(sd_pos, (struct sockaddr *) &cliAddr_pos, sizeof(cliAddr_pos));
+	  if(rc_pos<0) {
+	    printf("%s: cannot bind port\n", "program");
+	    exit(1);
+	  }
+	
+	/* BEGIN jcs 3/30/05 */
+	
+	  flags_pos = 0;
+	
+	  timeOut = 100; // m
+ }
+
+
+ int posUdp() {
+
+    ////////////////////////////////////////////////// SEND SIZE //////////////////////////
+    int sent = 0;
+
+   while ( sent < 1 )
+    {
+
+       
+        //x_array = (char)x_send;
+        //y_array = (char)y_send;
+        //input[0] = x_send;
+        //input[1] = y_send;
+       // memset(data_pack1,y_send,2);
+        //memset(data_pack1,x_send,1);
+        
+        //printf("X_send: %f\n",x_send);
+        //printf("Y_send: %f\n",y_send);
+       
+        
+        //memcpy(pack_send, data_pack1,12288);
+       
+      //  memcpy(pack_send, x_array,1);
+       // memcpy(pack_send, y_array,2);
+       //pack_send[0] = x_send;
+        //pack_send[1] = y_send;
+        
+        //printf("X: %f\n",data_pack1[0]);
+        //printf("Y: %f\n",data_pack1[1]);
+        
+        
+       //x_send = (int)coords[0]+20;
+       //y_send = (int)coords[2]+20;
+       
+       toIpad(coords[0],coords[2]);
+       //printf("Ipad: %d\n",ipadCoords[0]);
+      // data_pack1[0] = ipadCoords[0];
+       //data_pack1[1] = ipadCoords[1];
+       
+      
+        switch(sent)
+        {
+
+            
+
+            //////////////////////////////////////////////////////////////////// packet 1 ////////////////////////////
+            case 0:
+                rc_pos = sendto(sd_pos,pos_pack,sizeof(pos_pack), flags,
+                (struct sockaddr *) &remoteServAddr_pos,
+                sizeof(remoteServAddr_pos));
+                /*
+                rc = sendto(sd,storage,4, flags,
+                (struct sockaddr *) &remoteServAddr,
+                sizeof(remoteServAddr));
+                */
+
+
+                 if(rc_pos<0) {
+                printf("%s: cannot send size data %d \n","program",i-1);
+                close(sd_pos);
+                //exit(1);
+                }
+                else{
+              //  printf("Packet sent!\n");
+                }
+                sent++;
+                break;
+                default:
+                    printf("Default Reached \n");
+                    break;
+        }
+        }
+
+
+ // }
+
+  return 1;
+
+}
+
+
+
 
 int main(int argc, char **argv)
 {
@@ -1145,6 +1292,7 @@ pack = 0;
    
    clientInit();
    clientInit2();
+  clientInit3();
 
   /* necessary to initialize webots stuff */
   //static WbFieldRef cam_field;
@@ -1265,6 +1413,7 @@ pack = 0;
       receiveInfo();
       goToPos();
        mainUdp();
+       posUdp();
        //printf("Looping\n");
       
        //dofSelection(RIGHT,1.0);
