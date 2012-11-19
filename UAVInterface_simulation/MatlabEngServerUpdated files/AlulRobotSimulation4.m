@@ -247,25 +247,25 @@ end
     %zero out all cells that are visible now....
     unseen(find(thisVisible==1),1) = 0;  
 
-    figure(3);
-    imagesc(f2);
-    for j = 1:numCameras
-    	plotcamera(ucells(our_cam_pos(j,1),1),ucells(our_cam_pos(j,1),2),3,j,90,180,dov);
-    end
+    %figure(3);
+    %imagesc(f2);
+    %for j = 1:numCameras
+    %	plotcamera(ucells(our_cam_pos(j,1),1),ucells(our_cam_pos(j,1),2),3,j,90,180,dov);
+    %end
 
    %plot seen cells and starving cells
-    plotpoints(ourcells(find(thisVisible==1),1),ourcells(find(thisVisible==1),2),3,'.',[1 1 1]);
-    plotpoints(ourcells(find(unseen > maxUnseen == 1),1),ourcells(find(unseen > maxUnseen == 1),2),3,'.',[0 0 0]);
+    %plotpoints(ourcells(find(thisVisible==1),1),ourcells(find(thisVisible==1),2),3,'.',[1 1 1]);
+    %plotpoints(ourcells(find(unseen > maxUnseen == 1),1),ourcells(find(unseen > maxUnseen == 1),2),3,'.',[0 0 0]);
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % FIND BOUNDARY CELLS 
+    % FIND BOUNDARY CELLS OF THE MAXUNSEEN SPACE
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     j=1; k=1;
     hull=[];
-    for i=28:-1:1
+    for i=27:-1:1
         for l=1:26
-           if unseen(j,1) > 3%maxUnseen
+           if unseen(j,1) > maxUnseen
                 hull(i,l) = 1;
                 j = j + 1; k = k+1;
            else
@@ -280,18 +280,18 @@ end
     boundary=[];
     allboundary = [];
     [B,L,N,A] = bwboundaries(hull);
-    figure(1); imshow(hull); hold on;
+    %figure(1); imshow(hull); hold on;
     for k=1:length(B),
         if(~sum(A(k,:)))
             boundary = B{k};
-            plot(boundary(:,2),boundary(:,1),'r','LineWidth',2);
+            %plot(boundary(:,2),boundary(:,1),'r','LineWidth',2);
             sz=size(boundary,1);
             allboundary(st:st+sz-1,:) = boundary;
             allboundary(st+sz,1) = -1; allboundary(st+sz,2) = -1;
             st=st+sz+1;        
             for l=find(A(:,k))'
                 boundary = B{l};
-                plot(boundary(:,2),boundary(:,1),'g','LineWidth',2);
+                %plot(boundary(:,2),boundary(:,1),'g','LineWidth',2);
                 sz=size(boundary,1);
                 allboundary(st,1) = -2; allboundary(st,2) = -2;
                 allboundary(st+1:st+1+sz-1,:) = boundary;
@@ -354,27 +354,32 @@ end
         end
 
         %second check
+	temp = 0; cnt = 2;
+        lastx = 0; lasty = 0;
+	outer2=[];
+	outer2(1,1) = outer(1,1);
+        outer2(1,2) = outer(1,2);
 	for i=1:size(outer,1)
             x = outer(i,1);
             y = outer(i,2);
             if (x == -1 && y == -1) && i<size(outer,1)
                 outer2(cnt,1) = lastx;
-                outer2(cnt,2) = lasty; 
-                outer2(cnt+1,1) = x;
-                outer2(cnt+1,2) = y; 
+                outer2(cnt,2) = lasty;               
                 if outer(i+1,1)==-2 && outer(i+1,2)==-2
-                    outer2(cnt+2,1) = -2;
-                    outer2(cnt+2,2) = -2;
-                    outer2(cnt+3,1) = outer(i+2,1);
-                    outer2(cnt+3,2) = outer(i+2,2);
-                    cnt=cnt+4;
+                    outer2(cnt+1,1) = -2;
+                    outer2(cnt+1,2) = -2;
+                    outer2(cnt+2,1) = outer(i+2,1);
+                    outer2(cnt+2,2) = outer(i+2,2);
+                    cnt=cnt+3;
                 else
-                    outer2(cnt+2,1) = outer(i+1,1);
+                    outer2(cnt+1,1) = x;
+                    outer2(cnt+1,2) = y;
+		    outer2(cnt+2,1) = outer(i+1,1);
                     outer2(cnt+2,2) = outer(i+1,2);
                     cnt=cnt+3;
                 end
                 temp = 0; lastx = 0; lasty = 0;  
-         	elseif (x == -2 && y == -2)
+            elseif (x == -2 && y == -2)
                	continue
             elseif  y == lasty
                 lastx=x; lasty=y;

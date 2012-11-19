@@ -1,0 +1,1112 @@
+TUAVInterface CM
+v7
+r0
+t359322168.166474
+cCheck dependencies
+cCpResource "build/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist" /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+cProcessInfoPlistFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Info.plist" "UAVInterface CM-Info.plist"
+cCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib"
+cCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib"
+cCopyPlistFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/cityList.plist" cityList.plist
+cCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib"
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png" images/Icon-72.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png" images/Icon-Small-50.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png" images/Icon-Small.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png" images/Icon-Small@2x.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon.png" images/Icon.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png" images/Icon@2x.png
+cCpResource "build/Debug-iphoneos/UAVInterface CM.app/iTunesArtwork" images/iTunesArtwork
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav1.png" images/uav1.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Default.png" images/Default.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav2_.png" images/uav2_.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png" images/../iTemplate.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png" images/uavIcon.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav3.png" images/uav3.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav4.png" images/uav4.png
+cCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png" images/blue_wp.png
+cProcessPCH "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch.gch" "UAVInterface CM_Prefix.pch" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch.gch" "UAVInterface CM_Prefix.pch" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/main.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AppDelegate.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MapViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCitiesListController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCity.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MyAnnotation.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/RoiViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AsyncUdpSocket.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cLd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM" normal armv6
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/main.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AppDelegate.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MapViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCitiesListController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCity.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MyAnnotation.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/RoiViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AsyncUdpSocket.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM" normal armv7
+cCreateUniversalBinary "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM" normal "armv6 armv7"
+cGenerateDSYMFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app.dSYM" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM"
+cProcessProductPackaging "/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision"
+cTouch "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent"
+cCodeSign "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk
+c000000004D7401890000000000000110
+t1299448201
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
+c000000004D4F6A4700000000000001A7
+t1297050183
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+c000000004D4F6A4700000000000001E5
+t1297050183
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004D54D1B500000000002CAD60
+t1297404341
+s2927968
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
+c000000004D54D12700000000000004CF
+t1297404199
+s1231
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D2640000000000303FF0
+t1297404516
+s3162096
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D243000000000000046B
+t1297404483
+s1131
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54D18C00000000003532A0
+t1297404300
+s3486368
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h
+c000000004D54D02E00000000000004FE
+t1297403950
+s1278
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004D5DE7A400000000000001D0
+t1297999780
+s464
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54D1F500000000003E22F0
+t1297404405
+s4072176
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54D1DD0000000000001466
+t1297404381
+s5222
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKAnnotation.h
+c000000004D5C9CA600000000000002BC
+t1297915046
+s700
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004D5C9CA600000000000002FE
+t1297915046
+s766
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004D5C9CD400000000002B3AB0
+t1297915092
+s2833072
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004D54D49500000000000000C4
+t1297405077
+s196
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5A28AB0000000000000AA1
+t1297754283
+s2721
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5A292A0000000000CA2AE0
+t1297754410
+s13249248
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/Availability.h
+c000000004D4F74C20000000000001B19
+t1297052866
+s6937
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/arpa/inet.h
+c000000004D54C5330000000000001533
+t1297401139
+s5427
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/net/if.h
+c000000004D54CB240000000000003DBA
+t1297402660
+s15802
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netdb.h
+c000000004D54C533000000000000307F
+t1297401139
+s12415
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netinet/in.h
+c000000004D54CB250000000000006BAC
+t1297402661
+s27564
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/ioctl.h
+c000000004D54CB28000000000000116C
+t1297402664
+s4460
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/socket.h
+c000000004D54CB290000000000005ACF
+t1297402665
+s23247
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m
+c000000004C2528780000000000000AA7
+t1277503608
+s2727
+i<UIKit/UIKit.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.h
+c000000004DDFEDD40000000000000C09
+t1306521044
+s3081
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m
+c000000004F7097630000000000000EEE
+t1332778851
+s3822
+i"AppDelegate.h"
+i"MapViewController.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.h
+c000000004DECF7EA00000000000037E2
+t1307375594
+s14306
+i<Foundation/Foundation.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m
+c000000004E57FAC80000000000010339
+t1314388680
+s66361
+i"AsyncUdpSocket.h"
+i<sys/socket.h>
+i<netinet/in.h>
+i<arpa/inet.h>
+i<sys/ioctl.h>
+i<net/if.h>
+i<netdb.h>
+i<CFNetwork/CFNetwork.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.h
+c000000004F05E43A00000000000004B0
+t1325786170
+s1200
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i"WorldCitiesListController.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m
+c000000004F7B38CA0000000000002144
+t1333475530
+s8516
+i"MapViewController.h"
+i"WorldCity.h"
+i"MyAnnotation.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.h
+c000000004F7DD6A70000000000000E5B
+t1333647015
+s3675
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m
+c000000004F7DD6A700000000000013A5
+t1333647015
+s5029
+i"MyAnnotation.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.h
+c000000004F7B60B10000000000000621
+t1333485745
+s1569
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i<CoreGraphics/CoreGraphics.h>
+i"AsyncUdpSocket.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m
+c000000004FAD6B4A0000000000008941
+t1336765258
+s35137
+i<QuartzCore/QuartzCore.h>
+i"RoiViewController.h"
+i"MapViewController.h"
+i"MyAnnotation.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.h
+c000000004C2528780000000000000C3E
+t1277503608
+s3134
+i<UIKit/UIKit.h>
+i"WorldCity.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m
+c000000004E0B382E0000000000001302
+t1309358126
+s4866
+i"WorldCitiesListController.h"
+i"WorldCity.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.h
+c000000004C2528780000000000000BC3
+t1277503608
+s3011
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m
+c000000004C2528780000000000000BE3
+t1277503608
+s3043
+i"WorldCity.h"
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM_Prefix.pch
+c000000004C2528780000000000000B0D
+t1277503608
+s2829
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app
+t1337625200
+s884
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app.dSYM
+t1336765260
+s102
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Default.png
+t1334256414
+s217371
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png
+t1334256413
+s925
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png
+t1334256413
+s880
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png
+t1334256413
+s854
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png
+t1334256413
+s893
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon.png
+t1334256413
+s891
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png
+t1334256413
+s995
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Info.plist
+t1334256413
+s1025
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/PkgInfo
+t1334256413
+s8
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist
+t1334256413
+s485
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM
+t1336765260
+s369200
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png
+t1334256414
+s4364
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/cityList.plist
+t1334256413
+s123
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision
+t1334256416
+s7242
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/MainWindow.nib
+t1334256414
+s1560
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/MapViewController.nib
+t1334256414
+s1632
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/RoiViewController.nib
+t1334256414
+s2303
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png
+t1334256414
+s16763
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTunesArtwork
+t1334256413
+s5188
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav1.png
+t1334256413
+s2791
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav2_.png
+t1334256414
+s2758
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav3.png
+t1334256414
+s2758
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav4.png
+t1334256414
+s2787
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png
+t1334256414
+s16763
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AppDelegate.o
+t1334256415
+s60736
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AsyncUdpSocket.o
+t1334256415
+s120792
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MapViewController.o
+t1334256415
+s81364
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MyAnnotation.o
+t1334256415
+s57460
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/RoiViewController.o
+t1336765259
+s152236
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM
+t1336765260
+s179068
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM.LinkFileList
+c000000004F87231D0000000000000515
+t1334256413
+s1301
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCitiesListController.o
+t1334256415
+s51756
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCity.o
+t1334256415
+s13648
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/main.o
+t1334256415
+s8296
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AppDelegate.o
+t1334256415
+s60616
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AsyncUdpSocket.o
+t1334256416
+s117184
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MapViewController.o
+t1334256415
+s79636
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MyAnnotation.o
+t1334256415
+s56292
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/RoiViewController.o
+t1336765259
+s146948
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM
+t1336765260
+s170020
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM.LinkFileList
+c000000004F87231D0000000000000515
+t1334256413
+s1301
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCitiesListController.o
+t1334256415
+s51552
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCity.o
+t1334256415
+s13564
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/main.o
+t1334256415
+s8280
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent
+t1334256416
+s436
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/cityList.plist
+c000000004E55175C0000000000000171
+t1314199388
+s369
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib
+c000000004DDAB9960000000000006C13
+t1306179990
+s27667
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib
+c000000004E1719A000000000000061F6
+t1310136736
+s25078
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib
+c000000004E526AD80000000000007112
+t1314024152
+s28946
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/../iTemplate.png
+c000000004F05D05C000000000008E62E
+t1325781084
+s583214
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Default.png
+c000000004E04DA280000000000032DAA
+t1308940840
+s208298
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-72.png
+c000000004C1FB6000000000000000427
+t1277146624
+s1063
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small-50.png
+c000000004C1FB60000000000000003E0
+t1277146624
+s992
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small.png
+c000000004C1BEFCA0000000000000396
+t1276899274
+s918
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small@2x.png
+c000000004C1BEFCA00000000000003F2
+t1276899274
+s1010
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon.png
+c000000004C1BEFCA00000000000003EF
+t1276899274
+s1007
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon@2x.png
+c000000004C1BEFCA00000000000004E4
+t1276899274
+s1252
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/blue_wp.png
+c000000004F7DD9130000000000001002
+t1333647635
+s4098
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/iTunesArtwork
+c000000004C223D200000000000001444
+t1277312288
+s5188
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav1.png
+c000000004E6681C20000000000000AF9
+t1315340738
+s2809
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav2_.png
+c000000004F7DE6B90000000000000AD8
+t1333651129
+s2776
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav3.png
+c000000004F7DE7F60000000000000AD8
+t1333651446
+s2776
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav4.png
+c000000004F7DE6BD0000000000000AF4
+t1333651133
+s2804
+
+N/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uavIcon.png
+c000000004F05D05C000000000008E62E
+t1325781084
+s583214
+
+N/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision
+c000000004E9F1C3E0000000000001C4A
+t1319050302
+s7242
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch.gch
+t1334256415
+s10754648
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch.gch
+t1334256415
+s11225688
+
+NUAVInterface CM-Info.plist
+c000000004F05D61C0000000000000473
+t1325782556
+s1139
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies359322167#359322168#0(0"0(0#1#0"8641216032#0"0#
+
+CCodeSign "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"
+s359318000.550212
+e359318000.846892
+r1
+xCodeSign
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app
+o/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app: replacing existing signature
+lSLF07#2@51"CodeSign "build/Debug-iphoneos/UAVInterface CM.app"359318000#359318000#0(131"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app: replacing existing signature0(0#0#100"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app8634038944#784"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv _CODESIGN_ALLOCATE_ /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    /usr/bin/codesign -f -s "iPhone Developer: Rhonda Stricklin (NG736UY65J)" "--resource-rules=/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist" --entitlements "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AppDelegate.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.189986
+e355949215.320065
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AppDelegate.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m355949215#355949215#0(0"0(0#0#81"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m8609418176#2161"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AppDelegate.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AsyncUdpSocket.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.365525
+e355949215.814099
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AsyncUdpSocket.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@92"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m355949215#355949215#0(0"0(0#0#84"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m8617994688#2167"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/AsyncUdpSocket.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MapViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.191319
+e355949215.383545
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MapViewController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m355949215#355949215#0(0"0(0#0#87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m8606331360#2173"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MapViewController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MyAnnotation.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.315077
+e355949215.499213
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MyAnnotation.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@90"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m355949215#355949215#0(0"0(0#0#82"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m8622237088#2163"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/MyAnnotation.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/RoiViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s358458058.675619
+e358458059.365006
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/RoiViewController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m: In function '-[RoiViewController onUdpSocket:didReceiveData:withTag:fromHost:port:]':
+o/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m:106: warning: initialization makes pointer from integer without a cast
+lSLF07#2@95"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m358458058#358458059#0(334"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m: In function '-[RoiViewController onUdpSocket:didReceiveData:withTag:fromHost:port:]':/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m:106: warning: initialization makes pointer from integer without a cast1(22@56"Initialization makes pointer from integer without a cast358458059#175#159#0(6@87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m358458058#106#0#106#0#0"0(0#0#87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m8638654944#2173"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/RoiViewController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCitiesListController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.193734
+e355949215.314961
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCitiesListController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@103"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m355949215#355949215#0(0"0(0#0#95"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m8600358784#2189"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCitiesListController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCity.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.268271
+e355949215.365410
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCity.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@87"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m355949215#355949215#0(0"0(0#0#79"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m8624085568#2157"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/WorldCity.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/main.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949215.188696
+e355949215.268030
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/main.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@85"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m355949215#355949215#0(0"0(0#0#77"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m8616834400#2150"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/main.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AppDelegate.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.446468
+e355949215.548953
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AppDelegate.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m355949215#355949215#0(0"0(0#0#81"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m8601872064#2161"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AppDelegate.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AppDelegate.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AsyncUdpSocket.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.793709
+e355949216.107075
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AsyncUdpSocket.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@92"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m355949215#355949216#0(0"0(0#0#84"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m8609069536#2167"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/AsyncUdpSocket.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/AsyncUdpSocket.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MapViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.499323
+e355949215.657352
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MapViewController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m355949215#355949215#0(0"0(0#0#87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m8600923616#2173"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MapViewController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MapViewController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MyAnnotation.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.657469
+e355949215.826892
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MyAnnotation.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@90"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m355949215#355949215#0(0"0(0#0#82"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m8621798272#2163"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/MyAnnotation.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/MyAnnotation.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/RoiViewController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s358458059.000971
+e358458059.296251
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/RoiViewController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m: In function '-[RoiViewController onUdpSocket:didReceiveData:withTag:fromHost:port:]':
+o/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m:106: warning: initialization makes pointer from integer without a cast
+lSLF07#2@95"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m358458059#358458059#0(334"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m: In function '-[RoiViewController onUdpSocket:didReceiveData:withTag:fromHost:port:]':/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m:106: warning: initialization makes pointer from integer without a cast1(22@56"Initialization makes pointer from integer without a cast358458059#175#159#0(6@87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m358458058#106#0#106#0#0"0(0#0#87"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m8636858336#2173"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/RoiViewController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/RoiViewController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCitiesListController.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.549086
+e355949215.653479
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCitiesListController.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@103"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m355949215#355949215#0(0"0(0#0#95"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m8624475936#2189"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCitiesListController.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCitiesListController.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCity.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.653621
+e355949215.741701
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCity.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@87"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m355949215#355949215#0(0"0(0#0#79"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m8622631936#2157"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/WorldCity.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/WorldCity.o"0#
+
+CCompileC "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/main.o" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949215.383664
+e355949215.446366
+r1
+xCompileC
+xbuild/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/main.o
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@85"Compile /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m355949215#355949215#0(0"0(0#0#77"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m8609303072#2150"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -include "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/Classes/../main.m" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/main.o"0#
+
+CCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib"
+s355949213.717740
+e355949214.283028
+r1
+xCompileXIB
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib
+lSLF07#2@34"CompileXIB en.lproj/MainWindow.xib355949213#355949214#0(0"0(0#0#83"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib8625735584#637"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/MainWindow.nib" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MainWindow.xib" --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib"
+s355949213.718723
+e355949214.280526
+r1
+xCompileXIB
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib
+lSLF07#2@41"CompileXIB en.lproj/MapViewController.xib355949213#355949214#0(0"0(0#0#90"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib8624150336#651"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/MapViewController.nib" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/MapViewController.xib" --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib"
+s355949213.720008
+e355949214.340742
+r1
+xCompileXIB
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib
+lSLF07#2@41"CompileXIB en.lproj/RoiViewController.xib355949213#355949214#0(0"0(0#0#90"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib8623372032#651"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/en.lproj/RoiViewController.nib" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/en.lproj/RoiViewController.xib" --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Default.png" images/Default.png
+s355949213.974744
+e355949214.333599
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Default.png
+ximages/Default.png
+lSLF07#2@85"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Default.png" images/Default.png355949213#355949214#0(0"0(0#0#78"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Default.png8604221376#546"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Default.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Default.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png" images/Icon-72.png
+s355949213.745064
+e355949213.778873
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png
+ximages/Icon-72.png
+lSLF07#2@85"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png" images/Icon-72.png355949213#355949213#0(0"0(0#0#78"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-72.png8622922528#546"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-72.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-72.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png" images/Icon-Small-50.png
+s355949213.778990
+e355949213.807194
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png
+ximages/Icon-Small-50.png
+lSLF07#2@97"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png" images/Icon-Small-50.png355949213#355949213#0(0"0(0#0#84"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small-50.png8622256160#558"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small-50.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small-50.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png" images/Icon-Small.png
+s355949213.807308
+e355949213.836921
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png
+ximages/Icon-Small.png
+lSLF07#2@91"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png" images/Icon-Small.png355949213#355949213#0(0"0(0#0#81"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small.png8620741792#552"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png" images/Icon-Small@2x.png
+s355949213.837027
+e355949213.867218
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png
+ximages/Icon-Small@2x.png
+lSLF07#2@97"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png" images/Icon-Small@2x.png355949213#355949213#0(0"0(0#0#84"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small@2x.png8616915136#558"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon-Small@2x.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon-Small@2x.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon.png" images/Icon.png
+s355949213.867319
+e355949213.892313
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon.png
+ximages/Icon.png
+lSLF07#2@79"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon.png" images/Icon.png355949213#355949213#0(0"0(0#0#75"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon.png8610034176#540"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png" images/Icon@2x.png
+s355949213.892405
+e355949213.920607
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png
+ximages/Icon@2x.png
+lSLF07#2@85"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png" images/Icon@2x.png355949213#355949213#0(0"0(0#0#78"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon@2x.png8606996160#546"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/Icon@2x.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Icon@2x.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png" images/blue_wp.png
+s355949214.340853
+e355949214.368714
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png
+ximages/blue_wp.png
+lSLF07#2@85"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png" images/blue_wp.png355949214#355949214#0(0"0(0#0#78"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/blue_wp.png8621136352#546"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/blue_wp.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/blue_wp.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png" images/../iTemplate.png
+s355949214.283121
+e355949214.318455
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png
+ximages/../iTemplate.png
+lSLF07#2@92"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png" images/../iTemplate.png355949214#355949214#0(0"0(0#0#83"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/../iTemplate.png8622918368#553"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/../iTemplate.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/iTemplate.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav1.png" images/uav1.png
+s355949213.921919
+e355949213.974625
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav1.png
+ximages/uav1.png
+lSLF07#2@79"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/uav1.png" images/uav1.png355949213#355949213#0(0"0(0#0#75"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav1.png8603647808#540"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav1.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav1.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav2_.png" images/uav2_.png
+s355949214.280643
+e355949214.305121
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav2_.png
+ximages/uav2_.png
+lSLF07#2@81"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/uav2_.png" images/uav2_.png355949214#355949214#0(0"0(0#0#76"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav2_.png8623795040#542"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav2_.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav2_.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav3.png" images/uav3.png
+s355949214.318577
+e355949214.344782
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav3.png
+ximages/uav3.png
+lSLF07#2@79"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/uav3.png" images/uav3.png355949214#355949214#0(0"0(0#0#75"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav3.png8621699040#540"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav3.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav3.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav4.png" images/uav4.png
+s355949214.333721
+e355949214.359858
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav4.png
+ximages/uav4.png
+lSLF07#2@79"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/uav4.png" images/uav4.png355949214#355949214#0(0"0(0#0#75"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav4.png8621451232#540"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uav4.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uav4.png"0#
+
+CCopyPNGFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png" images/uavIcon.png
+s355949214.305227
+e355949214.342822
+r1
+xCopyPNGFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png
+ximages/uavIcon.png
+lSLF07#2@85"CopyPNGFile "build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png" images/uavIcon.png355949214#355949214#0(0"0(0#0#78"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uavIcon.png8621954752#546"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/uavIcon.png" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/uavIcon.png"0#
+
+CCopyPlistFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/cityList.plist" cityList.plist
+s355949213.719361
+e355949213.744944
+r1
+xCopyPlistFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/cityList.plist
+xcityList.plist
+lSLF07#2@19"Copy cityList.plist355949213#355949213#0(0"0(0#0#74"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/cityList.plist8623654080#429"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist --convert binary1 cityList.plist --outdir "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"0#
+
+CCpResource "build/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist" /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+s355949213.701822
+e355949213.717630
+r1
+xCpResource
+xbuild/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist355949213#355949213#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist8618373792#548"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"0#
+
+CCpResource "build/Debug-iphoneos/UAVInterface CM.app/iTunesArtwork" images/iTunesArtwork
+s355949213.920733
+e355949213.942901
+r1
+xCpResource
+xbuild/Debug-iphoneos/UAVInterface CM.app/iTunesArtwork
+ximages/iTunesArtwork
+lSLF07#2@25"Copy images/iTunesArtwork355949213#355949213#0(0"0(0#0#80"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/iTunesArtwork8606502112#541"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/images/iTunesArtwork" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"0#
+
+CCreateUniversalBinary "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM" normal "armv6 armv7"
+s358458060.424197
+e358458060.446691
+r1
+xCreateUniversalBinary
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM
+xnormal
+xarmv6 armv7
+lSLF07#2@101"CreateUniversalBinary "build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM" normal "armv6 armv7"358458060#358458060#0(0"0(0#0#71"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/armv6 armv78635532704#674"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/lipo -create "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM" -output "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM"0#
+
+CGenerateDSYMFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app.dSYM" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM"
+s358458060.446767
+e358458060.537293
+r1
+xGenerateDSYMFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app.dSYM
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM
+lSLF07#2@123"GenerateDSYMFile "build/Debug-iphoneos/UAVInterface CM.app.dSYM" "build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM"358458060#358458060#0(0"0(0#0#116"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM8633662144#455"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/UAVInterface CM" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app.dSYM"0#
+
+CLd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM" normal armv6
+s358458059.365106
+e358458060.424129
+r1
+xLd
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM
+xnormal
+xarmv6
+lSLF07#2@166"Link /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM358458059#358458060#0(0"0(0#0#0"8625795648#1081"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv IPHONEOS_DEPLOYMENT_TARGET 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk "-L/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" -filelist "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM.LinkFileList" -dead_strip -miphoneos-version-min=3.2 -framework Foundation -framework UIKit -framework CoreGraphics -framework MapKit -framework CoreData -framework CFNetwork -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv6/UAVInterface CM"0#
+
+CLd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM" normal armv7
+s358458059.296390
+e358458060.423649
+r1
+xLd
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM
+xnormal
+xarmv7
+lSLF07#2@166"Link /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM358458059#358458060#0(0"0(0#0#0"8631488320#1081"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv IPHONEOS_DEPLOYMENT_TARGET 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk "-L/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" -filelist "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM.LinkFileList" -dead_strip -miphoneos-version-min=3.2 -framework Foundation -framework UIKit -framework CoreGraphics -framework MapKit -framework CoreData -framework CFNetwork -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/Objects-normal/armv7/UAVInterface CM"0#
+
+CProcessInfoPlistFile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Info.plist" "UAVInterface CM-Info.plist"
+s355949213.702853
+e355949213.706544
+r1
+xProcessInfoPlistFile
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Info.plist
+xUAVInterface CM-Info.plist
+lSLF07#2@34"Process UAVInterface CM-Info.plist355949213#355949213#0(0"0(0#0#86"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM-Info.plist8617970848#688"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility "UAVInterface CM-Info.plist" -genpkginfo "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/PkgInfo" -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/ResourceRules.plist" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/Info.plist"0#
+
+CProcessPCH "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch.gch" "UAVInterface CM_Prefix.pch" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s355949214.368827
+e355949215.049597
+r1
+xProcessPCH
+x/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch.gch
+xUAVInterface CM_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile UAVInterface CM_Prefix.pch355949214#355949215#0(0"0(0#0#86"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM_Prefix.pch8620415680#2006"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv6" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM_Prefix.pch" -o "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-eipzdgjhrrefucakfbetgaetpwkq/UAVInterface CM_Prefix.pch.gch"0#
+
+CProcessPCH "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch.gch" "UAVInterface CM_Prefix.pch" normal armv7 objective-c com.apple.compilers.gcc.4_2
+s355949214.369954
+e355949215.188547
+r1
+xProcessPCH
+x/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch.gch
+xUAVInterface CM_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile UAVInterface CM_Prefix.pch355949214#355949215#0(0"0(0#0#86"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM_Prefix.pch8618769984#2006"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-generated-files.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-own-target-headers.hmap" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-all-target-headers.hmap" -iquote "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM-project-headers.hmap" "-F/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/include" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources/armv7" "-I/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/DerivedSources" -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/UAVInterface CM_Prefix.pch" -o "/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface CM_Prefix-fjszuxnvedsikvhirgydtnzievvx/UAVInterface CM_Prefix.pch.gch"0#
+
+CProcessProductPackaging "/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision" "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision"
+s355949216.202181
+e355949216.225061
+r1
+xProcessProductPackaging
+x/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision
+lSLF07#2@206"ProcessProductPackaging "/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision" "build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision"355949216#355949216#0(0"0(0#0#125"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision8616252032#481"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/crawford8/Library/MobileDevice/Provisioning Profiles/943FCC54-2253-4651-B68F-934105D4ED03.mobileprovision" -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app/embedded.mobileprovision"0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent"
+s355949216.229205
+e355949216.230944
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent
+lSLF07#2@201"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist "build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent"355949216#355949216#0(0"0(0#0#146"/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent8606442240#502"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist -entitlements -format xml -o "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/UAVInterface CM.build/Debug-iphoneos/UAVInterface CM.build/UAVInterface CM.xcent"0#
+
+CTouch "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"
+s358458060.537810
+e358458060.540764
+r1
+xTouch
+x/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app
+lSLF07#2@106"Touch /Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app358458060#358458060#0(0"0(0#0#0"8628173472#318"    cd "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Users/crawford8/Desktop/UAVInterface 4 w control mechanism/build/Debug-iphoneos/UAVInterface CM.app"0#
+

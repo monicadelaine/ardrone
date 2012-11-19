@@ -36,7 +36,7 @@
 #define dataSize 12294
 #define dataSize_command 255
 
-long long int send_interval1 = 200, send_time1 = 0;
+long long int send_interval1 = 150, send_time1 = 0;
 
 int gotCoords=0;
 float IPAD_UNIT_X = 45.080468637;
@@ -100,7 +100,6 @@ double alulFlag[0], start[0], cell_pos[0], cell1[0], cell2[0], cell3[0], cell4[0
 mxArray *m_A, *m_S, *m_CP, *m_C1, *m_C2, *m_C3, *m_C4, *m_D, *m_B;
 char *cpresult2, *dresult2;
 double *cresult, *bresult2;
-double *ptr;
 int startEng = 0;
 int x1, y11, x2, y2, x3, y3, x4, y4;
 int wp_x1[50][2], wp_y1[50][2], wp_x2[50][2], wp_y2[50][2], wp_x3[50][2], wp_y3[50][2], wp_x4[50][2], wp_y4[50][2];
@@ -126,13 +125,11 @@ void toMatlab(int x, int y) {
 	int newY = (int)( (y + Y_OFFSET) * MAT_UNIT_Y );
 	matCoords[0] = newX+MX+MATX;
 	matCoords[1] = MAXY-newY+MY+MATY;
-	//printf("toMatlab=> x: %i y: %i, newX: %i, newY: %i matX: %i, matY: %i\n",x,y,newX,newY,matCoords[0],matCoords[1]);
 }
 
 int toInterface(float unit, float val, float offset) {
 	int interfaceCoords = (int)( (val + offset) * unit );
 	return interfaceCoords;
-	//printf("toInterface=> x: %f y: %f, intX: %i, intY: %i\n",x,y,interfaceCoords[0],interfaceCoords[1]);
 }
 
 void *waitThread(int argc, char *argv[]) {
@@ -140,12 +137,9 @@ void *waitThread(int argc, char *argv[]) {
 }
 
 void boundary(double *bresult2, mwSize rows, mwSize cols) {
-	printf("bcells %i %i \n", rows, cols);
+	//printf("bcells %i %i \n", rows, cols);
 	int a, b, i, j, k=0, l=2;
 	if (rows<400) {
-		/*for (a=0; a<cols*rows; a++) {
-			printf("%f ",bresult2[a]);
-		}*/
 		bflag=1;
 		bArray[0] = rows, bArray[1] = cols;
 		for (i=0; i<cols; i++) {
@@ -163,13 +157,6 @@ void boundary(double *bresult2, mwSize rows, mwSize cols) {
 				k+=1; l+=1;
 			}
 		}
-		
-		/*for (i=0; i<rows; i++) {
-			for (j=0; j<cols; j++) {
-				printf("%i ",bArray2[i][j]);
-			}
-			printf("\n");
-		}*/
 	}
 }
 
@@ -187,11 +174,11 @@ void *dataThread(){
 	servAddr_command.sin_port = htons(LOCAL_SERVER_PORT1);
 	rc_command = bind (sd_command, (struct sockaddr *) &servAddr_command,sizeof(servAddr_command));
 	if(rc_command<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT1);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT1);fflush(stdout);
 		exit(1);
 	}
 
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT1);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT1);fflush(stdout);
 
 	cliLen_command = sizeof(cliAddr_command);
 	n_command = recvfrom(sd_command, data1_command, dataSize_command, flags_command,
@@ -217,6 +204,7 @@ void *dataThread(){
 
 				int rcP;
 				data1[0] = 'A';
+				data1[1] = 'A';
 				data2[0] = 'B';
 				data3[0] = 'C';
 				data4[0] = 'D';
@@ -240,7 +228,6 @@ void *dataThread(){
                                 tposArray[17] = rArray[7];
 				tposArray[18] = -2;
 				tposArray[19] = -2;
-				//printf("r: %d, %d p3: %d, %d\n",tposArray[10],tposArray[11],tposArray[6],tposArray[7]);
 				
 				// send data to interface every ??? ms
 				long long int curr_time = get_current_time()/1000;
@@ -281,10 +268,10 @@ void *videoThread1() {
 	servAddr.sin_port = htons(LOCAL_SERVER_PORT0);
 	rc = bind (sd, (struct sockaddr *) &servAddr,sizeof(servAddr));
 	if(rc<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT0);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT0);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT0); //fflush(stdout);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT0); fflush(stdout);
 
 	flags = 0;
 
@@ -330,10 +317,10 @@ void *videoThread2(){
 	servAddr2.sin_port = htons(LOCAL_SERVER_PORT2);
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT2);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT2);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT2);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT2);fflush(stdout);
 
 	flags2 = 0;
 
@@ -380,10 +367,10 @@ void *videoThread3(){
 	servAddr3.sin_port = htons(LOCAL_SERVER_PORT11);
 	rc3 = bind (sd3, (struct sockaddr *) &servAddr3,sizeof(servAddr3));
 	if(rc3<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT11);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT11);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT11);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT11);fflush(stdout);
 
 	flags3 = 0;
 
@@ -430,10 +417,10 @@ void *videoThread4(){
 	servAddr4.sin_port = htons(LOCAL_SERVER_PORT14);
 	rc4 = bind (sd4, (struct sockaddr *) &servAddr4,sizeof(servAddr4));
 	if(rc4<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT14);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT14);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT14);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT14);fflush(stdout);
 
 	flags4 = 0;
 
@@ -484,10 +471,10 @@ void *wpInterface() {
 	servAddr_wp.sin_port = htons(LOCAL_SERVER_PORT6);
 	rc_wp = bind (sd_wp, (struct sockaddr *) &servAddr_wp,sizeof(servAddr_wp));
 	if(rc_wp<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT6);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT6);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT6);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT6);fflush(stdout);
 
 	flags_wp = 0;
 
@@ -554,7 +541,7 @@ void *wpInterface() {
 							printf("error converting string\n");
 						}
 						printf("wp: %i,%f,%f,%f ", pID2, int_p1x, int_p1y, int_wp_id); fflush(stdout);
-						printf("%lld\n", get_current_time()/1000); fflush(stdout);
+						printf("%lld\n", get_current_time()/1000); 
 						ix=int_p1x, iy=int_p1y;
 					} else{ //init coord
 						if(sscanf(numUAVs, "%f", &int_num_uav) == EOF )   {
@@ -564,7 +551,7 @@ void *wpInterface() {
 							printf("error converting string\n");
 						}
 						printf("algID: %f numUAVs: %f ", int_alg_id, int_num_uav);
-						printf("%lld\n", get_current_time()/1000);
+						printf("%lld\n", get_current_time()/1000);fflush(stdout);
 					}
 
 					if (gotCoords < 1){ //init coord
@@ -806,10 +793,10 @@ void *wpMatlab() {
 					engEvalString(ep, "demoRunAlulRobot4");
 					cpresult = engGetVariable(ep,"cell_pos");
 					cpresult2 = mxArrayToString(cpresult);
-					printf("auto: %s %lld\n", cpresult2, get_current_time()/1000); fflush(stdout);
+					printf("auto: %s %lld\n", cpresult2, get_current_time()/1000); 
 					dresult = engGetVariable(ep,"mdata");
 					dresult2 = mxArrayToString(dresult);
-					printf("data: %s %lld\n", dresult2, get_current_time()/1000); fflush(stdout);
+					printf("data: %s %lld\n", dresult2, get_current_time()/1000); 
 					bresult = engGetVariable(ep,"bcells");
 					mwSize rows = mxGetM(bresult);
 					mwSize cols = mxGetN(bresult);
@@ -824,11 +811,9 @@ void *wpMatlab() {
 						char *s1 = "cell1 = returnCell(ucells,";
 						char *s2 = ")";
 						snprintf(buf1, sizeof(buf1), "%s%d,%d%s", s1, x, y, s2);
-						//printf("%s\n", buf1);	
 						engEvalString(ep, buf1);
 						c1result = engGetVariable(ep,"cell1");
 						cresult = mxGetPr(c1result);
-						//printf("cell1: %f\n", cresult[0]);
 						es1 =  "cameras(1,:)=[cell1 dov];";
 					} else if (WP_FLAG1 == 0) {
 						es1 = "cameras(1,:)=[our_cam_pos(1,1) dov];";
@@ -841,11 +826,9 @@ void *wpMatlab() {
 						char *s1 = "cell2 = returnCell(ucells,";
 						char *s2 = ")";
 						snprintf(buf2, sizeof(buf2), "%s%d,%d%s", s1, x, y, s2);
-						//printf("%s\n", buf2);	
 						engEvalString(ep, buf2);
 						c2result = engGetVariable(ep,"cell2");
 						cresult = mxGetPr(c2result);
-						//printf("cell2: %f\n", cresult[0]);
 						es2 =  "cameras(2,:)=[cell2 dov];";
 					} else if (WP_FLAG2 == 0) {
 						es2 = "cameras(2,:)=[our_cam_pos(2,1) dov];";
@@ -875,11 +858,9 @@ void *wpMatlab() {
 						char *s1 = "cell4 = returnCell(ucells,";
 						char *s2 = ");";
 						snprintf(buf4, sizeof(buf4), "%s%d,%d%s", s1, x, y, s2);
-						//printf("%s\n", buf4);	
 						engEvalString(ep, buf4);
 						c4result = engGetVariable(ep,"cell4");
 						cresult = mxGetPr(c4result);
-						//printf("cell4: %f\n", cresult[0]);
 						es4 = "cameras(4,:)=[cell4 dov];";
 					} else if (WP_FLAG4 == 0) {
 						es4 = "cameras(4,:)=[our_cam_pos(4,1) dov];";
@@ -888,19 +869,19 @@ void *wpMatlab() {
 					es0 = "if (start==1)";
 					es5 = "end";
 					snprintf(buf5, sizeof(buf5), "%s %s %s %s %s %s", es0, es1, es2, es3, es4, es5);
-					//printf("%s\n", buf5);
 					engEvalString(ep, buf5);
 					engEvalString(ep, "demoRunAlulRobot4");
 					cpresult = engGetVariable(ep,"cell_pos");
 					cpresult2 = mxArrayToString(cpresult);
-					printf("man: %s %lld\n", cpresult2, get_current_time()/1000); fflush(stdout);
+					printf("man: %s %lld\n", cpresult2, get_current_time()/1000); 
 					dresult = engGetVariable(ep,"mdata");
 					dresult2 = mxArrayToString(dresult);
-					printf("data: %s %lld\n", dresult2, get_current_time()/1000); fflush(stdout);
-					/*bresult = engGetVariable(ep,"bcells");
-					bresult2 = mxGetPr(bresult);
-					printf("bcells: %f %f \n", bresult2[0], bresult2[1]); fflush(stdout);*/
-					//printf("buffer: %s\n", buffer+2);
+					printf("data: %s %lld\n", dresult2, get_current_time()/1000); 
+					bresult = engGetVariable(ep,"bcells");
+					mwSize rows = mxGetM(bresult);
+					mwSize cols = mxGetN(bresult);
+					bresult2 = mxGetData(bresult);
+					boundary(bresult2,rows,cols);
 				}
 
 				/****************************************************************************/
@@ -969,7 +950,6 @@ void *wpMatlab() {
 						can_send1 = 1;
 						rArray[0] = toInterface(IPAD_UNIT_X,int_p1x,X_OFFSET);
 						rArray[1] = toInterface(IPAD_UNIT_Y,int_p1y,Y_OFFSET);
-						//rArray[0] = interfaceCoords[0], rArray[1] = interfaceCoords[1];
 					}
 					s=2;					
 				}
@@ -981,8 +961,6 @@ void *wpMatlab() {
 						y_wp_data[/*y_head+*/3] = int_wp_id+1; 
 						y_head = y_head + 4;
 						can_send2 = 1;
-						//toInterface(int_p2x,  int_p2y);
-						//rArray[2] = interfaceCoords[0], rArray[3] = interfaceCoords[1];
 						rArray[2] = toInterface(IPAD_UNIT_X,int_p2x,X_OFFSET);
 						rArray[3] = toInterface(IPAD_UNIT_Y,int_p2y,Y_OFFSET);
 					}
@@ -996,8 +974,6 @@ void *wpMatlab() {
 						z_wp_data[/*z_head+*/3] = int_wp_id+2; 
 						z_head = z_head + 4;
 						can_send3 = 1;
-						//toInterface(int_p3x, int_p3y);
-						//rArray[4] = interfaceCoords[0], rArray[5] = interfaceCoords[1];
 						rArray[4] = toInterface(IPAD_UNIT_X,int_p3x,X_OFFSET);
 						rArray[5] = toInterface(IPAD_UNIT_Y,int_p3y,Y_OFFSET);
 					}
@@ -1011,8 +987,6 @@ void *wpMatlab() {
 						w_wp_data[/*w_head+*/3] = int_wp_id+3; 
 						w_head = w_head + 4;
 						can_send4 = 1;
-						//toInterface(int_p4x, int_p4y);
-						//rArray[6] = interfaceCoords[0], rArray[7] = interfaceCoords[1];
 						rArray[6] = toInterface(IPAD_UNIT_X,int_p4x,X_OFFSET);
 						rArray[7] = toInterface(IPAD_UNIT_Y,int_p4y,Y_OFFSET);
 					}
@@ -1047,10 +1021,10 @@ void *sendWaypoints4(){
 	rc_webots4 = bind (sd_webots4, (struct sockaddr *) &servAddr_webots4,sizeof(servAddr_webots4));
 	
 	if(rc_webots4<0) {
-		printf("%s: cannot bind port number %d \n", "prg", LOCAL_SERVER_PORT15);
+		printf("%s: cannot bind port number %d \n", "prg", LOCAL_SERVER_PORT15);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT15);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT15);fflush(stdout);
 
 	cliLen_webots4 = sizeof(cliAddr_webots4);
 	n_webots4 = recvfrom(sd_webots4, wp_data,sizeof(wp_data), flags_webots4,
@@ -1060,7 +1034,7 @@ void *sendWaypoints4(){
 		printf("%s [6]: cannot receive data \n","prg");
 	}
 	else{
-		printf("Waypoint4 Ready? %d\n",wp_data[0]);
+		printf("Waypoint4 Ready? %d\n",wp_data[0]);fflush(stdout);
 	}
 
 	int recData = 0;
@@ -1079,7 +1053,6 @@ void *sendWaypoints4(){
 						}
 
 						if (can_send4 == 1){
-							//printf("sending_wp4_data: %f %f %f %f\n", w_wp_data[w_head-4], w_wp_data[w_head+1-4], w_wp_data[w_head+2-4], w_wp_data[w_head+3-4]);
 							rcP2_4 = sendto(sd_webots4,w_wp_data,sizeof(w_wp_data),flags, (struct sockaddr *)&cliAddr_webots4,cliLen_webots4);					
 						}
 					}
@@ -1128,7 +1101,7 @@ void *sendWaypoints3(){
 		/*continue;*/
 	}
 	else{
-		printf("Waypoint3 Ready? %d\n",wp_data[0]);
+		printf("Waypoint3 Ready? %d\n",wp_data[0]);fflush(stdout);
 	}
 
 	int recData = 0;
@@ -1147,9 +1120,7 @@ void *sendWaypoints3(){
 						}
 
 						if (can_send3 == 1){
-							//printf("sending_wp3_data: %f %f %f %f\n", z_wp_data[z_head-4], z_wp_data[z_head+1-4], z_wp_data[z_head+2-4], z_wp_data[z_head+3-4]);
-							rcP2_3 = sendto(sd_webots3,z_wp_data,sizeof(z_wp_data),flags, (struct sockaddr *)&cliAddr_webots3,cliLen_webots3);
-							
+							rcP2_3 = sendto(sd_webots3,z_wp_data,sizeof(z_wp_data),flags, (struct sockaddr *)&cliAddr_webots3,cliLen_webots3);	
 						}
 					}
 
@@ -1182,11 +1153,11 @@ void *sendWaypoints2(){
 	servAddr_webots2.sin_port = htons(LOCAL_SERVER_PORT7);
 	rc_webots2 = bind (sd_webots2, (struct sockaddr *) &servAddr_webots2,sizeof(servAddr_webots2));
 	if(rc_webots2<0) {
-		printf("%s: cannot bind port number %d \n", "prg", LOCAL_SERVER_PORT7);
+		printf("%s: cannot bind port number %d \n", "prg", LOCAL_SERVER_PORT7);fflush(stdout);
 		exit(1);
 	}
 
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT7);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT7);fflush(stdout);
 
 	cliLen_webots2 = sizeof(cliAddr_webots2);
 	n_webots2 = recvfrom(sd_webots2, wp_data,sizeof(wp_data), flags_webots2,
@@ -1197,7 +1168,7 @@ void *sendWaypoints2(){
 		/*continue;*/
 	}
 	else{
-		printf("Waypoint2 Ready? %d\n",wp_data[0]);
+		printf("Waypoint2 Ready? %d\n",wp_data[0]);fflush(stdout);
 	}
 
 	int recData = 0;
@@ -1217,7 +1188,6 @@ void *sendWaypoints2(){
 
 						if (can_send2 == 1){
 							rcP2_2 = sendto(sd_webots2,y_wp_data,sizeof(y_wp_data),flags, (struct sockaddr *)&cliAddr_webots2,cliLen_webots2);
-							//printf("sending_wp2_data: %f %f %f %f\n", y_wp_data[y_head-4], y_wp_data[y_head+1-4], y_wp_data[y_head+2-4], y_wp_data[y_head+3-4]);
 						}
 					}
 
@@ -1246,10 +1216,10 @@ void *sendWaypoints1(){
 	rc_webots = bind (sd_webots, (struct sockaddr *) &servAddr_webots,sizeof(servAddr_webots));
 
 	if(rc_webots<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT5);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT5);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT5);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT5);fflush(stdout);
 
 	cliLen_webots = sizeof(cliAddr_webots);
 	n_webots = recvfrom(sd_webots, wp_data,sizeof(wp_data), flags_webots,
@@ -1259,8 +1229,8 @@ void *sendWaypoints1(){
 		printf("%s [7]: cannot receive data \n","prg");
 	}
 	else{
-		printf("Got connection!\n"); fflush(stdout);
-		printf("Waypoint1 Ready? %d\n",wp_data[0]);
+		printf("Got connection!\n"); 
+		printf("Waypoint1 Ready? %d\n",wp_data[0]);fflush(stdout);
 	}
 
 	int recData = 0;
@@ -1279,8 +1249,7 @@ void *sendWaypoints1(){
 						}
 
 						if (can_send1 == 1) {
-							rcP2 = sendto(sd_webots,x_wp_data,sizeof(x_wp_data),flags,(struct sockaddr *)&cliAddr_webots,cliLen_webots);	
-							//printf("sending_wp1_data: %f %f %f %f\n", x_wp_data[x_head-4], x_wp_data[x_head+1-4], x_wp_data[x_head+2-4], x_wp_data[x_head+3-4]);	
+							rcP2 = sendto(sd_webots,x_wp_data,sizeof(x_wp_data),flags,(struct sockaddr *)&cliAddr_webots,cliLen_webots);		
 						}
 					}
 
@@ -1312,11 +1281,10 @@ void *posThread1() {
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n",/* stub*/
-			"prg", LOCAL_SERVER_PORT8);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT8);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT8);
+	printf("%s: waiting for data on port UDP %u\n",	"prg",LOCAL_SERVER_PORT8);fflush(stdout);
 
 	flags2 = 0;
 
@@ -1363,11 +1331,10 @@ void *posThread2() {
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n",/* stub*/
-			"prg", LOCAL_SERVER_PORT9);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT9);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT9);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT9);fflush(stdout);
 
 	flags2 = 0;
 	
@@ -1413,10 +1380,10 @@ void *posThread3() {
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT13);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT13);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT13);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT13);fflush(stdout);
 
 	flags2 = 0;
 	
@@ -1462,10 +1429,10 @@ void *posThread4() {
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT16);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT16);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT16);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT16);fflush(stdout);
 
 	flags2 = 0;
 	
@@ -1511,11 +1478,10 @@ void *tposThread() {
 	rc2 = bind (sd2, (struct sockaddr *) &servAddr2,sizeof(servAddr2));
 
 	if(rc2<0) {
-		printf("%s: cannot bind port number %d \n",/* stub*/
-			"prg", LOCAL_SERVER_PORT10);
+		printf("%s: cannot bind port number %d \n","prg", LOCAL_SERVER_PORT10);fflush(stdout);
 		exit(1);
 	}
-	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT10);
+	printf("%s: waiting for data on port UDP %u\n","prg",LOCAL_SERVER_PORT10);fflush(stdout);
 
 	flags2 = 0;
 	
@@ -1526,7 +1492,6 @@ void *tposThread() {
 			case 0:
 				cliLen2 = sizeof(cliAddr2);
 				n2 = recvfrom(sd2, tposArray, sizeof(tposArray), flags2,(struct sockaddr *) &cliAddr2, &cliLen2);
-				//printf("target: %i, %i\n",tposArray[0],tposArray[1]);
 
 				if(n2<0) {
 					printf("%s [10]: cannot receive data \n","prg");

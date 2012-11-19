@@ -26,7 +26,7 @@ if start==0
     %    dynamic_t          - flag for dynamic targets
     %    alulFlag           - flag to use ALUL
     
-    maxUnseen = 20;
+    maxUnseen = 25;
     steps = 100;
     alulval = 0;
     dynamic_t = 0;
@@ -38,6 +38,6 @@ if start==0
     start = 1;
     sim_start = 0;
     
-    dov = 11;
+    dov = 10.5;
     cameras=[4992 dov; 4995 dov; 4773 dov; 4998 dov];
 end
