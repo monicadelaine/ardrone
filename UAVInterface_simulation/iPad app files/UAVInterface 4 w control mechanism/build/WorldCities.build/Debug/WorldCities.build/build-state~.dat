@@ -1,0 +1,164 @@
+TWorldCities
+v7
+r1
+cCheck dependencies
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Info.plist
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Default.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon-72.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon-Small-50.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon-Small.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon-Small@2x.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/Icon@2x.png
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/cityList.plist
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/en.lproj/MainWindow.nib
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/en.lproj/MapViewController.nib
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/iTunesArtwork
+t2
+s0
+
+N/Users/crawford8/Downloads/WorldCities/cityList.plist
+c000000004B328880000000000000061C
+t1261602944
+s1564
+
+N/Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+c000000004B3288800000000000006091
+t1261602944
+s24721
+
+N/Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+c000000004B32888000000000000061A1
+t1261602944
+s24993
+
+N/Users/crawford8/Downloads/WorldCities/images/Default.png
+c000000004C1BFDDB0000000000004976
+t1276902875
+s18806
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-72.png
+c000000004C1FC4110000000000000427
+t1277150225
+s1063
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small-50.png
+c000000004C1FC41100000000000003E0
+t1277150225
+s992
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small.png
+c000000004C1BFDDB0000000000000396
+t1276902875
+s918
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon-Small@2x.png
+c000000004C1BFDDB00000000000003F2
+t1276902875
+s1010
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon.png
+c000000004C1BFDDB00000000000003EF
+t1276902875
+s1007
+
+N/Users/crawford8/Downloads/WorldCities/images/Icon@2x.png
+c000000004C1BFDDB00000000000004E4
+t1276902875
+s1252
+
+N/Users/crawford8/Downloads/WorldCities/images/iTunesArtwork
+c000000004C224B310000000000001444
+t1277315889
+s5188
+
+NWorldCities-Info.plist
+c000000004C1FC411000000000000046A
+t1277150225
+s1130
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies327857272#327857272#0(66"[BEROR]error: There is no SDK with the name or path 'iphoneos4.0'1(4@58"error: There is no SDK with the name or path 'iphoneos4.0'327857272#18446744073709551615#0#0(1@0"0(0#1#0"8616033856#0"0#
+
+CCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MainWindow.xib
+r0
+
+CCompileXIB /Users/crawford8/Downloads/WorldCities/en.lproj/MapViewController.xib
+r0
+
+CCopyPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Resources/cityList.plist cityList.plist
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Default.png images/Default.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon-72.png images/Icon-72.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon-Small-50.png images/Icon-Small-50.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon-Small.png images/Icon-Small.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon-Small@2x.png images/Icon-Small@2x.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon.png images/Icon.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/Icon@2x.png images/Icon@2x.png
+r0
+
+CCpResource build/Debug/WorldCities.app/Contents/Resources/iTunesArtwork images/iTunesArtwork
+r0
+
+CProcessInfoPlistFile /Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app/Contents/Info.plist WorldCities-Info.plist
+r0
+
+CTouch /Users/crawford8/Downloads/WorldCities/build/Debug/WorldCities.app
+r0
+

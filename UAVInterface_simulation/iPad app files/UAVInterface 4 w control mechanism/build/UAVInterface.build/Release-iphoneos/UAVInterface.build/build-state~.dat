@@ -1,0 +1,644 @@
+TUAVInterface
+v7
+r1
+cCheck dependencies
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk
+c000000004D7401890000000000000110
+t1299448201
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+c000000004D4F6A4700000000000001E5
+t1297050183
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004D54D1B500000000002CAD60
+t1297404341
+s2927968
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
+c000000004D54D12700000000000004CF
+t1297404199
+s1231
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D2640000000000303FF0
+t1297404516
+s3162096
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D243000000000000046B
+t1297404483
+s1131
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54D18C00000000003532A0
+t1297404300
+s3486368
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h
+c000000004D54D02E00000000000004FE
+t1297403950
+s1278
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004D5DE7A400000000000001D0
+t1297999780
+s464
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54D1F500000000003E22F0
+t1297404405
+s4072176
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54D1DD0000000000001466
+t1297404381
+s5222
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKAnnotation.h
+c000000004D5C9CA600000000000002BC
+t1297915046
+s700
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004D5C9CA600000000000002FE
+t1297915046
+s766
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004D5C9CD400000000002B3AB0
+t1297915092
+s2833072
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004D54D49500000000000000C4
+t1297405077
+s196
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5A28AB0000000000000AA1
+t1297754283
+s2721
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5A292A0000000000CA2AE0
+t1297754410
+s13249248
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/Availability.h
+c000000004D4F74C20000000000001B19
+t1297052866
+s6937
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/arpa/inet.h
+c000000004D54C5330000000000001533
+t1297401139
+s5427
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/net/if.h
+c000000004D54CB240000000000003DBA
+t1297402660
+s15802
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netdb.h
+c000000004D54C533000000000000307F
+t1297401139
+s12415
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/netinet/in.h
+c000000004D54CB250000000000006BAC
+t1297402661
+s27564
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/ioctl.h
+c000000004D54CB28000000000000116C
+t1297402664
+s4460
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/sys/socket.h
+c000000004D54CB290000000000005ACF
+t1297402665
+s23247
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/../main.m
+c000000004C2536880000000000000AA7
+t1277507208
+s2727
+i<UIKit/UIKit.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/AppDelegate.h
+c000000004DDFFBE40000000000000C09
+t1306524644
+s3081
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/AppDelegate.m
+c000000004DDFFBE40000000000000BCC
+t1306524644
+s3020
+i"AppDelegate.h"
+i"MapViewController.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/AsyncUdpSocket.h
+c000000004DED05FA00000000000037E2
+t1307379194
+s14306
+i<Foundation/Foundation.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/AsyncUdpSocket.m
+c000000004DF63AB50000000000010308
+t1307982517
+s66312
+i"AsyncUdpSocket.h"
+i<sys/socket.h>
+i<netinet/in.h>
+i<arpa/inet.h>
+i<sys/ioctl.h>
+i<net/if.h>
+i<netdb.h>
+i<CFNetwork/CFNetwork.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/MapViewController.h
+c000000004E0A3D4B0000000000000414
+t1309293899
+s1044
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i"WorldCitiesListController.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/MapViewController.m
+c000000004E0B75060000000000001AFC
+t1309373702
+s6908
+i"MapViewController.h"
+i"WorldCity.h"
+i"MyAnnotation.h"
+i"RoiViewController.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/MyAnnotation.h
+c000000004E0C90AF000000000000072C
+t1309446319
+s1836
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/MyAnnotation.m
+c000000004E0C90AF000000000000092E
+t1309446319
+s2350
+i"MyAnnotation.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/RoiViewController.h
+c000000004E0C8C2A000000000000060A
+t1309445162
+s1546
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i<MapKit/MKAnnotation.h>
+i<CoreLocation/CoreLocation.h>
+i<CoreGraphics/CoreGraphics.h>
+i"AsyncUdpSocket.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/RoiViewController.m
+c000000004E0CAA7600000000000043BF
+t1309452918
+s17343
+i<QuartzCore/QuartzCore.h>
+i"RoiViewController.h"
+i"MapViewController.h"
+i"MyAnnotation.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCitiesListController.h
+c000000004C2536880000000000000C3E
+t1277507208
+s3134
+i<UIKit/UIKit.h>
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCitiesListController.m
+c000000004E0B463E0000000000001302
+t1309361726
+s4866
+i"WorldCitiesListController.h"
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCity.h
+c000000004C2536880000000000000BC3
+t1277507208
+s3011
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCity.m
+c000000004C2536880000000000000BE3
+t1277507208
+s3043
+i"WorldCity.h"
+
+N/Users/crawford8/Downloads/UAVInterface copy/UAVInterface_Prefix.pch
+c000000004C2536880000000000000B0D
+t1277507208
+s2829
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app.dSYM
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Default.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-72.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small-50.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small@2x.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon@2x.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Info.plist
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/PkgInfo
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/ResourceRules.plist
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/UAVInterface
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/cityList.plist
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/en.lproj/MainWindow.nib
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/en.lproj/MapViewController.nib
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/en.lproj/RoiViewController.nib
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/iTunesArtwork
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav1.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav2.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav2_.png
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/AppDelegate.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/AsyncUdpSocket.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/MapViewController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/MyAnnotation.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/RoiViewController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/UAVInterface
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/UAVInterface.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/WorldCitiesListController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/WorldCity.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/main.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/AppDelegate.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/AsyncUdpSocket.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/MapViewController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/MyAnnotation.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/RoiViewController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/UAVInterface
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/UAVInterface.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/WorldCitiesListController.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/WorldCity.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/main.o
+t2
+s0
+
+N/Users/crawford8/Downloads/UAVInterface copy/cityList.plist
+c000000004DEE5F6F0000000000000221
+t1307467631
+s545
+
+N/Users/crawford8/Downloads/UAVInterface copy/en.lproj/MainWindow.xib
+c000000004DDAC7A60000000000006C13
+t1306183590
+s27667
+
+N/Users/crawford8/Downloads/UAVInterface copy/en.lproj/MapViewController.xib
+c000000004E0A3D7C00000000000061CA
+t1309293948
+s25034
+
+N/Users/crawford8/Downloads/UAVInterface copy/en.lproj/RoiViewController.xib
+c000000004E0C8C2700000000000087A8
+t1309445159
+s34728
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/../uav.png
+c000000004DFCDB7700000000000004B9
+t1308416887
+s1209
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Default.png
+c000000004E04E8380000000000032DAA
+t1308944440
+s208298
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon-72.png
+c000000004C1FC4110000000000000427
+t1277150225
+s1063
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon-Small-50.png
+c000000004C1FC41100000000000003E0
+t1277150225
+s992
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon-Small.png
+c000000004C1BFDDB0000000000000396
+t1276902875
+s918
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon-Small@2x.png
+c000000004C1BFDDB00000000000003F2
+t1276902875
+s1010
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon.png
+c000000004C1BFDDB00000000000003EF
+t1276902875
+s1007
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/Icon@2x.png
+c000000004C1BFDDB00000000000004E4
+t1276902875
+s1252
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/iTunesArtwork
+c000000004C224B310000000000001444
+t1277315889
+s5188
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/uav1.png
+c000000004E04E68C0000000000000AD8
+t1308944012
+s2776
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/uav2.png
+c000000004E04E6A10000000000000AD8
+t1308944033
+s2776
+
+N/Users/crawford8/Downloads/UAVInterface copy/images/uav2_.png
+c000000004E0CA8E00000000000000AD8
+t1309452512
+s2776
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-ahrakfdwvkkyllatjxehszhaamaz/UAVInterface_Prefix.pch.gch
+t2
+s0
+
+N/var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-bmzwizqvnptuoxfckbhohmrqfkqd/UAVInterface_Prefix.pch.gch
+t2
+s0
+
+NUAVInterface-Info.plist
+c000000004C1FC411000000000000046A
+t1277150225
+s1130
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies331154256#331154256#0(133"[BEROR]Code Sign error: The identity 'iPhone Developer' doesn't match any valid certificate/private key pair in the default keychain1(4@125"Code Sign error: The identity 'iPhone Developer' doesn't match any valid certificate/private key pair in the default keychain331154256#18446744073709551615#0#0(1@0"0(0#1#0"8601658720#0"0#
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/AppDelegate.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/AppDelegate.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/AsyncUdpSocket.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/AsyncUdpSocket.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/MapViewController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/MapViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/MyAnnotation.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/MyAnnotation.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/RoiViewController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/RoiViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/WorldCitiesListController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCitiesListController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/WorldCity.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCity.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/main.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/../main.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/AppDelegate.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/AppDelegate.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/AsyncUdpSocket.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/AsyncUdpSocket.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/MapViewController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/MapViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/MyAnnotation.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/MyAnnotation.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/RoiViewController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/RoiViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/WorldCitiesListController.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCitiesListController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/WorldCity.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/WorldCity.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/main.o "/Users/crawford8/Downloads/UAVInterface copy/Classes/../main.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileXIB "/Users/crawford8/Downloads/UAVInterface copy/en.lproj/MainWindow.xib"
+r0
+
+CCompileXIB "/Users/crawford8/Downloads/UAVInterface copy/en.lproj/MapViewController.xib"
+r0
+
+CCompileXIB "/Users/crawford8/Downloads/UAVInterface copy/en.lproj/RoiViewController.xib"
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Default.png" images/Default.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-72.png" images/Icon-72.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small-50.png" images/Icon-Small-50.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small.png" images/Icon-Small.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon-Small@2x.png" images/Icon-Small@2x.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon.png" images/Icon.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Icon@2x.png" images/Icon@2x.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav.png" images/../uav.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav1.png" images/uav1.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav2.png" images/uav2.png
+r0
+
+CCopyPNGFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/uav2_.png" images/uav2_.png
+r0
+
+CCopyPlistFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/cityList.plist" cityList.plist
+r0
+
+CCpResource build/Release-iphoneos/UAVInterface.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+r0
+
+CCpResource build/Release-iphoneos/UAVInterface.app/iTunesArtwork images/iTunesArtwork
+r0
+
+CCreateUniversalBinary "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/UAVInterface" normal "armv6 armv7"
+r0
+
+CGenerateDSYMFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app.dSYM" "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/UAVInterface"
+r0
+
+CLd "/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv6/UAVInterface" normal armv6
+r0
+
+CLd "/Users/crawford8/Downloads/UAVInterface copy/build/UAVInterface.build/Release-iphoneos/UAVInterface.build/Objects-normal/armv7/UAVInterface" normal armv7
+r0
+
+CProcessInfoPlistFile "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app/Info.plist" UAVInterface-Info.plist
+r0
+
+CProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-ahrakfdwvkkyllatjxehszhaamaz/UAVInterface_Prefix.pch.gch UAVInterface_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CProcessPCH /var/folders/CT/CTB72mosFPmio-cwtGJwfk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/UAVInterface_Prefix-bmzwizqvnptuoxfckbhohmrqfkqd/UAVInterface_Prefix.pch.gch UAVInterface_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CTouch "/Users/crawford8/Downloads/UAVInterface copy/build/Release-iphoneos/UAVInterface.app"
+r0
+
