@@ -26,9 +26,9 @@
 #include <webots/supervisor.h>
 #include <pthread.h>
 
-#define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.24"
-#define SOCKET_SERVER1 "130.160.47.64"
+#define SOCKET_SERVER1 "130.160.221.212"	//Mac Server
+#define SOCKET_SERVER "130.160.68.24"		//MatLab Server??
+#define SOCKET_SERVER1 "130.160.47.64"		//Mac Server
 #define REMOTE_SERVER_PORT 1502
 #define REMOTE_SERVER_PORT2 1501
 #define SOCKET_ERROR -1

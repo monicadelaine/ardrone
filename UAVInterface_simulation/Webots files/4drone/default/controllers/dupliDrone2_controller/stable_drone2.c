@@ -27,9 +27,9 @@
 #include <pthread.h>
 #include <math.h>
 
-#define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.24"
-#define SOCKET_SERVER1 "130.160.47.64"
+#define SOCKET_SERVER1 "130.160.221.212"	//Mac Server
+#define SOCKET_SERVER "130.160.68.24"		//matLab Server??
+#define SOCKET_SERVER1 "130.160.47.64"		//mac Server
 #define REMOTE_SERVER_PORT 1502
 #define REMOTE_SERVER_PORT_WP 1507
 #define REMOTE_SERVER_PORT2 1501
