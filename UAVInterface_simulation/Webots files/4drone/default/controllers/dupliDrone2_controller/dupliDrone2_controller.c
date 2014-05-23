@@ -34,10 +34,10 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.68.35"
+#define SOCKET_SERVER1 "130.160.221.212"	//Mac server
+#define SOCKET_SERVER "130.160.68.35"		//Matlab server??
 //#define SOCKET_SERVER "172.27.184.111"
-#define SOCKET_SERVER1 "130.160.47.64"
+#define SOCKET_SERVER1 "130.160.47.64"		//Mac Server
 #define REMOTE_SERVER_PORT 1502
 #define REMOTE_SERVER_PORT_WP 1507
 #define REMOTE_SERVER_PORT2 1501

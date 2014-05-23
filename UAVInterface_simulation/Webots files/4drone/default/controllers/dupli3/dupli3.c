@@ -43,12 +43,12 @@
 #include <arpa/inet.h>          /* definition of inet_ntoa */
 #include <unistd.h>
 
-#define SOCKET_SERVER1 "130.160.221.212"
-#define SOCKET_SERVER "130.160.47.198"
+#define SOCKET_SERVER1 "130.160.221.212"	//mac server
+#define SOCKET_SERVER "130.160.47.198"		//matlab server
 //#define SOCKET_SERVER "192.168.1.121"
 //#define SOCKET_SERVER "130.160.68.35"
 //#define SOCKET_SERVER "172.27.184.111"
-#define SOCKET_SERVER1 "130.160.47.64"
+#define SOCKET_SERVER1 "130.160.47.64"		//mac server
 #define REMOTE_SERVER_PORT 1502 //video
 #define REMOTE_SERVER_PORT_WP 1507 //rec wp
 #define REMOTE_SERVER_PORT2 1501
